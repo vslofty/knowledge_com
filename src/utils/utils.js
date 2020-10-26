@@ -316,7 +316,6 @@ export const excelOutput = (() => {
  * @param {String} baseUrl excel下载基础地址
  */
 export const downloadFile = (() => {
-  var timer;
   return (baseUrl = "", callback = () => { }) => {
     if (baseUrl === "") {
       throw new Error("路径不能为空");

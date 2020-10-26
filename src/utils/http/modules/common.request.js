@@ -1,5 +1,4 @@
-import { get, post } from "../http";
-import qs from 'qs';
+import { get } from "../http";
 // let base = 'http://tliveapi.vzan.com';
 // const buildFor = process.env.VUE_APP_BUILD_FOR;
 // switch(buildFor){
@@ -27,6 +26,6 @@ export default {
    * @method 知播客户端app下载
    * @param {*} zid  直播间id
    */
-  getClientLink: params => get(`/api/setting/appversioninfo?versionCode=00.00.00.01&deviceType=3`),
+  getClientLink: () => get(`/api/setting/appversioninfo?versionCode=00.00.00.01&deviceType=3`),
   
 };
