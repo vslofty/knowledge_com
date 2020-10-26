@@ -2,18 +2,37 @@
     <div class="help">
         <headers current="help" :showwhitebg="true"></headers>
         <div class="container">
-            <div class="left">
-                <a-menu mode="inline" :default-selected-keys="['1']" :default-open-keys="[1]" style="width: 256px" @click="onOpenChange">
-                    <a-sub-menu :key="item.Id" v-for="item of menuinfo">
-                        <span slot="title"><span>{{item.mainName}}</span></span>
-                        <a-menu-item :key="submenu.id" v-for="submenu of item.subMenu">{{submenu.name}}</a-menu-item>
-                    </a-sub-menu>
+            <div class="left" :style="`left:${menuWidth}px;height:${menuHeight}px;`">
+                <a-menu mode="inline" :default-selected-keys="selectkey" :default-open-keys="openKeys" style="width: 256px" @click="onOpenChange" v-if="menuinfo&&menuinfo.length">
+                    <template  v-for="item of menuinfo">
+                        <a-menu-item :key="item.Id" v-if="!(item.subMenu&&item.subMenu.length)">
+                            <span style="font-weight:bold;color:#252525;">{{item.mainName}}</span>
+                        </a-menu-item>
+                        <a-sub-menu :key="item.Id" v-if="item.subMenu&&item.subMenu.length">
+                            <template v-for="submenu of item.subMenu">
+                                <!-- <span slot="title" :key="submenu.Id"><span>{{submenu.name}}</span></span> -->
+                                <span slot="title" :key="submenu.Id"><span>{{item.mainName}}</span></span>
+                                <a-menu-item :key="submenu.Id" v-if="!(submenu.subMenuItem&&submenu.subMenuItem.length)">
+                                    <span>{{submenu.name}}</span>
+                                </a-menu-item>
+                                <a-sub-menu :key="submenu.Id" v-if="submenu.subMenuItem&&submenu.subMenuItem.length">
+                                    <span slot="title"><span>{{submenu.name}}</span></span>
+                                    <a-menu-item :key="submenuitem.Id" v-for="submenuitem of submenu.subMenuItem">
+                                        <span>{{submenuitem.name}}</span>
+                                    </a-menu-item>
+                                </a-sub-menu>
+                            </template>
+                        </a-sub-menu>
+                    </template>
                 </a-menu>
             </div>
-            <div class="right">
-                <h2 class="title">{{contentInfo.title}}</h2>
-                <span class="timer">更新时间：{{contentInfo.creattime}}</span>
-                <div class="content" v-html="contentInfo.content"></div>
+            <div style="width:256px;"></div>
+            <div class="right" ref="rightbox">
+                <div class="main-content">
+                    <h2 class="title">{{contentInfo.title}}</h2>
+                    <span class="timer">更新时间：{{contentInfo.creattime}}</span>
+                    <div class="content" v-html="contentInfo.content"></div>
+                </div>
             </div>
         </div>
         
@@ -22,22 +41,32 @@
 
 <script>
 import headers from '@/common/Header.vue'
+import menu from './../static/menu.js';
+import help from './../static/help.js';
 
 export default {
     data(){
         return{
-            menuinfo: require("./../static/menu.json"),
-            contentArr: require("./../static/help.json"),
+            menuinfo: menu,
+            contentArr: help,
             contentInfo: {},
-            openKeys: [1]
+            selectkey: [],
+            openKeys: ['m001','m002','m003','m004','m005','m006'],
+            menuWidth: 0,
+            menuHeight: 0
         }
     },
     components: {
         headers
     },
     mounted(){
+                console.log(this.$route,menu)
         this.$nextTick(()=>{
-            this.contentInfo=this.contentArr[0];
+            this.selectkey.push(this.$route.params.id);
+            let index = this.contentArr.findIndex(item=>item.id==this.$route.params.id);
+            this.contentInfo = this.contentArr[index];
+            this.menuWidth = ((document.documentElement.offsetWidth || document.body.offsetWidth)-this.$refs.rightbox.clientWidth-272)/2;
+            this.menuHeight = (document.documentElement.offsetHeight || document.body.offsetHeight)-100;
         })
     },
     methods: {
@@ -48,6 +77,7 @@ export default {
                     this.contentInfo=help;
                 }
             })
+            this.$router.push(`/help/${item.key}`);
         },
     }
 }
@@ -67,9 +97,15 @@ export default {
         display: flex;
     }
     .left{
+        position: fixed;
+        left: 0;
+        top: 100px;
+        width: 256px;
+        height: 100%;
         display: flex;
         background: #fff;
         border-radius: 4px;
+        overflow: auto;
         /deep/ .ant-menu{
             border-right: none;
         }
@@ -84,9 +120,10 @@ export default {
             line-height: 50px;
             margin: 0;
         }
-        /deep/ .ant-menu:not(.ant-menu-horizontal) .ant-menu-item-selected{
+        /deep/ .ant-menu:not(.ant-menu-horizontal) .ant-menu-item-selected,
+        /deep/ .ant-menu:not(.ant-menu-horizontal) .ant-menu-item-selected span{
             background: linear-gradient(270deg, rgba(255, 168, 0, 0) 0%, rgba(255, 168, 0, 0.1) 100%);
-            color: #FFA800;
+            color: #FFA800!important;
             font-weight: bold;
         }
         /deep/ .ant-menu-inline .ant-menu-item::after{
@@ -113,26 +150,42 @@ export default {
         overflow: hidden;
         background: #fff;
         border-radius: 4px;
-        .title{
-            font-size: 28px;
-            font-weight: bold;
-            color: #252525;
-            margin-top: 40px;
-            margin-bottom: 16px;
-        }
-        .timer{
-            display: block;
-            color: #666;
-            font-size: 14px;
-            margin-bottom: 16px;
-        }
-        .content{
-            padding: 16px 0;
-            border-top: 1px solid #F5F6F7;
-            color: #666;
-            font-size: 16px;
-            p{
-                line-height: 1.8;
+        .main-content{
+            height: 100%;
+            overflow: auto;
+            .title{
+                font-size: 28px;
+                font-weight: bold;
+                color: #252525;
+                margin-top: 40px;
+                margin-bottom: 16px;
+            }
+            .timer{
+                display: block;
+                color: #666;
+                font-size: 14px;
+                margin-bottom: 16px;
+            }
+            .content{
+                padding: 16px 0 40px;
+                border-top: 1px solid #F5F6F7;
+                color: #666;
+                font-size: 16px;
+                /deep/ p{
+                    line-height: 1.8;
+                    margin: 20px 0;
+                }
+                /deep/ img{
+                    max-width: 100%;
+                    border-radius: 12px;
+                }
+                /deep/ h3{
+                    font-size: 22px;
+                    font-weight: bold;
+                }
+                /deep/ td{
+                    padding: 10px;
+                }
             }
         }
     }

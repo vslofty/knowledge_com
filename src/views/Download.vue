@@ -9,9 +9,8 @@
                 <div class="tab-box">
                     <div class="left">
                         <h1>知播讲师端</h1>
-                        <span class="version">版本号：# 版本号... ...  #</span>
                         <p class="desc">满足多种教学形态，不管是1对1教学、课外兴趣小班课还是大型直播公开课，帮你轻松搭建属于自己的在线课堂；</p>
-                        <a-button class="download-window">
+                        <a-button class="download-window" @click="goToDownload">
                             <span class="vzaniconfont iconwindonws"></span>下载Windows版
                         </a-button>
                     </div>
@@ -27,20 +26,19 @@
                 <div class="tab-box">
                     <div class="left">
                         <h1>知播学生端</h1>
-                        <span class="version">版本号：# 版本号... ...  #</span>
                         <p class="desc">满足多种教学形态，不管是1对1教学、课外兴趣小班课还是大型直播公开课，帮你轻松搭建属于自己的在线课堂；</p>
                         <div class="student-download">
-                            <div class="download-scan">
-                                <img src=""/>
+                            <div class="download-scan" v-if="generalInfo.DownAppTreasureURI">
+                                <vue-qr :text="generalInfo.DownAppTreasureURI" :size="100" :margin="5" class="invite-code"></vue-qr>
                                 <span>扫码下载</span>
                             </div>
                             <div class="download-btn-group">
-                                <a-button>
+                                <a :href="generalInfo.DownIosURI" target="_blank">
                                     <i class="vzaniconfont iconbianzu1"></i>苹果下载
-                                </a-button>
-                                <a-button>
+                                </a>
+                                <a :href="generalInfo.DownIosURI" target="_blank">
                                     <i class="vzaniconfont iconbianzu"></i>安卓下载
-                                </a-button>
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -55,20 +53,49 @@
 
 <script>
 import headers from '@/common/Header.vue'
+import CommonAjax from "@/utils/http/modules/common.request.js";
+import vueQr from 'vue-qr'
 export default {
     data(){
         return{
-            tabname: 'teach'
+            tabname: 'teach',
+            generalInfo: {}
         }
     },
     components: {
-        headers
+        headers,
+        vueQr
     },
     methods: {
+        async getGeneral(){
+            try{
+                let res = await CommonAjax.getGeneral();
+                console.log(res)
+                this.generalInfo = res.dataObj;
+            } catch(error){
+                error && this.$antdMessage.error(error);
+            }
+        },
+        async goToDownload(){
+            try{
+                let res = await CommonAjax.getClientLink();
+                console.log(res)
+                var a = document.createElement('a')
+                var event = new MouseEvent('click')
+                a.href = res.dataObj&&res.dataObj.renewAdress;
+                // 合成函数，执行下载
+                a.dispatchEvent(event)
+            }catch(error){
+                error&&this.$antdMessage.error(error)
+            }
+        },
         changeTab(val){
             console.log(val)
             this.tabname = val;
         }
+    },
+    mounted() {
+        this.getGeneral();
     }
 }
 </script>
@@ -185,6 +212,7 @@ export default {
                 align-items: center;
                 font-size: 16px;
                 color: #fff;
+                margin-right: 16px;
                 img{
                     width: 136px;
                     height: 136px;
@@ -192,12 +220,11 @@ export default {
                 }
             }
             .download-btn-group{
-                margin-left: 16px;
                 height: 136px;
                 display: flex;
                 flex-direction: column;
                 justify-content: space-between;
-                button{
+                button,a{
                     width: 160px;
                     height: 60px;
                     background: transparent;

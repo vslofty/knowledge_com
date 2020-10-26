@@ -5,10 +5,10 @@
     <ul class="nav">
       <li :class="(current=='index')&&'active'"><router-link to="/" :style="headercolor">首页</router-link></li>
       <li :class="(current=='download')&&'active'"><router-link to="/download" :style="headercolor">下载中心</router-link></li>
-      <li :class="(current=='help')&&'active'"><router-link to="/help" :style="headercolor">帮助文档</router-link></li>
+      <li :class="(current=='help')&&'active'"><router-link to="/help/m001" :style="headercolor">帮助文档</router-link></li>
     </ul>
     <div class="header-btn-group">
-      <a-button class="btn1">在线客服</a-button>
+      <a-button class="btn1"><a target="_blank" href="https://zanshang.kf5.com/kchat/45235?from=在线支持&group=0">在线客服</a></a-button>
       <a-button class="btn2" @click="goPcBackstage">免费使用</a-button>
     </div>
   </div>
@@ -37,9 +37,9 @@ export default {
     goPcBackstage(){
       console.log('goPcBackstage')
       if(location.origin.includes('localhost')){
-        window.location.href='http://zhibo-dev.vzan.com/know/';
+        window.open('http://zhibo-dev.vzan.com/know/');
       }else{
-        window.location.href=`${location.origin}/know/`;
+        window.open(`${location.origin}/know/`);
       }
     },
     headerScroll(){
@@ -93,6 +93,7 @@ export default {
       height: 100%;
       font-size: 16px;
       padding: 0 40px;
+      list-style: none;
       a{
         color: #fff;
       }

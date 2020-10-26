@@ -23,8 +23,10 @@ a {
 a:hover {
   color: #FFE156;
 }
-li {
-  list-style-type: none;
+ol,
+ul,
+dl {
+  padding-left: 1em;
 }
 input,
 img,

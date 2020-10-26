@@ -42,7 +42,7 @@ module.exports = {
                 //target: "https://zhibo.vzan.com",//正式
                 //target:"https://zhibo-pre.vzan.com",//预发布
                 //target: "http://zhibo-test.vzan.com",//测试
-                target: "http://zhibo-dev.vzan.com",//开发
+                target: "https://zhibo-dev.vzan.com",//开发
                 changeOrigin: true,
                 ws: true
             }

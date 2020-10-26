@@ -4,20 +4,14 @@
             <div class="top">
                 <p class="d-flex ali-cen">
                     <span class="blackcolor">服务支持</span>
-                    <span>下载中心</span>
-                    <span>帮助文档</span>
-                    <span>在线客服</span>
+                    <router-link to="/download">下载中心</router-link>
+                    <router-link to="/help">帮助文档</router-link>
+                    <a target="_blank" href="https://zanshang.kf5.com/kchat/45235?from=在线支持&group=0">在线客服</a>
                 </p>
-                <p>
-                    <em>售前电话</em>
-                </p>
-            </div>
-            <div class="bottom">
                 <p class="d-flex ali-cen">
                     <span class="blackcolor">公司地址</span>
                     <span>广州市天河区林和东路285号天安人寿中心30楼</span>
                 </p>
-                <h4>400-086-6612</h4>
             </div>
         </div>
         <div class="container-2">
@@ -38,7 +32,7 @@ export default {
 <style lang="less" scoped>
 .footer{
     position: relative;
-    height: 236px;
+    height: 183px;
     background: #fff;
     display: flex;
     flex-direction: column;
@@ -52,7 +46,7 @@ export default {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            span{
+            span,a{
                 color: #60646B;
                 margin-right: 23px;
                 font-size: 14px;
@@ -88,7 +82,7 @@ export default {
         display: flex;
         color: #B8BABF;
         font-size: 12px;
-        height: 83px;
+        height: 77px;
         border-top: 1px solid #F6F7F8;
     }
 }

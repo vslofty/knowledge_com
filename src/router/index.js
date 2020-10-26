@@ -18,14 +18,14 @@ const routes = [
     component: Download
   },
   {
-    path: '/help',
+    path: '/help/:id',
     name: 'HelpCenter',
     component: HelpCenter
   }
 ]
 
 const router = new VueRouter({
-  mode: 'history',
+  mode: 'hash',
   base: process.env.BASE_URL,
   routes
 })
