@@ -1,7 +1,9 @@
 <template>
   <div class="header" :class="showwhitebg&&'white-bg'" :style="headerbgcolor">
-    <img src="https://j.weizan.cn/zhibo/microcourse/images/logo.png" class="logo" v-if="show&&!showwhitebg"/>
-    <img src="https://j.weizan.cn/zhibo/microcourse/images/logo-black.png" class="logo" v-else/>
+    <router-link to="/" class="logo">
+      <img src="https://j.weizan.cn/zhibo/microcourse/images/logo.png" class="logo" v-if="show&&!showwhitebg"/>
+      <img src="https://j.weizan.cn/zhibo/microcourse/images/logo-black.png" class="logo" v-else/>
+    </router-link>
     <ul class="nav">
       <li :class="(current=='index')&&'active'"><router-link to="/" :style="headercolor">首页</router-link></li>
       <li :class="(current=='download')&&'active'"><router-link to="/download" :style="headercolor">下载中心</router-link></li>
@@ -97,13 +99,13 @@ export default {
       a{
         color: #fff;
       }
+      &:hover>a{
+        color: #FFA800!important;
+      }
       &.active>a{
         position: relative;
         font-weight: 800;
-        background: linear-gradient(90deg, #FFE156 0%, #FFA800 100%)!important;
-        background: -webkit-linear-gradient(90deg, #FFE156 0%, #FFA800 100%)!important;
-        -webkit-background-clip: text!important;
-        -webkit-text-fill-color: transparent!important;
+        color: #FFA800!important;
         &::after{
           content: "";
           position: absolute;

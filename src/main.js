@@ -25,6 +25,13 @@ Vue.prototype.$antdModalConfirm = Modal.confirm;
 Vue.prototype.$antdModalDestroyAll = Modal.destroyAll;
 import "./assets/css/index.less";
 
+// import animated from 'animate.css';
+// Vue.use(animated)
+
+import AOS from 'aos'
+import 'aos/dist/aos.css'
+AOS.init();
+
 new Vue({
   router,
   store,

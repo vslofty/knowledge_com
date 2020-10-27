@@ -1,19 +1,19 @@
 <template>
   <div class="sidebar">
     <div class="d-flex flex-dircol">
-      <img src="http://j.weizan.cn/zhibo/microcourse/imgs/zb-logo.png" style="display:block;width:163px;margin:32px auto 5px;"/>
+      <img src="https://j.weizan.cn/zhibo/microcourse/imgs/zb-logo.png" style="display:block;width:163px;margin:32px auto 5px;"/>
       <p style="color: #838383;font-size: 14px;text-align:center;">知播-让知识传播更有价值</p>
       <ul>
         <li class="main_menu">直播课堂</li>
         <li class="active">
           <router-link :to="`/class/${zbid}`">
-            <img src="http://j.weizan.cn/zhibo/microcourse/imgs/class-manage-icon.png"/>课节管理
+            <img src="https://j.weizan.cn/zhibo/microcourse/imgs/class-manage-icon.png"/>课节管理
           </router-link>
         </li>
       </ul>
     </div>
     <div class="d-flex flex-dircol ali-cen online-custom-box">
-      <a target="_blank" href="https://zanshang.kf5.com/kchat/45235?from=在线支持&group=0" class="online-custom d-flex ali-cen juc-cen"><img src="http://j.weizan.cn/zhibo/microcourse/imgs/online-custorm-icon.png"/>在线客服</a>
+      <a target="_blank" href="https://zanshang.kf5.com/kchat/45235?from=在线支持&group=0" class="online-custom d-flex ali-cen juc-cen"><img src="https://j.weizan.cn/zhibo/microcourse/imgs/online-custorm-icon.png"/>在线客服</a>
     </div>
   </div>
 </template>

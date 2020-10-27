@@ -186,6 +186,12 @@ export default {
                 /deep/ td{
                     padding: 10px;
                 }
+                /deep/ ul li{
+                    font-weight: bold;
+                }
+                /deep/ ol li{
+                    font-size: 14px;
+                }
             }
         }
     }

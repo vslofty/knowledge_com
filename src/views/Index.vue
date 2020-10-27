@@ -3,14 +3,14 @@
         <div class="header-bg">
             <img src="https://j.weizan.cn/zhibo/microcourse/images/banner-bg.png">
         </div>
-        <div class="header-box" :style="`height:${screenHeight}px`">
+        <div class="header-box" ref="time" :style="`height:${screenHeight}px`">
             <headers current="index"></headers>
-            <h1 class="header-title">让知识传播更有价值</h1>
-            <p class="header-subtitle">
+            <h1 class="header-title" data-aos="zoom-out">让知识传播更有价值</h1>
+            <p class="header-subtitle" data-aos="zoom-out">
                 <span>全新一代在线互动课堂教学工具，整合多人连麦，在线教学，教务管理，招生营销等功能于一体，致力于为您提供</span>
                 <span>一个解决方案，高效率做在线教育的一站式解决工具。</span>
             </p>
-            <a-button class="build-btn" @click="goPcBackstage">
+            <a-button class="build-btn" data-aos="fade-up" data-aos-delay="400" @click="goPcBackstage">
                 <span>创建在线课堂</span>
                 <img src="https://j.weizan.cn/zhibo/microcourse/images/right_arrow.png"/>
             </a-button>
@@ -23,57 +23,57 @@
             </div>
         </div>
         <div class="body-box">
-            <h2 class="main-title">知播，让教育更<span>简单</span></h2>
+            <h2 class="main-title" data-aos="fade-up">知播，让教育更<span>简单</span></h2>
             <img class="bg-3" src="https://j.weizan.cn/zhibo/microcourse/images/main-content-bg-3.png"/>
             <img class="bg-5" src="https://j.weizan.cn/zhibo/microcourse/images/main-content-bg-5.png"/>
             <div class="main-content-1 d-flex ali-cen">
                 <div class="main-img-box-1">
                     <img class="bg-1" src="https://j.weizan.cn/zhibo/microcourse/images/main-content-bg-1.png"/>
 
-                    <img class="img-1" src="https://j.weizan.cn/zhibo/microcourse/images/main-content-img-1.png"/>
-                    <img class="img-2" src="https://j.weizan.cn/zhibo/microcourse/images/main-content-img-2.png"/>
-                    <img class="img-3" src="https://j.weizan.cn/zhibo/microcourse/images/main-content-img-3.png"/>
-                    <img class="img-4" src="https://j.weizan.cn/zhibo/microcourse/images/main-content-img-4.png"/>
+                    <img class="img-1" src="https://j.weizan.cn/zhibo/microcourse/images/main-content-img-1.png"  data-aos="fade-up" data-aos-delay="200"/>
+                    <img class="img-2" src="https://j.weizan.cn/zhibo/microcourse/images/main-content-img-2.png" data-aos="fade-up" data-aos-delay="400"/>
+                    <img class="img-3" src="https://j.weizan.cn/zhibo/microcourse/images/main-content-img-3.png" data-aos="fade-up" data-aos-delay="600"/>
+                    <img class="img-4" src="https://j.weizan.cn/zhibo/microcourse/images/main-content-img-4.png" data-aos="fade-up" data-aos-delay="800"/>
                 </div>
                 <div class="describe-box d-flex flex-dircol">
                     <img class="bg-2" src="https://j.weizan.cn/zhibo/microcourse/images/main-content-bg-2.png"/>
-                    <h4 class="small-title">课堂互动更真实</h4>
-                    <p class="sub-desc">满足多种教学形态，不管是1对1教学、课外兴趣小班课还是大型直播公开课，帮你轻松搭建属于自己的在线课堂；</p>
-                    <p class="sub-desc">让教育打破时间和空间限制，助力教育创业者实现互联网转型升级。</p>
+                    <h4 class="small-title" data-aos="fade-up" data-aos-delay="100">课堂互动更真实</h4>
+                    <p class="sub-desc" data-aos="fade-up" data-aos-delay="300">满足多种教学形态，不管是1对1教学、课外兴趣小班课还是大型直播公开课，帮你轻松搭建属于自己的在线课堂；</p>
+                    <p class="sub-desc" data-aos="fade-up" data-aos-delay="500">让教育打破时间和空间限制，助力教育创业者实现互联网转型升级。</p>
                 </div>
             </div>
             <div class="main-content-2 d-flex ali-cen">
                 <div class="describe-box d-flex flex-dircol">
                     <img class="bg-4" src="https://j.weizan.cn/zhibo/microcourse/images/main-content-bg-4.png"/>
-                    <h4 class="small-title">教学管理更高效</h4>
-                    <p class="sub-desc">不用购买服务器，也不用为维护硬件支付额外成本，更不用招招募研发团队进行产品设计和开发，一键即可拥有一套完整在线教学业务系统；</p>
-                    <p class="sub-desc">从此让老师回归教育教学，专注于教学本身和学生成长。</p>
+                    <h4 class="small-title" data-aos="fade-up" data-aos-delay="100">教学管理更高效</h4>
+                    <p class="sub-desc" data-aos="fade-up" data-aos-delay="300">不用购买服务器，也不用为维护硬件支付额外成本，更不用招招募研发团队进行产品设计和开发，一键即可拥有一套完整在线教学业务系统；</p>
+                    <p class="sub-desc" data-aos="fade-up" data-aos-delay="500">从此让老师回归教育教学，专注于教学本身和学生成长。</p>
                 </div>
                 <div class="main-img-box-2">
-                    <img class="img-5" src="https://j.weizan.cn/zhibo/microcourse/images/main-content-img-5.png"/>
-                    <img class="img-6" src="https://j.weizan.cn/zhibo/microcourse/images/main-content-img-6.png"/>
-                    <img class="img-7" src="https://j.weizan.cn/zhibo/microcourse/images/main-content-img-7.png"/>
+                    <img class="img-5" src="https://j.weizan.cn/zhibo/microcourse/images/main-content-img-5.png" data-aos="fade-up" data-aos-delay="200"/>
+                    <img class="img-6" src="https://j.weizan.cn/zhibo/microcourse/images/main-content-img-6.png" data-aos="fade-up" data-aos-delay="400"/>
+                    <img class="img-7" src="https://j.weizan.cn/zhibo/microcourse/images/main-content-img-7.png" data-aos="fade-up" data-aos-delay="600"/>
                 </div>
             </div>
             <div class="main-content-3 d-flex ali-cen">
                 <div class="main-img-box-3">
-                    <img class="img-8" src="https://j.weizan.cn/zhibo/microcourse/images/main-content-img-8.png"/>
-                    <img class="img-9" src="https://j.weizan.cn/zhibo/microcourse/images/main-content-img-9.png"/>
-                    <img class="img-10" src="https://j.weizan.cn/zhibo/microcourse/images/main-content-img-10.png"/>
-                    <img class="img-11" src="https://j.weizan.cn/zhibo/microcourse/images/main-content-img-11.png"/>
+                    <img class="img-8" src="https://j.weizan.cn/zhibo/microcourse/images/main-content-img-8.png" data-aos="fade-up" data-aos-delay="200"/>
+                    <img class="img-9" src="https://j.weizan.cn/zhibo/microcourse/images/main-content-img-9.png" data-aos="fade-up" data-aos-delay="400"/>
+                    <img class="img-10" src="https://j.weizan.cn/zhibo/microcourse/images/main-content-img-10.png" data-aos="fade-up" data-aos-delay="600"/>
+                    <img class="img-11" src="https://j.weizan.cn/zhibo/microcourse/images/main-content-img-11.png" data-aos="fade-up" data-aos-delay="800"/>
                 </div>
                 <div class="describe-box d-flex flex-dircol">
                     <img class="bg-6" src="https://j.weizan.cn/zhibo/microcourse/images/main-content-bg-6.png"/>
-                    <h4 class="small-title">学员成长更清晰</h4>
-                    <p class="sub-desc">数字化呈现学员成长的每一刻，成长过程清晰可见，让学员成为最好的自己；让老师更轻松，家长更放心；</p>
+                    <h4 class="small-title" data-aos="fade-up" data-aos-delay="100">学员成长更清晰</h4>
+                    <p class="sub-desc" data-aos="fade-up" data-aos-delay="300">数字化呈现学员成长的每一刻，成长过程清晰可见，让学员成为最好的自己；让老师更轻松，家长更放心；</p>
                 </div>
             </div>
         </div>
         <div class="advert-box">
             <div class="container">
-                <h1>一分钟<br/>创造自己的在线课堂</h1>
-                <p>助力教育创业者实现互联网转型升级</p>
-                <a-button @click="goPcBackstage">创建在线课堂</a-button>
+                <h1 data-aos="zoom-out">一分钟<br/>创造自己的在线课堂</h1>
+                <p data-aos="zoom-out">助力教育创业者实现互联网转型升级</p>
+                <a-button @click="goPcBackstage" data-aos="fade-up" data-aos-delay="400">创建在线课堂</a-button>
             </div>
         </div>
         <footers></footers>
@@ -95,9 +95,9 @@ export default {
     methods: {
         goPcBackstage(){
             if(location.origin.includes('localhost')){
-                window.location.href='http://zhibo-dev.vzan.com/know/';
+                window.open('http://zhibo-dev.vzan.com/know/');
             }else{
-              window.location.href=`${location.origin}/know/`;
+              window.open(`${location.origin}/know/`);
             }
         },
     },
@@ -155,6 +155,10 @@ export default {
             align-items: center;
             background: linear-gradient(90deg, #FFE156 0%, #FFA800 100%);
             border-radius: 40px;
+            &>span{
+                transition: .5s;
+                transform: translateX(20px);
+            }
             &>img{
                 width: 16px;
                 height: 16px;
@@ -163,6 +167,18 @@ export default {
                 background: #202124;
                 border-radius: 50%;
                 box-sizing: content-box;
+                opacity: 0;
+                transform: translateX(-40px);
+                transition: .5s;
+            }
+        }
+        .build-btn:hover{
+            &>span{
+                transform: translateX(0);
+            }
+            &>img{
+                opacity: 1;
+                transform: translateX(0);
             }
         }
         .slide-tips{
@@ -176,7 +192,6 @@ export default {
             .arrow-icon{
                 margin-bottom: 20px;
                 background-image: linear-gradient(to bottom, #fff 0%, rgba(255, 255, 255, 0.4) 100%);
-                background-image: -webkit-linear-gradient(to bottom, #fff 0%, rgba(255, 255, 255, 0.4) 100%);
                 color: transparent;
                 -webkit-background-clip: text;
                 background-size: 100% 200%;
@@ -187,7 +202,6 @@ export default {
             }
             p{
                 background-image: linear-gradient(to left, #fff 0%, rgba(255, 255, 255, 0.4) 50%,#fff 100%);
-                background-image: -webkit-linear-gradient(to left, #fff 0%, rgba(255, 255, 255, 0.4) 50%,#fff 100%);
                 color: transparent;
                 -webkit-background-clip: text;
                 background-size: 200% 100%;

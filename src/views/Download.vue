@@ -80,11 +80,19 @@ export default {
             try{
                 let res = await CommonAjax.getClientLink();
                 console.log(res)
-                var a = document.createElement('a')
-                var event = new MouseEvent('click')
-                a.href = res.dataObj&&res.dataObj.renewAdress;
-                // 合成函数，执行下载
-                a.dispatchEvent(event)
+                
+                let aLink = document.createElement("a");
+                aLink.style.display = "none";
+                aLink.href = res.dataObj&&res.dataObj.renewAdress;
+                document.body.appendChild(aLink);
+                aLink.click();
+                document.body.removeChild(aLink);
+                window.URL.revokeObjectURL(url);
+                // var a = document.createElement('a')
+                // var event = new MouseEvent('click')
+                // a.href = res.dataObj&&res.dataObj.renewAdress;
+                // // 合成函数，执行下载
+                // a.dispatchEvent(event)
             }catch(error){
                 error&&this.$antdMessage.error(error)
             }
