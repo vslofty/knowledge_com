@@ -15,7 +15,7 @@
                         </a-button>
                     </div>
                     <div class="right">
-                        <img src="../assets/zhibo/images/tab-img-1.png" style="width:900px;height:480px; ">
+                        <img src="https://j.weizan.cn/zhibo/microcourse/images/tab-img-1.png" style="width:900px;height:480px; ">
                     </div>
                 </div>
             </a-tab-pane>
@@ -43,7 +43,7 @@
                         </div>
                     </div>
                     <div class="right">
-                        <img src="../assets/zhibo/images/tab-img-2.png" style="width:829px;height:616px;">
+                        <img src="https://j.weizan.cn/zhibo/microcourse/images/tab-img-2.png" style="width:829px;height:616px;">
                     </div>
                 </div>
             </a-tab-pane>
@@ -104,7 +104,8 @@ export default {
 .download{
     width: 100%;
     height: 100vh;
-    background: rgba(0,0,0,0.36);
+    background: url(https://j.weizan.cn/zhibo/microcourse/images/download-bg.png) no-repeat center center;
+    background-size: cover;
     /deep/ .ant-tabs{
         width: 100%;
         height: 100vh;

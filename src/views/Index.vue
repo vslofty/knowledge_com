@@ -1,7 +1,7 @@
 <template>
     <div class="page-index">
         <div class="header-bg">
-            <img src="../assets/zhibo/images/banner-bg.png">
+            <img src="https://j.weizan.cn/zhibo/microcourse/images/banner-bg.png">
         </div>
         <div class="header-box" :style="`height:${screenHeight}px`">
             <headers current="index"></headers>
@@ -12,7 +12,7 @@
             </p>
             <a-button class="build-btn" @click="goPcBackstage">
                 <span>创建在线课堂</span>
-                <img src="../assets/zhibo/images/right_arrow.png"/>
+                <img src="https://j.weizan.cn/zhibo/microcourse/images/right_arrow.png"/>
             </a-button>
             <div class="slide-tips">
                 <div class="arrow-icon d-flex flex-dircol">
@@ -24,19 +24,19 @@
         </div>
         <div class="body-box">
             <h2 class="main-title">知播，让教育更<span>简单</span></h2>
-            <img class="bg-3" src="../assets/zhibo/images/main-content-bg-3.png"/>
-            <img class="bg-5" src="../assets/zhibo/images/main-content-bg-5.png"/>
+            <img class="bg-3" src="https://j.weizan.cn/zhibo/microcourse/images/main-content-bg-3.png"/>
+            <img class="bg-5" src="https://j.weizan.cn/zhibo/microcourse/images/main-content-bg-5.png"/>
             <div class="main-content-1 d-flex ali-cen">
                 <div class="main-img-box-1">
-                    <img class="bg-1" src="../assets/zhibo/images/main-content-bg-1.png"/>
+                    <img class="bg-1" src="https://j.weizan.cn/zhibo/microcourse/images/main-content-bg-1.png"/>
 
-                    <img class="img-1" src="../assets/zhibo/images/main-content-img-1.png"/>
-                    <img class="img-2" src="../assets/zhibo/images/main-content-img-2.png"/>
-                    <img class="img-3" src="../assets/zhibo/images/main-content-img-3.png"/>
-                    <img class="img-4" src="../assets/zhibo/images/main-content-img-4.png"/>
+                    <img class="img-1" src="https://j.weizan.cn/zhibo/microcourse/images/main-content-img-1.png"/>
+                    <img class="img-2" src="https://j.weizan.cn/zhibo/microcourse/images/main-content-img-2.png"/>
+                    <img class="img-3" src="https://j.weizan.cn/zhibo/microcourse/images/main-content-img-3.png"/>
+                    <img class="img-4" src="https://j.weizan.cn/zhibo/microcourse/images/main-content-img-4.png"/>
                 </div>
                 <div class="describe-box d-flex flex-dircol">
-                    <img class="bg-2" src="../assets/zhibo/images/main-content-bg-2.png"/>
+                    <img class="bg-2" src="https://j.weizan.cn/zhibo/microcourse/images/main-content-bg-2.png"/>
                     <h4 class="small-title">课堂互动更真实</h4>
                     <p class="sub-desc">满足多种教学形态，不管是1对1教学、课外兴趣小班课还是大型直播公开课，帮你轻松搭建属于自己的在线课堂；</p>
                     <p class="sub-desc">让教育打破时间和空间限制，助力教育创业者实现互联网转型升级。</p>
@@ -44,26 +44,26 @@
             </div>
             <div class="main-content-2 d-flex ali-cen">
                 <div class="describe-box d-flex flex-dircol">
-                    <img class="bg-4" src="../assets/zhibo/images/main-content-bg-4.png"/>
+                    <img class="bg-4" src="https://j.weizan.cn/zhibo/microcourse/images/main-content-bg-4.png"/>
                     <h4 class="small-title">教学管理更高效</h4>
                     <p class="sub-desc">不用购买服务器，也不用为维护硬件支付额外成本，更不用招招募研发团队进行产品设计和开发，一键即可拥有一套完整在线教学业务系统；</p>
                     <p class="sub-desc">从此让老师回归教育教学，专注于教学本身和学生成长。</p>
                 </div>
                 <div class="main-img-box-2">
-                    <img class="img-5" src="../assets/zhibo/images/main-content-img-5.png"/>
-                    <img class="img-6" src="../assets/zhibo/images/main-content-img-6.png"/>
-                    <img class="img-7" src="../assets/zhibo/images/main-content-img-7.png"/>
+                    <img class="img-5" src="https://j.weizan.cn/zhibo/microcourse/images/main-content-img-5.png"/>
+                    <img class="img-6" src="https://j.weizan.cn/zhibo/microcourse/images/main-content-img-6.png"/>
+                    <img class="img-7" src="https://j.weizan.cn/zhibo/microcourse/images/main-content-img-7.png"/>
                 </div>
             </div>
             <div class="main-content-3 d-flex ali-cen">
                 <div class="main-img-box-3">
-                    <img class="img-8" src="../assets/zhibo/images/main-content-img-8.png"/>
-                    <img class="img-9" src="../assets/zhibo/images/main-content-img-9.png"/>
-                    <img class="img-10" src="../assets/zhibo/images/main-content-img-10.png"/>
-                    <img class="img-11" src="../assets/zhibo/images/main-content-img-11.png"/>
+                    <img class="img-8" src="https://j.weizan.cn/zhibo/microcourse/images/main-content-img-8.png"/>
+                    <img class="img-9" src="https://j.weizan.cn/zhibo/microcourse/images/main-content-img-9.png"/>
+                    <img class="img-10" src="https://j.weizan.cn/zhibo/microcourse/images/main-content-img-10.png"/>
+                    <img class="img-11" src="https://j.weizan.cn/zhibo/microcourse/images/main-content-img-11.png"/>
                 </div>
                 <div class="describe-box d-flex flex-dircol">
-                    <img class="bg-6" src="../assets/zhibo/images/main-content-bg-6.png"/>
+                    <img class="bg-6" src="https://j.weizan.cn/zhibo/microcourse/images/main-content-bg-6.png"/>
                     <h4 class="small-title">学员成长更清晰</h4>
                     <p class="sub-desc">数字化呈现学员成长的每一刻，成长过程清晰可见，让学员成为最好的自己；让老师更轻松，家长更放心；</p>
                 </div>
@@ -366,7 +366,7 @@ export default {
         position: relative;
         width: 100%;
         height: 600px;
-        background: url(../assets/zhibo/images/advert-bg.png) no-repeat center top;
+        background: url(https://j.weizan.cn/zhibo/microcourse/images/advert-bg.png) no-repeat center top;
         background-size: cover;
         display: flex;
         flex-direction: column;

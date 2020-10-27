@@ -1,7 +1,7 @@
 <template>
   <div class="header" :class="showwhitebg&&'white-bg'" :style="headerbgcolor">
-    <img src="../assets/zhibo/images/logo.png" class="logo" v-if="show&&!showwhitebg"/>
-    <img src="../assets/zhibo/images/logo-black.png" class="logo" v-else/>
+    <img src="https://j.weizan.cn/zhibo/microcourse/images/logo.png" class="logo" v-if="show&&!showwhitebg"/>
+    <img src="https://j.weizan.cn/zhibo/microcourse/images/logo-black.png" class="logo" v-else/>
     <ul class="nav">
       <li :class="(current=='index')&&'active'"><router-link to="/" :style="headercolor">首页</router-link></li>
       <li :class="(current=='download')&&'active'"><router-link to="/download" :style="headercolor">下载中心</router-link></li>
