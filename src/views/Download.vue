@@ -80,14 +80,18 @@ export default {
             try{
                 let res = await CommonAjax.getClientLink();
                 console.log(res)
-                
-                let aLink = document.createElement("a");
-                aLink.style.display = "none";
-                aLink.href = res.dataObj&&res.dataObj.renewAdress;
-                document.body.appendChild(aLink);
-                aLink.click();
-                document.body.removeChild(aLink);
-                window.URL.revokeObjectURL(url);
+                if(res.dataObj){
+                    var url = res.dataObj.renewAdress.includes('https')?res.dataObj.renewAdress:res.dataObj.renewAdress.replace('http','https');
+                    let aLink = document.createElement("a");
+                    aLink.style.display = "none";
+                    aLink.href = res.dataObj&&res.dataObj.renewAdress;
+                    document.body.appendChild(aLink);
+                    aLink.click();
+                    document.body.removeChild(aLink);
+                    window.URL.revokeObjectURL(url);
+                }else{
+                    this.$antdMessage.warning('暂无下载地址')
+                }
                 // var a = document.createElement('a')
                 // var event = new MouseEvent('click')
                 // a.href = res.dataObj&&res.dataObj.renewAdress;

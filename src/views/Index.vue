@@ -8,7 +8,7 @@
             <h1 class="header-title" data-aos="zoom-out">让知识传播更有价值</h1>
             <p class="header-subtitle" data-aos="zoom-out">
                 <span>全新一代在线互动课堂教学工具，整合多人连麦，在线教学，教务管理，招生营销等功能于一体，致力于为您提供</span>
-                <span>一个解决方案，高效率做在线教育的一站式解决工具。</span>
+                <span>一个低成本，高效率做在线教育的一站式解决工具。</span>
             </p>
             <a-button class="build-btn" data-aos="fade-up" data-aos-delay="400" @click="goPcBackstage">
                 <span>创建在线课堂</span>
