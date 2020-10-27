@@ -70,6 +70,9 @@
             </div>
         </div>
         <div class="advert-box">
+            <div class="advert-bg">
+                <img src="https://j.weizan.cn/zhibo/microcourse/images/advert-bg.png?v=20201027"/>
+            </div>
             <div class="container">
                 <h1 data-aos="fade-up" data-aos-delay="300">一分钟<br/>创造自己的在线课堂</h1>
                 <p data-aos="fade-up" data-aos-delay="350">助力教育创业者实现互联网转型升级</p>
@@ -168,7 +171,7 @@ export default {
                 border-radius: 50%;
                 box-sizing: content-box;
                 opacity: 0;
-                transform: translateX(-40px);
+                transform: translateX(-15px);
                 transition: .8s;
             }
         }
@@ -237,6 +240,7 @@ export default {
                 color: #666;
                 font-size: 18px;
                 margin-bottom: 15px;
+                line-height: 2;
                 text-align: left;
             }
             .bg-2{
@@ -380,11 +384,26 @@ export default {
         position: relative;
         width: 100%;
         height: 600px;
-        background: url(https://j.weizan.cn/zhibo/microcourse/images/advert-bg.png?v=20201027) no-repeat center center;
-        background-size: cover;
         display: flex;
         flex-direction: column;
         justify-content: center;
+        .advert-bg{
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            img{
+                height: 100%;
+            }
+        }
+        .container{
+            position: relative;
+            z-index: 2;
+        }
         h1{
             font-size: 60px;
             font-weight: bold;

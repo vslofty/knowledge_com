@@ -82,14 +82,16 @@ export default {
                 console.log(res)
                 if(res.dataObj){
                     var url = res.dataObj.renewAdress.includes('https')?res.dataObj.renewAdress:res.dataObj.renewAdress.replace('http','https');
-                    console.log(renewAdress)
-                    let aLink = document.createElement("a");
-                    aLink.style.display = "none";
-                    aLink.href = res.dataObj&&res.dataObj.renewAdress;
-                    document.body.appendChild(aLink);
-                    aLink.click();
-                    document.body.removeChild(aLink);
-                    window.URL.revokeObjectURL(url);
+                    console.log(url)
+                    window.open(res.dataObj.renewAdress)
+                    // window.location.href = url;
+                    // let aLink = document.createElement("a");
+                    // aLink.style.display = "none";
+                    // aLink.href = res.dataObj&&res.dataObj.renewAdress;
+                    // document.body.appendChild(aLink);
+                    // aLink.click();
+                    // document.body.removeChild(aLink);
+                    // window.URL.revokeObjectURL(url);
                 }else{
                     this.$antdMessage.warning('暂无下载地址')
                 }
