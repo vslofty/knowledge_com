@@ -1,12 +1,12 @@
 <template>
     <div class="page-index">
         <div class="header-bg">
-            <img src="https://j.weizan.cn/zhibo/microcourse/images/banner-bg.png">
+            <img src="https://j.weizan.cn/zhibo/microcourse/images/banner-bg.png?v=20201028">
         </div>
         <div class="header-box" ref="time" :style="`height:${screenHeight}px`">
             <headers current="index"></headers>
-            <h1 class="header-title" data-aos="zoom-out">让知识传播更有价值</h1>
-            <p class="header-subtitle" data-aos="zoom-out">
+            <h1 class="header-title" data-aos="fade-up" data-aos-delay="300">让知识传播更有价值</h1>
+            <p class="header-subtitle" data-aos="fade-up" data-aos-delay="350">
                 <span>全新一代在线互动课堂教学工具，整合多人连麦，在线教学，教务管理，招生营销等功能于一体，致力于为您提供</span>
                 <span>一个低成本，高效率做在线教育的一站式解决工具。</span>
             </p>
@@ -71,8 +71,8 @@
         </div>
         <div class="advert-box">
             <div class="container">
-                <h1 data-aos="zoom-out">一分钟<br/>创造自己的在线课堂</h1>
-                <p data-aos="zoom-out">助力教育创业者实现互联网转型升级</p>
+                <h1 data-aos="fade-up" data-aos-delay="300">一分钟<br/>创造自己的在线课堂</h1>
+                <p data-aos="fade-up" data-aos-delay="350">助力教育创业者实现互联网转型升级</p>
                 <a-button @click="goPcBackstage" data-aos="fade-up" data-aos-delay="400">创建在线课堂</a-button>
             </div>
         </div>
@@ -380,7 +380,7 @@ export default {
         position: relative;
         width: 100%;
         height: 600px;
-        background: url(https://j.weizan.cn/zhibo/microcourse/images/advert-bg.png) no-repeat center top;
+        background: url(https://j.weizan.cn/zhibo/microcourse/images/advert-bg.png?v=20201027) no-repeat center center;
         background-size: cover;
         display: flex;
         flex-direction: column;

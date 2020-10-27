@@ -20,7 +20,7 @@ export default [
         "mainName": "机构管理后台产品说明",
         "subMenu": [{
             "Id": "s03",
-            "name": "创建课堂"
+            "name": "创建课节"
         }]
     },
     {

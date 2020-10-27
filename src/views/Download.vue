@@ -82,6 +82,7 @@ export default {
                 console.log(res)
                 if(res.dataObj){
                     var url = res.dataObj.renewAdress.includes('https')?res.dataObj.renewAdress:res.dataObj.renewAdress.replace('http','https');
+                    console.log(renewAdress)
                     let aLink = document.createElement("a");
                     aLink.style.display = "none";
                     aLink.href = res.dataObj&&res.dataObj.renewAdress;
@@ -116,7 +117,7 @@ export default {
 .download{
     width: 100%;
     height: 100vh;
-    background: url(https://j.weizan.cn/zhibo/microcourse/images/download-bg.png) no-repeat center center;
+    background: url(https://j.weizan.cn/zhibo/microcourse/images/download-bg.png?v=20201028) no-repeat center center;
     background-size: cover;
     /deep/ .ant-tabs{
         width: 100%;

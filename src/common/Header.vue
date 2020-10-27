@@ -76,6 +76,7 @@ export default {
   left: 0;
   top: 0;
   z-index: 9;
+  min-width: 1200px;
   height: 60px;
   padding: 0 120px;
   display: flex;
