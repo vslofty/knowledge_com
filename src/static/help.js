@@ -51,7 +51,7 @@ export default [
         "id": "s08",
         "title": "移动端使用帮助指南",
         "creattime": "2020/10/27",
-        "content": "<h3>如何进入课堂</h3><p>打开【知播App】，点击首页右上角进行登录，登录成功后，填写老师发送的8位邀请码或扫描邀请二维码即可进入课堂，；</p><div style='display:flex;'><img src='https://j.weizan.cn/zhibo/microcourse/images/help/help-img-29.png' style='width:252px;'><img src='https://j.weizan.cn/zhibo/microcourse/images/help/help-img-30.png' style='width:252px;'></div><br/><br/><h3>课堂互动：</h3><p>课堂支持互动功能：</p><ol><li>讲师、学员多人音视频互动连麦；</li><li>观看讲师实时演示课件；</li><li>互动区发言；</li><li>课堂中举手；</li><li>课件放大等功能；</li></ol><img src='https://j.weizan.cn/zhibo/microcourse/images/help/help-img-31.png' style='width:731px;'>"
+        "content": "<h3>如何进入课堂</h3><p>打开【知播App】，点击首页右上角进行登录，登录成功后，填写老师发送的8位邀请码或扫描邀请二维码即可进入课堂，；</p><div style='display:flex;'><img src='https://j.weizan.cn/zhibo/microcourse/images/help/help-img-29.png' style='width:252px;'><img src='https://j.weizan.cn/zhibo/microcourse/images/help/help-img-30.png' style='width:252px;margin-left: 20px;'></div><br/><br/><h3>课堂互动：</h3><p>课堂支持互动功能：</p><ol><li>讲师、学员多人音视频互动连麦；</li><li>观看讲师实时演示课件；</li><li>互动区发言；</li><li>课堂中举手；</li><li>课件放大等功能；</li></ol><img src='https://j.weizan.cn/zhibo/microcourse/images/help/help-img-31.png' style='width:731px;'>"
     },
     {
         "id": "s09",

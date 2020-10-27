@@ -19,16 +19,12 @@ export default [
         "Id": "m003",
         "mainName": "机构管理后台产品说明",
         "subMenu": [{
-            "Id": "m004",
-            "name": "直播课堂",
-            "subMenuItem": [{
-                "Id": "s03",
-                "name": "创建课堂"
-            }]
+            "Id": "s03",
+            "name": "创建课堂"
         }]
     },
     {
-        "Id": "m005",
+        "Id": "m004",
         "mainName": "桌面端知播产品说明",
         "subMenu": [{
             "Id": "s04",
@@ -42,7 +38,7 @@ export default [
         }]
     },
     {
-        "Id": "m006",
+        "Id": "m005",
         "mainName": "移动端知播产品说明",
         "subMenu": [{
             "Id": "s07",

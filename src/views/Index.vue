@@ -46,7 +46,7 @@
                 <div class="describe-box d-flex flex-dircol">
                     <img class="bg-4" src="https://j.weizan.cn/zhibo/microcourse/images/main-content-bg-4.png"/>
                     <h4 class="small-title" data-aos="fade-up" data-aos-delay="100">教学管理更高效</h4>
-                    <p class="sub-desc" data-aos="fade-up" data-aos-delay="300">不用购买服务器，也不用为维护硬件支付额外成本，更不用招招募研发团队进行产品设计和开发，一键即可拥有一套完整在线教学业务系统；</p>
+                    <p class="sub-desc" data-aos="fade-up" data-aos-delay="300">不用购买服务器，也不用为维护硬件支付额外成本，更不用招募研发团队进行产品设计和开发，一键即可拥有一套完整在线教学业务系统；</p>
                     <p class="sub-desc" data-aos="fade-up" data-aos-delay="500">从此让老师回归教育教学，专注于教学本身和学生成长。</p>
                 </div>
                 <div class="main-img-box-2">
@@ -156,7 +156,7 @@ export default {
             background: linear-gradient(90deg, #FFE156 0%, #FFA800 100%);
             border-radius: 40px;
             &>span{
-                transition: .5s;
+                transition: .6s;
                 transform: translateX(20px);
             }
             &>img{
@@ -169,7 +169,7 @@ export default {
                 box-sizing: content-box;
                 opacity: 0;
                 transform: translateX(-40px);
-                transition: .5s;
+                transition: .8s;
             }
         }
         .build-btn:hover{

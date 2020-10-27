@@ -3,28 +3,30 @@
         <headers current="help" :showwhitebg="true"></headers>
         <div class="container">
             <div class="left" :style="`left:${menuWidth}px;height:${menuHeight}px;`">
-                <a-menu mode="inline" :default-selected-keys="selectkey" :default-open-keys="openKeys" style="width: 256px" @click="onOpenChange" v-if="menuinfo&&menuinfo.length">
-                    <template  v-for="item of menuinfo">
-                        <a-menu-item :key="item.Id" v-if="!(item.subMenu&&item.subMenu.length)">
-                            <span style="font-weight:bold;color:#252525;">{{item.mainName}}</span>
-                        </a-menu-item>
-                        <a-sub-menu :key="item.Id" v-if="item.subMenu&&item.subMenu.length">
-                            <template v-for="submenu of item.subMenu">
-                                <!-- <span slot="title" :key="submenu.Id"><span>{{submenu.name}}</span></span> -->
-                                <span slot="title" :key="submenu.Id"><span>{{item.mainName}}</span></span>
-                                <a-menu-item :key="submenu.Id" v-if="!(submenu.subMenuItem&&submenu.subMenuItem.length)">
-                                    <span>{{submenu.name}}</span>
-                                </a-menu-item>
-                                <a-sub-menu :key="submenu.Id" v-if="submenu.subMenuItem&&submenu.subMenuItem.length">
-                                    <span slot="title"><span>{{submenu.name}}</span></span>
-                                    <a-menu-item :key="submenuitem.Id" v-for="submenuitem of submenu.subMenuItem">
-                                        <span>{{submenuitem.name}}</span>
+                <div class="box">
+                    <a-menu mode="inline" :default-selected-keys="selectkey" :default-open-keys="openKeys" style="width: 256px" @click="onOpenChange" v-if="menuinfo&&menuinfo.length">
+                        <template  v-for="item of menuinfo">
+                            <a-menu-item :key="item.Id" v-if="!(item.subMenu&&item.subMenu.length)">
+                                <span style="font-weight:bold;color:#252525;">{{item.mainName}}</span>
+                            </a-menu-item>
+                            <a-sub-menu :key="item.Id" v-if="item.subMenu&&item.subMenu.length">
+                                <span slot="title"><span>{{item.mainName}}</span></span>
+                                <template v-for="submenu of item.subMenu">
+                                    <!-- <span slot="title" :key="submenu.Id"><span>{{submenu.name}}</span></span> -->
+                                    <a-menu-item :key="submenu.Id" v-if="!(submenu.subMenuItem&&submenu.subMenuItem.length)">
+                                        <span>{{submenu.name}}</span>
                                     </a-menu-item>
-                                </a-sub-menu>
-                            </template>
-                        </a-sub-menu>
-                    </template>
-                </a-menu>
+                                    <!-- <a-sub-menu :key="submenu.Id" v-if="submenu.subMenuItem&&submenu.subMenuItem.length">
+                                        <span slot="title"><span>{{submenu.name}}</span></span>
+                                        <a-menu-item :key="submenuitem.Id" v-for="submenuitem of submenu.subMenuItem">
+                                            <span>{{submenuitem.name}}</span>
+                                        </a-menu-item>
+                                    </a-sub-menu> -->
+                                </template>
+                            </a-sub-menu>
+                        </template>
+                    </a-menu>
+                </div>
             </div>
             <div style="width:256px;"></div>
             <div class="right" ref="rightbox">
@@ -51,7 +53,7 @@ export default {
             contentArr: help,
             contentInfo: {},
             selectkey: [],
-            openKeys: ['m001','m002','m003','m004','m005','m006'],
+            openKeys: ['m001','m002','m003','m004','m005'],
             menuWidth: 0,
             menuHeight: 0
         }
@@ -103,9 +105,14 @@ export default {
         width: 256px;
         height: 100%;
         display: flex;
-        background: #fff;
         border-radius: 4px;
-        overflow: auto;
+        overflow: hidden;
+        .box{
+            height: 100%;
+            background: #fff;
+            overflow-x: hidden;
+            overflow-y: auto;
+        }
         /deep/ .ant-menu{
             border-right: none;
         }

@@ -30,7 +30,10 @@ import "./assets/css/index.less";
 
 import AOS from 'aos'
 import 'aos/dist/aos.css'
-AOS.init();
+AOS.init({
+  duration: 1200,
+  once: true
+});
 
 new Vue({
   router,

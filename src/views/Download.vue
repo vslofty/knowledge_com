@@ -15,7 +15,7 @@
                         </a-button>
                     </div>
                     <div class="right">
-                        <img src="https://j.weizan.cn/zhibo/microcourse/images/tab-img-1.png" style="width:900px;height:480px; ">
+                        <img src="https://j.weizan.cn/zhibo/microcourse/images/tab-img-1.png?v=20201028" style="width:900px;height:480px; ">
                     </div>
                 </div>
             </a-tab-pane>

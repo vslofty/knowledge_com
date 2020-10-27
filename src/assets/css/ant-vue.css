@@ -100,3 +100,12 @@
   height: 0;
   overflow: hidden;
 }
+.ant-tabs .ant-tabs-top-content.ant-tabs-content-animated,
+.ant-tabs .ant-tabs-bottom-content.ant-tabs-content-animated {
+  transition: margin-left 1s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+.ant-tabs .ant-tabs-top-content > .ant-tabs-tabpane-inactive,
+.ant-tabs .ant-tabs-bottom-content > .ant-tabs-tabpane-inactive {
+  height: auto;
+  opacity: 1;
+}
