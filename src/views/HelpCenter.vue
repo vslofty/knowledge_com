@@ -112,6 +112,11 @@ export default {
             background: #fff;
             overflow-x: hidden;
             overflow-y: auto;
+            &::-webkit-scrollbar{
+              width: 0;
+              height: 0;
+              overflow: hidden;
+            }
         }
         /deep/ .ant-menu{
             border-right: none;
