@@ -186,8 +186,8 @@ export default {
                 }
             }
             p{
-                background-image: linear-gradient(to left, #fff 0%, rgba(255, 255, 255, 0.4) 100%);
-                background-image: -webkit-linear-gradient(to left, #fff 0%, rgba(255, 255, 255, 0.4) 100%);
+                background-image: linear-gradient(to left, #fff 0%, rgba(255, 255, 255, 0.4) 50%,#fff 100%);
+                background-image: -webkit-linear-gradient(to left, #fff 0%, rgba(255, 255, 255, 0.4) 50%,#fff 100%);
                 color: transparent;
                 -webkit-background-clip: text;
                 background-size: 200% 100%;
