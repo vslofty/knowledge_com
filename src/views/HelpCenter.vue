@@ -55,7 +55,6 @@ export default {
             openKeys: ['m001','m002','m003','m004','m005'],
             menuWidth: 0,
             menuHeight: 0,
-            menutop: 0,
         }
     },
     components: {
@@ -64,6 +63,7 @@ export default {
     mounted(){
         console.log(this.$route,menu)
         this.$nextTick(()=>{
+            document.title="知播";
             this.selectkey.push(this.$route.params.id);
             let index = this.contentArr.findIndex(item=>item.id==this.$route.params.id);
             this.contentInfo = this.contentArr[index];
@@ -72,19 +72,16 @@ export default {
                 width=210;
                 height=80;
             }
-            this.menutop = height;
             this.menuWidth = width;
             this.menuHeight = (document.documentElement.offsetHeight || document.body.offsetHeight)-height;
             
             window.onresize = () => {
                 return (() => {
-            console.log(this.$refs.leftbox.offsetLeft)
                     var width=256;var height=100;
                     if((document.documentElement.offsetWidth || document.body.offsetWidth)<=1000){
                         width=210;
                         height=80;
                     }
-                    this.menutop = height;
                     this.menuWidth = width;
                     this.menuHeight = (document.documentElement.offsetHeight || document.body.offsetHeight)-height;
                 })();

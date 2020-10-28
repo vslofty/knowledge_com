@@ -6,7 +6,7 @@
     </router-link>
     <ul class="nav">
       <li :class="(current=='index')&&'active'"><router-link to="/" :style="headercolor">首页</router-link></li>
-      <li :class="(current=='download')&&'active'"><router-link to="/download" :style="headercolor">下载中心</router-link></li>
+      <li :class="(current=='download')&&'active'"><router-link to="/download/" :style="headercolor">下载中心</router-link></li>
       <li :class="(current=='help')&&'active'"><router-link to="/help/m001" :style="headercolor">帮助文档</router-link></li>
     </ul>
     <div class="header-btn-group">
