@@ -10,8 +10,8 @@
       <li :class="(current=='help')&&'active'"><router-link to="/help/m001" :style="headercolor">帮助文档</router-link></li>
     </ul>
     <div class="header-btn-group">
-      <a-button class="btn1"><a target="_blank" href="https://zanshang.kf5.com/kchat/45235?from=在线支持&group=0">在线客服</a></a-button>
-      <a-button class="btn2" @click="goPcBackstage">免费使用</a-button>
+      <a class="btn1 onlinecusmter" target="_blank" href="https://zanshang.kf5.com/kchat/45235?from=在线支持&group=0" v-html="onlinetext"></a>
+      <a-button class="btn2 freeuse" @click="goPcBackstage" v-html="freeusetext"></a-button>
     </div>
   </div>
 </template>
@@ -29,11 +29,14 @@ export default {
     return {
       headerbgcolor: "",
       headercolor: "",
-      show: true
+      show: true,
+      onlinetext: "在线客服",
+      freeusetext: "免费使用",
     };
   },
   created(){
-    
+    this.onlinetext = '<div><span>' + this.onlinetext.split('').join('</span><span>') + '</span></div>';
+    this.freeusetext = '<div><span>' + this.freeusetext.split('').join('</span><span>') + '</span></div>';
   },
   methods: {
     goPcBackstage(){
@@ -76,7 +79,7 @@ export default {
   left: 0;
   top: 0;
   z-index: 9;
-  min-width: 1200px;
+  min-width: 800px;
   height: 60px;
   padding: 0 120px;
   display: flex;
@@ -122,7 +125,10 @@ export default {
     }
   }
   .header-btn-group{
-    button{
+    button,a{
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
       width: 96px;
       height: 40px;
       font-size: 14px;
@@ -140,6 +146,7 @@ export default {
     }
   }
 }
+
 .white-bg{
   background: #fff;
   border-bottom: 1px solid #F5F6F7;

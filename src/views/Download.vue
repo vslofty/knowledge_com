@@ -1,7 +1,7 @@
 <template>
     <div class="download">
         <headers current="download"></headers>
-        <a-tabs :default-active-key="tabname" :tab-position="'bottom'" :tabBarGutter="400" @change="changeTab">
+        <a-tabs :default-active-key="tabname" :tab-position="'bottom'" :tabBarGutter="mRight" @change="changeTab">
             <a-tab-pane :key="'teach'" :forceRender="true">
                 <span slot="tab">
                     <i class="vzaniconfont iconjiangshiduan"></i>讲师端 PC版
@@ -11,11 +11,12 @@
                         <h1>知播讲师端</h1>
                         <p class="desc">满足多种教学形态，不管是1对1教学、课外兴趣小班课还是大型直播公开课，帮你轻松搭建属于自己的在线课堂；</p>
                         <a-button class="download-window" @click="goToDownload">
-                            <span class="vzaniconfont iconwindonws"></span>下载Windows版
+                            <span class="vzaniconfont iconwindonws"></span>
+                            <div v-html="downloadtext"></div>
                         </a-button>
                     </div>
                     <div class="right">
-                        <img src="https://j.weizan.cn/zhibo/microcourse/images/tab-img-1.png?v=20201028" style="width:900px;height:480px; ">
+                        <img src="https://j.weizan.cn/zhibo/microcourse/images/tab-img-1.png?v=20201028" class="tab-img-1">
                     </div>
                 </div>
             </a-tab-pane>
@@ -29,21 +30,21 @@
                         <p class="desc">满足多种教学形态，不管是1对1教学、课外兴趣小班课还是大型直播公开课，帮你轻松搭建属于自己的在线课堂；</p>
                         <div class="student-download">
                             <div class="download-scan" v-if="generalInfo.DownAppTreasureURI">
-                                <vue-qr :text="generalInfo.DownAppTreasureURI" :size="100" :margin="5" class="invite-code"></vue-qr>
+                                <vue-qr :text="generalInfo.DownAppTreasureURI" :size="200" :margin="5" class="invite-code"></vue-qr>
                                 <span>扫码下载</span>
                             </div>
                             <div class="download-btn-group">
-                                <a :href="generalInfo.DownIosURI" target="_blank">
-                                    <i class="vzaniconfont iconbianzu1"></i>苹果下载
+                                <a :href="generalInfo.DownIosURI" target="_blank" v-if="generalInfo.DownIosURI">
+                                    <i class="vzaniconfont iconbianzu1"></i><span>苹果下载</span>
                                 </a>
-                                <a :href="generalInfo.DownIosURI" target="_blank">
-                                    <i class="vzaniconfont iconbianzu"></i>安卓下载
+                                <a :href="generalInfo.DownAndroidURI" target="_blank" v-if="generalInfo.DownAndroidURI">
+                                    <i class="vzaniconfont iconbianzu"></i><span>安卓下载</span>
                                 </a>
                             </div>
                         </div>
                     </div>
                     <div class="right">
-                        <img src="https://j.weizan.cn/zhibo/microcourse/images/tab-img-2.png" style="width:829px;height:616px;">
+                        <img src="https://j.weizan.cn/zhibo/microcourse/images/tab-img-2.png" class="tab-img-2">
                     </div>
                 </div>
             </a-tab-pane>
@@ -59,7 +60,9 @@ export default {
     data(){
         return{
             tabname: 'teach',
-            generalInfo: {}
+            generalInfo: {},
+            mRight: 400,
+            downloadtext: "下载Windows版"
         }
     },
     components: {
@@ -110,6 +113,11 @@ export default {
         }
     },
     mounted() {
+        console.log(document.documentElement.offsetWidth || document.body.offsetWidth)
+        this.downloadtext = '<div><span>' + this.downloadtext.split('').join('</span><span>') + '</span></div>';
+        if((document.documentElement.offsetWidth || document.body.offsetWidth)<=1000){
+            this.mRight = 160;
+        }
         this.getGeneral();
     }
 }
@@ -184,6 +192,8 @@ export default {
         align-items: center;
         .left{
             width: 400px;
+            height: 100%;
+            padding-top: 180px;
             color: #fff;
             display: flex;
             flex-direction: column;
@@ -207,7 +217,7 @@ export default {
                 height: 60px;
                 border: none;
                 color: #252525;
-                font-size: 16px;
+                font-size: 15px;
                 font-weight: bold;
                 display: flex;
                 justify-content: center;
@@ -218,6 +228,14 @@ export default {
                     font-size: 22px;
                     margin-right: 6px;
                 }
+            }
+        }
+        .right{
+            .tab-img-1{
+                width: 900px;
+            }
+            .tab-img-2{
+                width: 829px;
             }
         }
         .student-download{
@@ -241,6 +259,7 @@ export default {
                 flex-direction: column;
                 justify-content: space-between;
                 button,a{
+                    position: relative;
                     width: 160px;
                     height: 60px;
                     background: transparent;
@@ -251,9 +270,32 @@ export default {
                     align-items: center;
                     border: 1px solid rgb(255,255,255,0.3);
                     border-radius: 6px;
+                    transition: .4s;
+                    overflow: hidden;
+                    span{
+                        position: relative;
+                    }
                     i{
+                        position: relative;
                         font-size: 20px;
                         margin-right: 8px;
+                    }
+                    &::before{
+                        content: "";
+                        position: absolute;
+                        left: -100%;
+                        top: 0;
+                        z-index: 0;
+                        width: 100%;
+                        height: 100%;
+                        background: #fff;
+                        transition: .6s;
+                    }
+                    &:hover{
+                        color: #333;
+                    }
+                    &:hover::before{
+                        left: 0%;
                     }
                 }
             }

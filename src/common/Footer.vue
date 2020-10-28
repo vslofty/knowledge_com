@@ -51,6 +51,9 @@ export default {
                 margin-right: 23px;
                 font-size: 14px;
             }
+            a:hover{
+                color: #FFA800;
+            }
             em{
                 color: #60646B;
                 font-size: 16px;

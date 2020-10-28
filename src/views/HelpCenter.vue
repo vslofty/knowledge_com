@@ -2,9 +2,9 @@
     <div class="help">
         <headers current="help" :showwhitebg="true"></headers>
         <div class="container">
-            <div class="left" :style="`left:${menuWidth}px;height:${menuHeight}px;`">
+            <div class="left" :style="`left:${menuleft}px;height:${menuHeight}px;top:${menutop}px;`">
                 <div class="box">
-                    <a-menu mode="inline" :default-selected-keys="selectkey" :default-open-keys="openKeys" style="width: 256px" @click="onOpenChange" v-if="menuinfo&&menuinfo.length">
+                    <a-menu mode="inline" :default-selected-keys="selectkey" :default-open-keys="openKeys" :style="`width:${menuWidth}px;`" @click="onOpenChange" v-if="menuinfo&&menuinfo.length">
                         <template  v-for="item of menuinfo">
                             <a-menu-item :key="item.Id" v-if="!(item.subMenu&&item.subMenu.length)">
                                 <span style="font-weight:bold;color:#252525;">{{item.mainName}}</span>
@@ -28,7 +28,7 @@
                     </a-menu>
                 </div>
             </div>
-            <div style="width:256px;"></div>
+            <div class="fixwidth"></div>
             <div class="right" ref="rightbox">
                 <div class="main-content">
                     <h2 class="title">{{contentInfo.title}}</h2>
@@ -55,20 +55,36 @@ export default {
             selectkey: [],
             openKeys: ['m001','m002','m003','m004','m005'],
             menuWidth: 0,
-            menuHeight: 0
+            menuHeight: 0,
+            menuleft: 0,
+            menutop: 0,
         }
     },
     components: {
         headers
     },
     mounted(){
-                console.log(this.$route,menu)
+        console.log(this.$route,menu)
         this.$nextTick(()=>{
             this.selectkey.push(this.$route.params.id);
             let index = this.contentArr.findIndex(item=>item.id==this.$route.params.id);
             this.contentInfo = this.contentArr[index];
-            this.menuWidth = ((document.documentElement.offsetWidth || document.body.offsetWidth)-this.$refs.rightbox.clientWidth-272)/2;
-            this.menuHeight = (document.documentElement.offsetHeight || document.body.offsetHeight)-100;
+            var width=256;var height=100;
+            if((document.documentElement.offsetWidth || document.body.offsetWidth)<=1000){
+                width=210;
+                height=80;
+            }
+            this.menutop = height;
+            this.menuWidth = width;
+            this.menuleft = ((document.documentElement.offsetWidth || document.body.offsetWidth)-this.$refs.rightbox.clientWidth-width-16)/2;
+            this.menuHeight = (document.documentElement.offsetHeight || document.body.offsetHeight)-height;
+            
+            window.onresize = () => {
+                return (() => {
+                    this.menuleft = ((document.documentElement.offsetWidth || document.body.offsetWidth)-this.$refs.rightbox.clientWidth-width-16)/2;
+                    this.menuHeight = (document.documentElement.offsetHeight || document.body.offsetHeight)-height;
+                })();
+            };
         })
     },
     methods: {
@@ -97,6 +113,9 @@ export default {
         padding-top: 40px;
         flex: 1;
         display: flex;
+    }
+    .fixwidth{
+        width: 256px;
     }
     .left{
         position: fixed;
