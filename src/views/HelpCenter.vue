@@ -2,7 +2,7 @@
     <div class="help">
         <headers current="help" :showwhitebg="true"></headers>
         <div class="container">
-            <div class="left" :style="`left:${menuleft}px;height:${menuHeight}px;top:${menutop}px;`">
+            <div class="left" :style="`height:${menuHeight}px;`">
                 <div class="box">
                     <a-menu mode="inline" :default-selected-keys="selectkey" :default-open-keys="openKeys" :style="`width:${menuWidth}px;`" @click="onOpenChange" v-if="menuinfo&&menuinfo.length">
                         <template  v-for="item of menuinfo">
@@ -28,8 +28,7 @@
                     </a-menu>
                 </div>
             </div>
-            <div class="fixwidth"></div>
-            <div class="right" ref="rightbox">
+            <div class="right" ref="rightbox" :style="`height:${menuHeight}px;`">
                 <div class="main-content">
                     <h2 class="title">{{contentInfo.title}}</h2>
                     <span class="timer">更新时间：{{contentInfo.creattime}}</span>
@@ -56,7 +55,6 @@ export default {
             openKeys: ['m001','m002','m003','m004','m005'],
             menuWidth: 0,
             menuHeight: 0,
-            menuleft: 0,
             menutop: 0,
         }
     },
@@ -76,12 +74,18 @@ export default {
             }
             this.menutop = height;
             this.menuWidth = width;
-            this.menuleft = ((document.documentElement.offsetWidth || document.body.offsetWidth)-this.$refs.rightbox.clientWidth-width-16)/2;
             this.menuHeight = (document.documentElement.offsetHeight || document.body.offsetHeight)-height;
             
             window.onresize = () => {
                 return (() => {
-                    this.menuleft = ((document.documentElement.offsetWidth || document.body.offsetWidth)-this.$refs.rightbox.clientWidth-width-16)/2;
+            console.log(this.$refs.leftbox.offsetLeft)
+                    var width=256;var height=100;
+                    if((document.documentElement.offsetWidth || document.body.offsetWidth)<=1000){
+                        width=210;
+                        height=80;
+                    }
+                    this.menutop = height;
+                    this.menuWidth = width;
                     this.menuHeight = (document.documentElement.offsetHeight || document.body.offsetHeight)-height;
                 })();
             };
@@ -118,9 +122,6 @@ export default {
         width: 256px;
     }
     .left{
-        position: fixed;
-        left: 0;
-        top: 100px;
         width: 256px;
         height: 100%;
         display: flex;
