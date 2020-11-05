@@ -10,7 +10,7 @@
       <li :class="(current=='help')&&'active'"><router-link to="/help/m001" :style="headercolor">帮助文档</router-link></li>
     </ul>
     <div class="header-btn-group">
-      <a class="btn1 onlinecusmter" target="_blank" href="https://zanshang.kf5.com/kchat/45235?from=在线支持&group=0" v-html="onlinetext"></a>
+      <a class="btn1 onlinecusmter" target="_blank" :href="generalInfo&&generalInfo.CustomServiceURI" v-html="onlinetext"></a>
       <a-button class="btn2 freeuse" @click="goPcBackstage" v-html="freeusetext"></a-button>
     </div>
   </div>
@@ -19,6 +19,7 @@
 <script>
 // import config from '@/config';
 // import { removeLocal } from '@/utils/utils';
+import { mapGetters } from "vuex"
 
 export default {
   props: {
@@ -33,6 +34,9 @@ export default {
       onlinetext: "在线客服",
       freeusetext: "免费使用",
     };
+  },
+  computed: {
+    ...mapGetters(['generalInfo']),
   },
   created(){
     this.onlinetext = '<div><span>' + this.onlinetext.split('').join('</span><span>') + '</span></div>';

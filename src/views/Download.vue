@@ -29,15 +29,15 @@
                         <h1>知播学生端</h1>
                         <p class="desc">满足多种教学形态，不管是1对1教学、课外兴趣小班课还是大型直播公开课，帮你轻松搭建属于自己的在线课堂；</p>
                         <div class="student-download">
-                            <div class="download-scan" v-if="generalInfo.DownAppTreasureURI">
-                                <vue-qr :text="generalInfo.DownAppTreasureURI" :size="200" :margin="5" class="invite-code"></vue-qr>
+                            <div class="download-scan" v-if="generalInfo&&generalInfo.DownAppTreasureURI">
+                                <vue-qr :text="generalInfo&&generalInfo.DownAppTreasureURI" :size="200" :margin="5" class="invite-code"></vue-qr>
                                 <span>扫码下载</span>
                             </div>
                             <div class="download-btn-group">
-                                <a :href="generalInfo.DownIosURI" target="_blank" v-if="generalInfo.DownIosURI">
+                                <a :href="generalInfo&&generalInfo.DownIosURI" target="_blank" v-if="generalInfo&&generalInfo.DownIosURI">
                                     <i class="vzaniconfont iconbianzu1"></i><span>苹果下载</span>
                                 </a>
-                                <a :href="generalInfo.DownAndroidURI" target="_blank" v-if="generalInfo.DownAndroidURI">
+                                <a :href="generalInfo&&generalInfo.DownAndroidURI" target="_blank" v-if="generalInfo&&generalInfo.DownAndroidURI">
                                     <i class="vzaniconfont iconbianzu"></i><span>安卓下载</span>
                                 </a>
                             </div>
@@ -56,11 +56,11 @@
 import headers from '@/common/Header.vue'
 import CommonAjax from "@/utils/http/modules/common.request.js";
 import vueQr from 'vue-qr'
+import { mapGetters } from "vuex"
 export default {
     data(){
         return{
             tabname: 'teach',
-            generalInfo: {},
             mRight: 400,
             downloadtext: "下载Windows版"
         }
@@ -69,16 +69,10 @@ export default {
         headers,
         vueQr
     },
+    computed: {
+        ...mapGetters(['generalInfo']),
+    },
     methods: {
-        async getGeneral(){
-            try{
-                let res = await CommonAjax.getGeneral();
-                console.log(res)
-                this.generalInfo = res.dataObj;
-            } catch(error){
-                error && this.$antdMessage.error(error);
-            }
-        },
         async goToDownload(){
             try{
                 let res = await CommonAjax.getClientLink();
