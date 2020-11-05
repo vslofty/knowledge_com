@@ -9,7 +9,7 @@ export default [
         "mainName": "新手指引",
         "subMenu": [{
             "Id": "s01",
-            "name": "如何注册直播"
+            "name": "如何注册知播"
         },{
             "Id": "s02",
             "name": "如何开课"
