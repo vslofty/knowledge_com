@@ -112,7 +112,6 @@ export default {
         if((document.documentElement.offsetWidth || document.body.offsetWidth)<=1000){
             this.mRight = 160;
         }
-        this.getGeneral();
     }
 }
 </script>
