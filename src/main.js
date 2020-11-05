@@ -35,6 +35,15 @@ AOS.init({
   once: true
 });
 
+var _hmt = _hmt || [];
+window._hmt = _hmt; // 必须把_hmt挂载到window下，否则找不到
+(function () {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?757214507be6d272229637ca83de39f7";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+})();
+
 new Vue({
   router,
   store,

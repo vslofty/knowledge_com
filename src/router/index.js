@@ -36,7 +36,12 @@ const router = new VueRouter({
 
 router.beforeEach((to,from,next)=>{
   // 根据路由元信息设置文档标题
-  window.document.title = to.meta.title
+  window.document.title = to.meta.title;
+  if (_hmt) {
+      if (to.path) {
+          _hmt.push(['_trackPageview', '/#' + to.fullPath]);
+      }
+  }
   next()
 })
 
