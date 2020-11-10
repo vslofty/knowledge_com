@@ -31,6 +31,7 @@ export default {
     }),
   },
   mounted(){
+    window.analysis.log(0, 0, 1434, 1015, "","",12,"");
     this.getGeneral();
   }
 }

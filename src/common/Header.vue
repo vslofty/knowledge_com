@@ -44,7 +44,7 @@ export default {
   },
   methods: {
     goPcBackstage(){
-      console.log('goPcBackstage')
+      window.analysis.log(0, 0, 1434, 1014, "","",12,"");
       if(location.origin.includes('localhost')){
         window.open('http://zhibo-dev.vzan.com/know/');
       }else{
