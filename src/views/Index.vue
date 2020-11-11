@@ -100,7 +100,7 @@ export default {
     methods: {
         goPcBackstage(){
             try{
-                window.analysis.log(0, 0, 1434, 1014, "","",12,"");
+                window.analysis.log(0, 0, 1434, 1014, "","",11,"");
             }catch(err){ console.log(err) }
             if(location.origin.includes('localhost')){
                 window.open('http://zhibo-dev.vzan.com/know/');

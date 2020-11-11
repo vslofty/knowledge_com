@@ -32,7 +32,7 @@ export default {
   },
   mounted(){
     try{
-      window.analysis.log(0, 0, 1434, 1015, "","",12,"");
+      window.analysis.log(0, 0, 1434, 1015, "","",11,"");
     }catch(err){ console.log(err) }
     this.getGeneral();
   }
