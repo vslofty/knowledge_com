@@ -31,7 +31,9 @@ export default {
     }),
   },
   mounted(){
-    window.analysis.log(0, 0, 1434, 1015, "","",12,"");
+    try{
+      window.analysis.log(0, 0, 1434, 1015, "","",12,"");
+    }catch(err){ console.log(err) }
     this.getGeneral();
   }
 }
