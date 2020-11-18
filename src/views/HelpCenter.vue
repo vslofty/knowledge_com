@@ -1,5 +1,5 @@
 <template>
-    <div class="help">
+    <div class="page-help">
         <headers current="help" :showwhitebg="true"></headers>
         <div class="container">
             <div class="left" :style="`height:${menuHeight}px;`">
@@ -36,8 +36,6 @@
 <script>
 import headers from '@/common/Header.vue'
 import CommonAjax from "@/utils/http/modules/common.request.js";
-import menu from './../static/menu.js';
-import help from './../static/help.js';
 
 export default {
     data(){
@@ -54,7 +52,7 @@ export default {
         headers
     },
     mounted(){
-        console.log(this.$route,menu)
+        console.log(this.$route)
         this.$nextTick(()=>{
             this.getCatalogList(this.$route.params.id);
             var width=256;var height=100;
@@ -122,7 +120,7 @@ export default {
 </script>
 
 <style lang="less" scoped>
-.help{
+.page-help{
     width: 100%;
     min-height: 100vh;
     background: linear-gradient(180deg, #FDFEFE 0%, #F5F6F7 100%);

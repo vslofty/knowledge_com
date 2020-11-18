@@ -113,23 +113,23 @@
 .ant-tabs-bottom .ant-tabs-ink-bar-animated {
   transition: transform 1s cubic-bezier(0.645, 0.045, 0.355, 1), width 0.2s cubic-bezier(0.645, 0.045, 0.355, 1), left 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
 }
-.feedback .ant-upload.ant-upload-select-picture-card {
+.page-feedback .ant-upload.ant-upload-select-picture-card {
   width: 80px;
   height: 80px;
   margin: 0 20px 20px 0;
   background: #fff;
   border: 2px dashed #efefef;
 }
-.feedback .ant-upload.ant-upload-select-picture-card i {
+.page-feedback .ant-upload.ant-upload-select-picture-card i {
   font-size: 20px;
   color: #b8babf;
 }
-.feedback .ant-upload-list-picture-card-container {
+.page-feedback .ant-upload-list-picture-card-container {
   width: 80px;
   height: 80px;
   margin: 0 20px 20px 0;
 }
-.feedback .ant-upload-list-picture-card .ant-upload-list-item {
+.page-feedback .ant-upload-list-picture-card .ant-upload-list-item {
   width: 100%;
   height: 100%;
   margin: 0;

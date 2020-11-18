@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import Index from '../views/Index.vue'
 import Download from '../views/Download.vue'
 import HelpCenter from '../views/HelpCenter.vue'
+import Feedback from '../views/Feedback.vue'
 import MobileIndex from '../views/Mobile/MobileIndex.vue'
 import MobileFeedback from '../views/Mobile/MobileFeedback.vue'
 import MobileHelpCenter from '../views/Mobile/MobileHelpCenter.vue'
@@ -28,6 +29,12 @@ const routes = [
     name: 'HelpCenter',
     component: HelpCenter,
     meta: { title: "知播-帮助文档" }
+  },
+  {
+    path: '/feedback',
+    name: 'Feedback',
+    component: Feedback,
+    meta: { title: "知播-产品反馈" }
   },
   {
     path: '/mobile/',

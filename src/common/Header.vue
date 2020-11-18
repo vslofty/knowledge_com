@@ -5,25 +5,15 @@
       <img src="https://j.weizan.cn/zhibo/microcourse/images/logo-black.png" class="logo" v-else/>
     </router-link>
     <ul class="nav">
-      <li :class="(!wrapCss&&current=='index')&&'active'"><router-link to="/" :style="headercolor">首页</router-link></li>
-      <li :class="(!wrapCss&&current=='download')&&'active'"><router-link to="/download/" :style="headercolor">下载中心</router-link></li>
-      <li :class="(!wrapCss&&current=='help')&&'active'"><router-link to="/help/0" :style="headercolor">帮助文档</router-link></li>
-      <a-popover placement="bottom" trigger="click" :visible="feedVisible" @visibleChange="handleClickChange">
-        <template slot="content">
-          <feedback></feedback>
-        </template>
-        <li :class="wrapCss&&'active'"><span :style="headercolor">产品反馈</span></li>
-      </a-popover>
-      
+      <li :class="(current=='index')&&'active'"><router-link to="/" :style="headercolor">首页</router-link></li>
+      <li :class="(current=='download')&&'active'"><router-link to="/download/" :style="headercolor">下载中心</router-link></li>
+      <li :class="(current=='help')&&'active'"><router-link to="/help/0" :style="headercolor">帮助文档</router-link></li>
+      <li :class="(current=='feedback')&&'active'"><router-link to="/feedback/" :style="headercolor">产品反馈</router-link></li>
     </ul>
     <div class="header-btn-group">
       <!-- <a class="btn1 onlinecusmter" target="_blank" :href="generalInfo&&generalInfo.CustomServiceURI" v-html="onlinetext"></a> -->
       <a-button class="btn2 freeuse" @click="goPcBackstage" v-html="freeusetext"></a-button>
     </div>
-
-    <!-- <a-drawer width="448px" placement="right" :closable="false" :visible="feedVisible" @close="feedVisible=false">
-      <feedback></feedback>
-    </a-drawer> -->
   </div>
 </template>
 
@@ -31,15 +21,11 @@
 // import config from '@/config';
 // import { removeLocal } from '@/utils/utils';
 import { mapGetters } from "vuex"
-import Feedback from '@/common/Feedback.vue'
 
 export default {
   props: {
     current: String,
     showwhitebg: Boolean
-  },
-  components: {
-    Feedback
   },
   data() {
     return {
@@ -48,8 +34,6 @@ export default {
       show: true,
       onlinetext: "在线客服",
       freeusetext: "免费使用",
-      feedVisible: false,
-      wrapCss: ""
     };
   },
   computed: {
@@ -89,31 +73,10 @@ export default {
         }
       }
     },
-    // 打开反馈
-    productFeedback(){
-      this.$bus.$emit('clearfeedback',true);
-      this.feedVisible = true;
-    },
-    handleClickChange(visible){
-      this.feedVisible = visible;
-    }
   },
   mounted(){
     window.addEventListener('scroll', this.headerScroll)
   },
-  watch: {
-    feedVisible: {
-      deep: true,
-      handler(val){
-        if(val){
-          this.wrapCss = "height:100vh;overflow:hidden;";
-        }else{
-          this.wrapCss = "";
-        }
-        this.$bus.$emit('fixedheight',this.wrapCss)
-      }
-    }
-  }
 };
 </script>
 

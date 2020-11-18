@@ -1,5 +1,5 @@
 <template>
-    <div class="download">
+    <div class="page-download">
         <headers current="download"></headers>
         <a-tabs :default-active-key="tabname" :tab-position="'bottom'" :tabBarGutter="mRight" @change="changeTab">
             <a-tab-pane :key="'teach'" :forceRender="true">
@@ -117,7 +117,7 @@ export default {
 </script>
 
 <style lang="less" scoped>
-.download{
+.page-download{
     width: 100%;
     height: 100vh;
     background: url(https://j.weizan.cn/zhibo/microcourse/images/download-bg.png?v=20201028) no-repeat center center;

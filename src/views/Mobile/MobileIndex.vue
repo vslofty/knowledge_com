@@ -9,27 +9,27 @@
         <div class="model-box">
             <h2>知播在线互动课堂</h2>
             <p>以高效，正确地帮助教育培训机构或老师，解决多种培训教育场景</p>
-            <img class="mobile-img-1" src="../../assets/images/mobile/mobile-img-1.png"/>
+            <img class="mobile-img-1" src="https://j.weizan.cn/zhibo/microcourse/images/mobile/mobile-img-1.png"/>
         </div>
         <div class="model-box">
             <h3>1v1~16人在线视频互动，画质流畅稳定</h3>
             <p>老师电脑客户端授课，学生App上课，充分保障了课堂互动的真实，在弱网下也能流畅上课，保证教学效果</p>
-            <img class="mobile-img-2" src="../../assets/images/mobile/mobile-img-2.png"/>
+            <img class="mobile-img-2" src="https://j.weizan.cn/zhibo/microcourse/images/mobile/mobile-img-2.png"/>
         </div>
         <div class="model-box">
             <h3>屏幕共享，授课灵活自由</h3>
             <p>屏幕一键共享，老师示范更方便，授课更灵活</p>
-            <img class="mobile-img-3" src="../../assets/images/mobile/mobile-img-3.png"/>
+            <img class="mobile-img-3" src="https://j.weizan.cn/zhibo/microcourse/images/mobile/mobile-img-3.png"/>
         </div>
         <div class="model-box">
             <h3>多格式课件演示，课堂内容更生动</h3>
             <p>支持视频，图片，PDF，Word，PPT等主流文档演示丰富画笔工具，讲到哪画到哪，重点知识统统圈起来</p>
-            <img class="mobile-img-4" src="../../assets/images/mobile/mobile-img-4.png"/>
+            <img class="mobile-img-4" src="https://j.weizan.cn/zhibo/microcourse/images/mobile/mobile-img-4.png"/>
         </div>
         <div class="model-box">
             <h3>直播美颜，让老师授课更舒心</h3>
             <p>人性化、灵活度高的课堂美颜，帮助老师轻松出镜，自信开课。</p>
-            <img class="mobile-img-5" src="../../assets/images/mobile/mobile-img-5.png"/>
+            <img class="mobile-img-5" src="https://j.weizan.cn/zhibo/microcourse/images/mobile/mobile-img-5.png"/>
         </div>
         <div class="advert-box">
             <h1>一分钟创造自己的<br/>在线课堂</h1>
@@ -72,7 +72,7 @@ export default {
         flex-direction: column;
         justify-content: flex-end;
         align-items: center;
-        background: url('../../assets/images/mobile/banner-bg.png') no-repeat center center;
+        background: url('https://j.weizan.cn/zhibo/microcourse/images/mobile/banner-bg.png') no-repeat center center;
         background-size: cover;
         .header-title{
             color: #fff;
@@ -159,7 +159,7 @@ export default {
         flex-direction: column;
         justify-content: flex-end;
         align-items: center;
-        background: url(../../assets/images/mobile/advert-bg.png) no-repeat center center;
+        background: url(https://j.weizan.cn/zhibo/microcourse/images/mobile/advert-bg.png) no-repeat center center;
         background-size: cover;
         h1{
             font-size: 0.54rem;

@@ -48,7 +48,6 @@ export default {
                 type: "",
                 content: "",
                 contact: "",
-                tail: 1000
             },
             fileList: [],
         }
@@ -88,7 +87,7 @@ export default {
         },
         async addFeedBack(){
             for(var key in this.params){
-                if(key!='tail'&&!this.params[key].trim().length){
+                if(!this.params[key].trim().length){
                     this.$antdMessage.warning(ErrorTip[key])
                     return;
                 }
@@ -98,6 +97,7 @@ export default {
                 result.push(item.thumbUrl||item.url);
             });
             this.params.imgurls = result.join(',');
+            this.params.tail = this.queryType;
             try{
                 await CommonAjax.addFeedback(this.params);
                 this.$antdMessage.success("提交成功");
@@ -105,8 +105,8 @@ export default {
                     type: "",
                     content: "",
                     contact: "",
-                    tail: 1000
                 };
+                this.fileList = [];
             } catch(error){
                 error && this.$antdMessage.error(error);
             }

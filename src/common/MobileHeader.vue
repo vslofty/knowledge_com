@@ -2,19 +2,19 @@
   <div class="header" :class="showwhitebg && 'white-bg'" :style="headerbgcolor">
     <router-link to="/mobile/" class="logo">
       <img
-        src="../assets/images/mobile/logo.png"
+        src="https://j.weizan.cn/zhibo/microcourse/images/mobile/logo.png"
         class="logo"
         v-if="show && !showwhitebg"
       />
-      <img src="../assets/images/mobile/logo-black.png" class="logo" v-else/>
+      <img src="https://j.weizan.cn/zhibo/microcourse/images/mobile/logo-black.png" class="logo" v-else/>
     </router-link>
-    <img src="../assets/images/mobile/menu-icon.png" class="menu-btn" v-if="show && !showwhitebg" @click="menuVisible=true" />
-    <img src="../assets/images/mobile/menu-black-icon.png" class="menu-btn" v-else @click="menuVisible=true" />
+    <img src="https://j.weizan.cn/zhibo/microcourse/images/mobile/menu-icon.png" class="menu-btn" v-if="show && !showwhitebg" @click="menuVisible=true" />
+    <img src="https://j.weizan.cn/zhibo/microcourse/images/mobile/menu-black-icon.png" class="menu-btn" v-else @click="menuVisible=true" />
 
     <a-drawer wrapClassName="menu-box" width="100%" placement="top" :maskStyle="{'background':'transparent'}" :closable="false" height="5.46rem" :visible="menuVisible" @close="menuVisible=false">
         <div class="head">
-            <img src="../assets/images/mobile/logo.png" class="logo" />
-            <img src="../assets/images/mobile/close-menu-icon.png" class="menu-btn" @click="menuVisible=false" />
+            <img src="https://j.weizan.cn/zhibo/microcourse/images/mobile/logo.png" class="logo" />
+            <img src="https://j.weizan.cn/zhibo/microcourse/images/mobile/close-menu-icon.png" class="menu-btn" @click="menuVisible=false" />
         </div>
       <ul class="nav">
         <li><router-link to="/mobile/help/">帮助文档</router-link></li>

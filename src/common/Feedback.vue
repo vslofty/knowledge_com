@@ -71,18 +71,6 @@ export default {
     created(){
         this.sendtext = '<div><span>' + this.sendtext.split('').join('</span><span>') + '</span></div>';
     },
-    mounted(){
-        this.$bus.$off('clearfeedback');
-        this.$bus.$on('clearfeedback',()=>{
-           this.params = {
-                type: "",
-                content: "",
-                contact: "",
-                tail: 1000
-            };
-            this.fileList = [];
-        })
-    },
     methods: {
         beforeUpload(file) {
             console.log(file)
@@ -122,7 +110,7 @@ export default {
             });
             this.params.imgurls = result.join(',');
             try{
-                var res = await CommonAjax.addFeedback(this.params);
+                await CommonAjax.addFeedback(this.params);
                 this.$antdMessage.success("提交成功");
                 this.params = {
                     type: "",
@@ -130,6 +118,7 @@ export default {
                     contact: "",
                     tail: 1000
                 };
+                this.fileList=[];
             } catch(error){
                 error && this.$antdMessage.error(error);
             }
@@ -140,10 +129,17 @@ export default {
 
 <style lang="less" scoped>
 .feedback{
-    width: 400px;
+    min-width: 400px;
+    max-width: 1080px;
+    width: 100%;
     color: #202124;
+    border: 1px solid #EFEFEF;
+    border-radius: 4px;
+    background: #fff;
+    margin: 40px auto;
+    padding: 50px 100px;
     h3{
-        margin: 20px 0;
+        margin-bottom: 20px;
         font-size: 24px;
         font-weight: bold;
         text-align: center;
@@ -152,24 +148,26 @@ export default {
         margin-bottom: 20px;
     }
     .title{
-        padding: 20px 0;
+        padding: 18px 0;
         display: flex;
         justify-content: space-between;
         align-items: center;
         font-size: 14px;
+        font-weight: bold;
         i{
             color: #FF4A4A;
         }
     }
     /deep/ .ant-radio-group{
         display: flex;
-        justify-content: space-between;
+        align-items: center;
         .ant-radio-button-wrapper{
             width: 120px;
             height: 44px;
             color: #202124;
             font-size: 14px;
             border-radius: 4px;
+            margin-right: 20px;
             border: 1px solid #202124;
             display: flex;
             justify-content: center;

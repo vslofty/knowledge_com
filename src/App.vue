@@ -1,6 +1,6 @@
 <template>
   <a-config-provider :locale="zhCN">
-    <div id="app" :style="wrapCss">
+    <div id="app">
       <router-view />
     </div>
   </a-config-provider>
@@ -15,7 +15,6 @@ export default {
   data() {
     return {
       zhCN,
-      wrapCss: ""
     };
   },
   methods: {
@@ -36,10 +35,6 @@ export default {
       window.analysis.log(0, 0, 1434, 1015, "","",11,"");
     }catch(err){ console.log(err) }
     this.getGeneral();
-    this.$bus.$off('fixedheight')
-    this.$bus.$on('fixedheight',(val)=>{
-      this.wrapCss = val;
-    })
   }
 }
 </script>
