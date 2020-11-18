@@ -15,22 +15,31 @@
     </noscript>
     <div id="app"></div>
     <!-- built files will be auto injected -->
-    <!-- <script>
-      fnResize();
-      window.onresize = function () {
+    <script>
+      if (/(iPhone|iPad|iPod|iOS|Android)/i.test(navigator.userAgent)) { //移动端
         fnResize();
-      }
-      function fnResize() {
-        var deviceWidth = document.documentElement.clientWidth || window.innerWidth;
-        if (deviceWidth >= 750) {
-          deviceWidth = 750;
+        window.onresize = function () {
+          fnResize();
         }
-        if (deviceWidth <= 320) {
-          deviceWidth = 320;
+        function fnResize() {
+          var deviceWidth = document.documentElement.clientWidth || window.innerWidth;
+          if (deviceWidth >= 750) {
+            deviceWidth = 750;
+          }
+          if (deviceWidth <= 320) {
+            deviceWidth = 320;
+          }
+          document.documentElement.style.fontSize = (deviceWidth / 7.5) + 'px';
+          if(!location.pathname.includes('mobile')){
+            window.location.href=location.origin+'/mobile/';
+          }
         }
-        document.documentElement.style.fontSize = (deviceWidth / 7.5) + 'px';
+      }else{
+        if(location.pathname.includes('mobile')){
+          window.location.href=location.origin+'/';
+        }
       }
-    </script> -->
+    </script>
     
     <script src="https://j.weizan.cn/zhibo/livecontent/log/analysis.js?cname=zhibo13&ver=20201113"></script>
   </body>

@@ -44,6 +44,10 @@ window._hmt = _hmt; // 必须把_hmt挂载到window下，否则找不到
   s.parentNode.insertBefore(hm, s);
 })();
 
+if (!/(iPhone|iPad|iPod|iOS|Android)/i.test(navigator.userAgent)) { //PC
+  require("./assets/css/media.less");
+}
+
 new Vue({
   router,
   store,

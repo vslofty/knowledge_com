@@ -79,9 +79,9 @@ class HttpRequest {
           this.showLoading();
         }
         config.headers["Content-Type"] = "application/x-www-form-urlencoded";
-        if(!config.unshowtoken){
+        if(config.token){
           console.log('getToken',config.url)
-          config.headers["Authorization"] = `Bearer ${getToken()}`;
+          config.headers["Authorization"] = `Bearer ${config.token}`;
         }
         if (config.method.toLocaleLowerCase() === "get" || config.method.toLocaleLowerCase() === "delete") {
           config.params = config.data;
@@ -199,15 +199,15 @@ function requst(options) {
           } else if (CODE === -1 || CODE === 1001) {
             // Token过期 || 账号不存在
             // 清除localStorage存储信息
-            return window.location.href = `${hostname}/home/newzblogin?v=${Date.now()}`;
+            return window.location.href = `${hostname}/`;
           }else if(CODE === 502){
-            return window.location.href = `${hostname}/know/`;
+            return window.location.href = `${hostname}/`;
           }
           reject(res.data.msg || res.data.Msg || "加载数据超时，请稍后重试");
         }
       } else {
         if(res.data.code === 502){
-          return window.location.href = `${hostname}/know/`;
+          return window.location.href = `${hostname}/`;
         }else{
           reject(res.data.msg || res.data.Msg || "加载数据超时，请稍后重试");
         }
@@ -217,8 +217,8 @@ function requst(options) {
       if (error.config && error.message.includes(`timeout of ${error.config.timeout}ms exceeded`)) {
         reject("加载数据超时，请稍后重试");
       } else if (error.config && error.message.includes(`code 401`)) {
-        Vue.prototype.$antdMessage.error("请先登录");
-        window.location.href = `${window.location.origin}/know/`;
+        // Vue.prototype.$antdMessage.error("请先登录");
+        window.location.href = `${window.location.origin}/`;
       } else {
         reject(error);
       }

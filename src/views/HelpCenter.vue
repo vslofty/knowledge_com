@@ -5,23 +5,16 @@
             <div class="left" :style="`height:${menuHeight}px;`">
                 <div class="box">
                     <a-menu mode="inline" :default-selected-keys="selectkey" :default-open-keys="openKeys" :style="`width:${menuWidth}px;`" @click="onOpenChange" v-if="menuinfo&&menuinfo.length">
-                        <template  v-for="item of menuinfo">
-                            <a-menu-item :key="item.Id" v-if="!(item.subMenu&&item.subMenu.length)">
-                                <span style="font-weight:bold;color:#252525;">{{item.mainName}}</span>
+                        <template v-for="item of menuinfo">
+                            <a-menu-item :key="item.Id" v-if="!(item.Articles&&item.Articles.length)">
+                                <span style="font-weight:bold;color:#252525;">{{item.Name}}</span>
                             </a-menu-item>
-                            <a-sub-menu :key="item.Id" v-if="item.subMenu&&item.subMenu.length">
-                                <span slot="title"><span>{{item.mainName}}</span></span>
-                                <template v-for="submenu of item.subMenu">
-                                    <!-- <span slot="title" :key="submenu.Id"><span>{{submenu.name}}</span></span> -->
-                                    <a-menu-item :key="submenu.Id" v-if="!(submenu.subMenuItem&&submenu.subMenuItem.length)">
-                                        <span>{{submenu.name}}</span>
+                            <a-sub-menu :key="item.Id" v-if="item.Articles&&item.Articles.length">
+                                <span slot="title"><span>{{item.Name}}</span></span>
+                                <template v-for="submenu of item.Articles">
+                                    <a-menu-item :key="submenu.Id">
+                                        <span>{{submenu.Title}}</span>
                                     </a-menu-item>
-                                    <!-- <a-sub-menu :key="submenu.Id" v-if="submenu.subMenuItem&&submenu.subMenuItem.length">
-                                        <span slot="title"><span>{{submenu.name}}</span></span>
-                                        <a-menu-item :key="submenuitem.Id" v-for="submenuitem of submenu.subMenuItem">
-                                            <span>{{submenuitem.name}}</span>
-                                        </a-menu-item>
-                                    </a-sub-menu> -->
                                 </template>
                             </a-sub-menu>
                         </template>
@@ -31,8 +24,8 @@
             <div class="right" ref="rightbox" :style="`height:${menuHeight}px;`">
                 <div class="main-content">
                     <h2 class="title">{{contentInfo.title}}</h2>
-                    <span class="timer">更新时间：{{contentInfo.creattime}}</span>
-                    <div class="content" v-html="contentInfo.content"></div>
+                    <span class="timer" v-show="contentInfo.lastEditTime">更新时间：{{contentInfo.lastEditTime}}</span>
+                    <div class="content" v-html="contentInfo.context"></div>
                 </div>
             </div>
         </div>
@@ -42,17 +35,17 @@
 
 <script>
 import headers from '@/common/Header.vue'
+import CommonAjax from "@/utils/http/modules/common.request.js";
 import menu from './../static/menu.js';
 import help from './../static/help.js';
 
 export default {
     data(){
         return{
-            menuinfo: menu,
-            contentArr: help,
+            menuinfo: [],
             contentInfo: {},
             selectkey: [],
-            openKeys: ['m001','m002','m003','m004','m005'],
+            openKeys: [],
             menuWidth: 0,
             menuHeight: 0,
         }
@@ -63,10 +56,7 @@ export default {
     mounted(){
         console.log(this.$route,menu)
         this.$nextTick(()=>{
-            document.title="知播";
-            this.selectkey.push(this.$route.params.id);
-            let index = this.contentArr.findIndex(item=>item.id==this.$route.params.id);
-            this.contentInfo = this.contentArr[index];
+            this.getCatalogList(this.$route.params.id);
             var width=256;var height=100;
             if((document.documentElement.offsetWidth || document.body.offsetWidth)<=1000){
                 width=210;
@@ -89,13 +79,42 @@ export default {
         })
     },
     methods: {
+        async getCatalogList(articleId){
+            try{
+                let res = await CommonAjax.getCatalog();
+                console.log(res)
+                var Ids = [];
+                res.dataObj.length&&res.dataObj.forEach(item=>{
+                    console.log(articleId,item.Id==articleId,item.Articles.some(art=>art.Id==articleId))
+                    if(articleId&&item.Id==articleId){
+                        this.selectkey.push(item.Id);
+                    }else if(articleId&&item.Articles.some(art=>art.Id==articleId)){
+                        var index=item.Articles.findIndex(art=>art.Id==articleId);
+                        this.selectkey.push(item.Articles[index].Id);
+                    }
+                    Ids.push(item.Id);
+                });
+                (articleId||Ids.length)&&this.getArticleDetails(articleId||Ids[0]);
+                this.openKeys = Ids;
+                this.menuinfo = res.dataObj;
+            }catch(error){
+                error&&this.$antdMessage.error(error)
+            }
+        },
+        async getArticleDetails(id){
+            try{
+                let res = await CommonAjax.getArticleDetail({
+                    articleid: id
+                });
+                console.log(res)
+                this.contentInfo = res.dataObj||{};
+            }catch(error){
+                error&&this.$antdMessage.error(error)
+            }
+        },
         onOpenChange(item, key, keyPath) {
             console.log(item, key, keyPath)
-            this.contentArr.forEach(help=>{
-                if(help.id==item.key){
-                    this.contentInfo=help;
-                }
-            })
+            this.getArticleDetails(item.key);
             this.$router.push(`/help/${item.key}`);
         },
     }

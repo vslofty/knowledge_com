@@ -1,4 +1,6 @@
-import { get } from "../http";
+import { get,post } from "../http";
+import qs from "qs";
+import store from '@/store/index.js'
 // let base = 'http://tliveapi.vzan.com';
 // const buildFor = process.env.VUE_APP_BUILD_FOR;
 // switch(buildFor){
@@ -28,4 +30,26 @@ export default {
    */
   getClientLink: () => get(`/api/setting/appversioninfo?versionCode=00.00.00.01&deviceType=3`),
   
+  /**
+   * @method 添加反馈
+   * @param {*} content  反馈内容
+   * @param {*} contact  反馈联系方式
+   * @param {*} imgurls  反馈图片
+   * @param {*} type  反馈类型
+   * @param {*} tail  来源（官网：1000，PC后台：1001，PC客户端：1002，app安卓：1003，appIOS：1004）
+   */
+  addFeedback: (params) => post(`/api/universal/v1/feedback/feedback`,qs.stringify(params),false,store.state.token?{
+    token: store.state.token
+  }:{}),
+
+  /**
+  * @method 获取文章目录
+  */
+  getCatalog: () => post(`/api/universal/v1/article/catalog`),
+
+  /**
+  * @method 获取文章详情
+   * @param {*} articleid  文章id
+  */
+  getArticleDetail: (params) => post(`/api/universal/v1/article/article`,qs.stringify(params)),
 };

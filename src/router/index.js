@@ -3,6 +3,10 @@ import VueRouter from 'vue-router'
 import Index from '../views/Index.vue'
 import Download from '../views/Download.vue'
 import HelpCenter from '../views/HelpCenter.vue'
+import MobileIndex from '../views/Mobile/MobileIndex.vue'
+import MobileFeedback from '../views/Mobile/MobileFeedback.vue'
+import MobileHelpCenter from '../views/Mobile/MobileHelpCenter.vue'
+import MobileHelpCenterDetail from '../views/Mobile/MobileHelpCenterDetail.vue'
 
 Vue.use(VueRouter)
 
@@ -24,7 +28,32 @@ const routes = [
     name: 'HelpCenter',
     component: HelpCenter,
     meta: { title: "知播-帮助文档" }
-  }
+  },
+  {
+    path: '/mobile/',
+    name: 'MobileIndex',
+    component: MobileIndex,
+    meta: { title: "知播-让知识传播更简单" }
+  },
+  {
+    path: '/mobile/feedback',
+    name: 'MobileFeedback',
+    component: MobileFeedback,
+    meta: { title: "产品反馈" }
+  },
+  {
+    path: '/mobile/help',
+    name: 'MobileHelpCenter',
+    component: MobileHelpCenter,
+    meta: { title: "知播-帮助文档" }
+  },
+  {
+    path: '/mobile/helpdetail/:id',
+    name: 'MobileHelpCenterDetail',
+    component: MobileHelpCenterDetail,
+    meta: { title: "知播-帮助详情" }
+  },
+  
 ]
 
 const router = new VueRouter({
@@ -42,7 +71,7 @@ router.beforeEach((to,from,next)=>{
           _hmt.push(['_trackPageview', '/#' + to.fullPath]);
       }
   }
-  next()
+  next();
 })
 
 export default router

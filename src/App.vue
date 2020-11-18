@@ -1,6 +1,6 @@
 <template>
   <a-config-provider :locale="zhCN">
-    <div id="app">
+    <div id="app" :style="wrapCss">
       <router-view />
     </div>
   </a-config-provider>
@@ -14,7 +14,8 @@ import { mapMutations } from "vuex";
 export default {
   data() {
     return {
-      zhCN
+      zhCN,
+      wrapCss: ""
     };
   },
   methods: {
@@ -35,6 +36,10 @@ export default {
       window.analysis.log(0, 0, 1434, 1015, "","",11,"");
     }catch(err){ console.log(err) }
     this.getGeneral();
+    this.$bus.$off('fixedheight')
+    this.$bus.$on('fixedheight',(val)=>{
+      this.wrapCss = val;
+    })
   }
 }
 </script>
