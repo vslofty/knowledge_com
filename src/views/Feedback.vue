@@ -2,12 +2,14 @@
     <div class="page-feedback">
         <headers current="feedback" :showwhitebg="true"></headers>
         <feedback></feedback>
+        <footers></footers>
     </div>
 </template>
 
 <script>
 import headers from '@/common/Header.vue'
 import Feedback from '@/common/Feedback.vue'
+import Footers from '@/common/Footer.vue';
 export default {
     data(){
         return{
@@ -15,7 +17,7 @@ export default {
         }
     },
     components: {
-        headers,Feedback
+        headers,Feedback,Footers
     },
     methods: {
         

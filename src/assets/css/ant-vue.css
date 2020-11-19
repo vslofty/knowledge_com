@@ -184,7 +184,7 @@
   width: 0.44rem;
   height: 0.44rem;
   margin: 0;
-  background: url('../del-img-icon.png') no-repeat center center;
+  background: url('https://j.weizan.cn/zhibo/microcourse/images/del-img-icon.png') no-repeat center center;
   background-size: cover;
 }
 .mobile-feedback .ant-upload-list-picture-card .ant-upload-list-item-actions .anticon-delete svg {

@@ -1,5 +1,5 @@
 <template>
-    <div class="page-index">
+    <div class="page-index" @mouseup='mouseup($event)'>
         <div class="header-bg">
             <img src="https://j.weizan.cn/zhibo/microcourse/images/banner-bg.png?v=20201028">
         </div>
@@ -34,7 +34,7 @@
                 <div class="case-box case-bg-4"><span>语数英教学</span></div>
                 <div class="case-box case-bg-5"><span>企业内部培训</span></div>
             </div>
-            <img class="bg-2" src="https://j.weizan.cn/zhibo/microcourse/images/main-content-bg-2.png"/>
+            <img class="bg-2" src="https://j.weizan.cn/zhibo/microcourse/images/main-content-bg-2.png?v=1"/>
             <div class="main-content-1 d-flex ali-cen">
                 <div class="main-img-box-1">
                     <img class="img-1" src="https://j.weizan.cn/zhibo/microcourse/images/main-content-img-1.png"  data-aos="fade-up" data-aos-delay="200"/>
@@ -51,8 +51,10 @@
             <div class="main-content-2 d-flex ali-end">
                 <div class="describe-box d-flex flex-dircol">
                     <img class="desc-icon" src="https://j.weizan.cn/zhibo/microcourse/images/desc-icon-2.png"/>
-                    <h4 class="small-title" data-aos="fade-up" data-aos-delay="100">屏幕共享<br/>授课灵活自由
-                    <img class="bg-3" src="https://j.weizan.cn/zhibo/microcourse/images/main-content-bg-3.png"/></h4>
+                    <h4 class="small-title" data-aos="fade-up" data-aos-delay="100">
+                        屏幕共享<br/>授课灵活自由
+                        <img class="bg-3" src="https://j.weizan.cn/zhibo/microcourse/images/main-content-bg-3.png?v=1"/>
+                    </h4>
                     <p class="sub-desc" data-aos="fade-up" data-aos-delay="300">屏幕一键共享，老师示范更方便，授课更灵活</p>
                 </div>
                 <div class="main-img-box-2">
@@ -81,17 +83,23 @@
                 <div class="main-img-box-4">
                     <!-- <img class="bg-4" src="https://j.weizan.cn/zhibo/microcourse/images/main-content-bg-3.png"/> -->
                     <img class="img-10" src="https://j.weizan.cn/zhibo/microcourse/images/main-content-img-10.png?v=1" data-aos="fade-up" data-aos-delay="600"/>
-                    <img class="img-11" src="https://j.weizan.cn/zhibo/microcourse/images/main-content-img-11.png?v=1" data-aos="fade-up" data-aos-delay="800"/>
+                    <div ref="beautyBox" class="beauty-img-box" data-aos="fade-up" data-aos-delay="800">
+                        <img style="width:100%;height:100%;" src="https://j.weizan.cn/zhibo/microcourse/images/main-content-img-11.png?v=1"/>
+                        <img ref="sildeBtn" class="silde-btn" src="https://j.weizan.cn/zhibo/microcourse/images/silde-btn.png" @mousedown="mousedown($event)" />
+                        <div ref="sildeBox" class="silde-box">
+                            <img class="silde-beauty-img" src="https://j.weizan.cn/zhibo/microcourse/images/main-content-img-12.png?v=1"/>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="advert-box">
+        <div class="advert-box"> 
             <div class="advert-bg">
                 <img src="https://j.weizan.cn/zhibo/microcourse/images/advert-bg.png?v=20201027"/>
             </div>
             <div class="container">
-                <h1 data-aos="fade-up" data-aos-delay="300">一分钟创造自己的<br/>在线课堂</h1>
-                <p data-aos="fade-up" data-aos-delay="350">助力教育创业者实现互联网转型升级</p>
+                <h1 data-aos="fade-up" data-aos-delay="300">一分钟创建专属<br/>在线互动课堂</h1>
+                <p data-aos="fade-up" data-aos-delay="350">让知识传播更简单</p>
                 <a-button class="buildclass" @click="goPcBackstage" data-aos="fade-up" data-aos-delay="400" v-html="buildtext"></a-button>
             </div>
         </div>
@@ -130,13 +138,41 @@ export default {
             }else{
                 return false;
             }
+        },
+        mousedown: function (event) {
+            var event=event||window.event;
+            var _target = event.target
+            var startx=event.clientX;
+            var sb_bkx=startx-event.target.offsetLeft;
+            var ww=this.$refs.beautyBox.offsetWidth;
+            if (event.preventDefault) {
+                event.preventDefault();
+            } else{
+                event.returnValue=false;
+            };
+            this.$refs.beautyBox.onmousemove=(ev)=> {
+                var event=ev||window.event;
+                var _targetLeft=this.$refs.beautyBox.getBoundingClientRect().left;
+                if (event.clientX < 0 || (event.clientX-_targetLeft) > ww) {
+                    return false;
+                };
+                var endx=event.clientX-sb_bkx;
+                _target.setAttribute('style', `left: ${endx}px !important`);
+                this.$refs.sildeBox.setAttribute('style', `width: ${ww-endx-16}px !important`);
+            }
+        },
+        mouseup: function (e) {
+            this.$refs.beautyBox.onmousemove=null;
         }
     },
     mounted(){
         this.IsIE = this.isIE();
-        console.log(this.IsIE)
         this.buildtext = '<div><span>' + this.buildtext.split('').join('</span><span>') + '</span></div>';
         this.screenHeight = document.documentElement.clientHeight || document.body.clientHeight;
+		window.onresize = ()=> {
+            this.$refs.sildeBtn.setAttribute('style', '');
+            this.$refs.sildeBox.setAttribute('style', '');
+		}
     }
 }
 </script>
@@ -444,14 +480,40 @@ export default {
                     position: absolute;
                     left: 0;
                     top: 0;
-                    z-index: 1;
+                    z-index: 3;
                     width: 196px;
                 }
-                .img-11{
+                .beauty-img-box{
                     position: absolute;
                     left: 164px;
                     top: 21px;
                     width: 540px;
+                }
+                .silde-btn{
+                    position: absolute;
+                    left: 252px;
+                    top: 12px;
+                    z-index: 6;
+                    width: 36px;
+                    height: 24px;
+                    cursor: pointer;
+                }
+                .silde-box{
+                    position: absolute;
+                    right: 0;
+                    top: 0;
+                    z-index: 2;
+                    width: 270px;
+                    height: 100%;
+                    overflow: hidden;
+                    border-left: 3px solid rgba(255,255,255,0.5);
+                    .silde-beauty-img{
+                        position: absolute;
+                        right: 0;
+                        top: 0;
+                        width: 540px;
+                        height: 100%;
+                    }
                 }
             }
         }

@@ -5,7 +5,7 @@
                 <p class="d-flex ali-cen">
                     <span class="blackcolor">服务支持</span>
                     <router-link to="/download/">下载中心</router-link>
-                    <router-link to="/help/m001">帮助文档</router-link>
+                    <router-link to="/help/0/">帮助文档</router-link>
                     <a target="_blank" :href="generalInfo&&generalInfo.CustomServiceURI">在线客服</a>
                 </p>
                 <p class="d-flex ali-cen">

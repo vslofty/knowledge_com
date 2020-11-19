@@ -20,8 +20,8 @@
     font-size: 16px !important;
   }
   .page-index .body-box .describe-box .bg-3 {
-    right: 106px !important;
-    top: -38px !important;
+    left: 160px !important;
+    top: 15px !important;
     width: 78px !important;
     height: 78px !important;
   }
@@ -112,10 +112,19 @@
   .page-index .body-box .main-content-4 .main-img-box-4 .img-10 {
     width: 157px !important;
   }
-  .page-index .body-box .main-content-4 .main-img-box-4 .img-11 {
-    left: 131px !important;
-    top: 17px !important;
-    width: 432px !important;
+  .page-index .body-box .main-content-4 .main-img-box-4 .beauty-img-box {
+    left: 131px!important;
+    top: 17px!important;
+    width: 432px!important;
+  }
+  .page-index .body-box .main-content-4 .main-img-box-4 .silde-btn {
+    left: 200px!important;
+  }
+  .page-index .body-box .main-content-4 .main-img-box-4 .silde-box {
+    width: 216px!important;
+  }
+  .page-index .body-box .main-content-4 .main-img-box-4 .silde-box .silde-beauty-img {
+    width: 432px!important;
   }
   .page-index .advert-box {
     height: 480px !important;
@@ -242,10 +251,10 @@
     margin-bottom: 16px !important;
   }
   .page-index .body-box .describe-box .bg-3 {
-    right: 79px !important;
-    top: -29px !important;
-    width: 59px !important;
-    height: 59px !important;
+    left: 120px !important;
+    top: 18px !important;
+    width: 50px !important;
+    height: 50px !important;
   }
   .page-index .body-box .bg-1 {
     left: -120px !important;
@@ -331,10 +340,20 @@
   .page-index .body-box .main-content-4 .main-img-box-4 .img-10 {
     width: 118px !important;
   }
-  .page-index .body-box .main-content-4 .main-img-box-4 .img-11 {
-    left: 98px !important;
-    top: 13px !important;
-    width: 324px !important;
+  .page-index .body-box .main-content-4 .main-img-box-4 .beauty-img-box {
+    left: 98px!important;
+    top: 13px!important;
+    width: 324px!important;
+  }
+  .page-index .body-box .main-content-4 .main-img-box-4 .silde-btn {
+    left: 146px!important;
+    top: 8px!important;
+  }
+  .page-index .body-box .main-content-4 .main-img-box-4 .silde-box {
+    width: 162px!important;
+  }
+  .page-index .body-box .main-content-4 .main-img-box-4 .silde-box .silde-beauty-img {
+    width: 324px!important;
   }
   .page-index .advert-box {
     height: 360px !important;

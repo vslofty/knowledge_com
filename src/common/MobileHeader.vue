@@ -1,5 +1,5 @@
 <template>
-  <div class="header" :class="showwhitebg && 'white-bg'" :style="headerbgcolor">
+  <div class="mobile-header" :class="showwhitebg && 'white-bg'" :style="headerbgcolor">
     <router-link to="/mobile/" class="logo">
       <img
         src="https://j.weizan.cn/zhibo/microcourse/images/mobile/logo.png"
@@ -18,7 +18,7 @@
         </div>
       <ul class="nav">
         <li><router-link to="/mobile/help/">帮助文档</router-link></li>
-        <li><router-link to="/mobile/feedback?type=1000">产品反馈</router-link></li>
+        <li><router-link to="/mobile/feedback/?type=1000">产品反馈</router-link></li>
         <li @click="goDownLoad"><span>下载APP</span></li>
       </ul>
     </a-drawer>
@@ -71,7 +71,7 @@ export default {
 </script>
 
 <style lang="less" scoped>
-.header {
+.mobile-header {
   position: fixed;
   left: 0;
   top: 0;

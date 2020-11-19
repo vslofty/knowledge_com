@@ -113,7 +113,7 @@ export default {
         onOpenChange(item, key, keyPath) {
             console.log(item, key, keyPath)
             this.getArticleDetails(item.key);
-            this.$router.push(`/help/${item.key}`);
+            this.$router.push(`/help/${item.key}/`);
         },
     }
 }

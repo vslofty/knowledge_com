@@ -48,6 +48,7 @@
 
 <script>
 import CommonAjax from "@/utils/http/modules/common.request.js";
+import CompressImg from "@/utils/compressImg.js";
 var ErrorTip={
     type: "请选择反馈类型",
     content: "请填写反馈内容",
@@ -73,29 +74,48 @@ export default {
     },
     methods: {
         beforeUpload(file) {
-            console.log(file)
-            const isJpgOrPng = file.type === 'image/jpeg' || file.type === 'image/jpg' || file.type === 'image/png';
-            const isLt2M = file.size / 1024 / 1024 < 2;
-            if (!isJpgOrPng||!isLt2M) {
-                this.$message.error('仅支持JPEG、JPG、PNG格式，图片大小不超过2M');
-            }
-            return isJpgOrPng && isLt2M;
+            return new Promise((resolve, reject) => {
+                this.transformFile(file).then(res => {
+                    const isJpgOrPng = file.type === 'image/jpeg' || file.type === 'image/jpg' || file.type === 'image/png';
+                    if (!isJpgOrPng) {
+                        this.$message.error('仅支持JPEG、JPG、PNG格式');
+                        reject(false);
+                    }
+                    resolve(res);
+                }).catch(err=>{
+                    reject(false);
+                })
+            })
         },
-        async handlePreview(file) {
+        transformFile(file){
+            return new Promise(async resolve => {
+                resolve(await CompressImg(file))
+            });
+        },
+        handlePreview(file) {
             this.previewImage = file.thumbUrl||file.url;
             this.previewVisible = true;
         },
-        handleChange({fileList}) {
-            // console.log(fileList)
-            fileList.length&&fileList.forEach(item=>{
-                if(item.status=='done'){
-                    let response = JSON.parse(item.xhr.response);
-                    if(response.isok){
-                        item.thumbUrl=response.dataObj;
+        handleChange(info) {
+            try{
+                info.fileList.length&&info.fileList.forEach(item=>{
+                    item.uid=`vc-upload-${item.name.split('.')[0]}`;
+                    if(item.status=='done'){
+                        if(item.response&&item.response.isok){
+                            item.thumbUrl=item.response.dataObj;
+                        }else{
+                            let response = JSON.parse(item.xhr.response);
+                            if(response.isok){
+                                item.thumbUrl=response.dataObj;
+                            }
+                        }
                     }
-                }
-            });
-            this.fileList = fileList.slice(0,3);
+                });
+                console.log(info.fileList)
+                this.fileList = info.fileList.slice(0,3);
+            }catch(err){
+                console.log(err)
+            }
         },
         async addFeedBack(){
             for(var key in this.params){
@@ -162,7 +182,7 @@ export default {
         display: flex;
         align-items: center;
         .ant-radio-button-wrapper{
-            width: 120px;
+            width: 140px;
             height: 44px;
             color: #202124;
             font-size: 14px;
@@ -203,8 +223,8 @@ export default {
         display: flex;
         justify-content: center;
         align-items: center;
-        width: 240px;
-        height: 60px;
+        width: 400px;
+        height: 50px;
         color: #252525;
         font-size: 15px;
         font-weight: bold;

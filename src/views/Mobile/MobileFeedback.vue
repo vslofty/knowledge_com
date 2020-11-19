@@ -35,6 +35,7 @@
 import CommonAjax from "@/utils/http/modules/common.request.js";
 import muTypes from "@/store/mutation-types.js";
 import { mapGetters,mapMutations } from 'vuex';
+import CompressImg from "@/utils/compressImg.js";
 var ErrorTip={
     type: "请选择反馈类型",
     content: "请填写反馈内容",
@@ -65,25 +66,44 @@ export default {
             updateToken: muTypes.token,
         }),
         beforeUpload(file) {
-            console.log(file)
-            const isJpgOrPng = file.type === 'image/jpeg' || file.type === 'image/jpg' || file.type === 'image/png';
-            const isLt2M = file.size / 1024 / 1024 < 2;
-            if (!isJpgOrPng||!isLt2M) {
-                this.$message.error('仅支持JPEG、JPG、PNG格式，图片大小不超过2M');
-            }
-            return isJpgOrPng && isLt2M;
-        },
-        handleChange({fileList}) {
-            // console.log(fileList)
-            fileList.length&&fileList.forEach(item=>{
-                if(item.status=='done'){
-                    let response = JSON.parse(item.xhr.response);
-                    if(response.isok){
-                        item.thumbUrl=response.dataObj;
+            return new Promise((resolve, reject) => {
+                this.transformFile(file).then(res => {
+                    const isJpgOrPng = file.type === 'image/jpeg' || file.type === 'image/jpg' || file.type === 'image/png';
+                    if (!isJpgOrPng) {
+                        this.$message.error('仅支持JPEG、JPG、PNG格式');
+                        reject(false);
                     }
-                }
+                    resolve(res);
+                }).catch(err=>{
+                    reject(false);
+                })
+            })
+        },
+        transformFile(file){
+            return new Promise(async resolve => {
+                resolve(await CompressImg(file))
             });
-            this.fileList = fileList.slice(0,3);
+        },
+        handleChange(info) {
+            try{
+                info.fileList.length&&info.fileList.forEach(item=>{
+                    item.uid=`vc-upload-${item.name.split('.')[0]}`;
+                    if(item.status=='done'){
+                        if(item.response&&item.response.isok){
+                            item.thumbUrl=item.response.dataObj;
+                        }else{
+                            let response = JSON.parse(item.xhr.response);
+                            if(response.isok){
+                                item.thumbUrl=response.dataObj;
+                            }
+                        }
+                    }
+                });
+                console.log(info.fileList)
+                this.fileList = info.fileList.slice(0,3);
+            }catch(err){
+                console.log(err)
+            }
         },
         async addFeedBack(){
             for(var key in this.params){

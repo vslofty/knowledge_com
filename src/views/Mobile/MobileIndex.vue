@@ -32,7 +32,7 @@
             <img class="mobile-img-5" src="https://j.weizan.cn/zhibo/microcourse/images/mobile/mobile-img-5.png"/>
         </div>
         <div class="advert-box">
-            <h1>一分钟创造自己的<br/>在线课堂</h1>
+            <h1>一分钟创建专属<br/>在线互动课堂</h1>
             <p>让知识传播更简单</p>
             <a-button class="buildclass" @click="goDownLoad">立即下载</a-button>
         </div>
