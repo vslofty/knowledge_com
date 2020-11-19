@@ -2,11 +2,11 @@
     <div class="mobile-help">
         <mobile-header :showwhitebg="true"></mobile-header>
         <div class="help-model" v-for="item of menuinfo" :key="item.Id">
-            <router-link tag="h4" :to="`/mobile/helpdetail/?id=${item.Id}`" v-if="!item.Articles||!item.Articles.length"><span>{{item.Name}}</span><img src=""/></router-link>
+            <router-link tag="h4" :to="`/mobile/helpdetail/?id=${item.Id}&name=${item.Name}`" v-if="!item.Articles||!item.Articles.length"><span>{{item.Name}}</span><img src=""/></router-link>
             <div v-if="item.Articles&&item.Articles.length">
                 <h4>{{item.Name}}</h4>
                 <ul>
-                    <router-link tag="li" :to="`/mobile/helpdetail/?id=${menuitem.Id}`" v-for="menuitem of item.Articles" :key="menuitem.Id">
+                    <router-link tag="li" :to="`/mobile/helpdetail/?id=${menuitem.Id}&name=${item.Name}`" v-for="menuitem of item.Articles" :key="menuitem.Id">
                         <span>{{menuitem.Title}}</span>
                         <img src=""/>
                     </router-link>

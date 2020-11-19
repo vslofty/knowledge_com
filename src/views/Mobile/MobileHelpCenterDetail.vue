@@ -1,9 +1,13 @@
 <template>
     <div class="mobile-help-detail">
         <mobile-header :showwhitebg="true"></mobile-header>
+        <a-breadcrumb v-if="info.title">
+            <a-breadcrumb-item><router-link to="/mobile/help/">{{name}}</router-link></a-breadcrumb-item>
+            <a-breadcrumb-item>{{info.title}}</a-breadcrumb-item>
+        </a-breadcrumb>
         <div class="detail">
             <h2 class="title">{{info.title}}</h2>
-            <p class="time">更新时间：{{info.lastEditTime}}</p>
+            <p class="time" v-show="info.lastEditTime">更新时间：{{info.lastEditTime}}</p>
             <div class="article-content" v-html="info.context"></div>
         </div>
     </div>
@@ -15,6 +19,7 @@ import CommonAjax from "@/utils/http/modules/common.request.js";
 export default {
     data(){
         return {
+            name: '',
             info: {}
         }
     },
@@ -23,6 +28,7 @@ export default {
     },
     mounted(){
         console.log(this.$route)
+        this.name = this.$route.query.name||"";
         this.getArticleDetails(this.$route.query.id)
     },
     methods: {
@@ -32,7 +38,7 @@ export default {
                     articleid: id
                 });
                 console.log(res)
-                this.info = res.dataObj;
+                this.info = res.dataObj||{};
             }catch(error){
                 error&&this.$antdMessage.error(error)
             }
@@ -45,6 +51,17 @@ export default {
 .mobile-help-detail{
     min-height: 100vh;
     padding-top: 0.88rem;
+    /deep/ .ant-breadcrumb{
+        border-top: 0.05rem solid #F5F6F7;
+        padding: 0.3rem 0.3rem 0;
+        color: #202124;
+        .ant-breadcrumb-separator{
+            color: #202124;
+        }
+        a{
+            color: #FFA800;
+        }
+    }
     .detail{
         padding: 0.2rem 0.4rem;
         .title{

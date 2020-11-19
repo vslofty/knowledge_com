@@ -78,6 +78,7 @@ export default {
     },
     methods: {
         async getCatalogList(articleId){
+            articleId = Number(articleId)
             try{
                 let res = await CommonAjax.getCatalog();
                 console.log(res)
@@ -93,6 +94,7 @@ export default {
                     Ids.push(item.Id);
                 });
                 (articleId||Ids.length)&&this.getArticleDetails(articleId||Ids[0]);
+                !this.selectkey.length&&(this.selectkey.push(articleId||Ids[0]))
                 this.openKeys = Ids;
                 this.menuinfo = res.dataObj;
             }catch(error){
