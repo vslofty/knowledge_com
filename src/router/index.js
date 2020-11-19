@@ -55,7 +55,7 @@ const routes = [
     meta: { title: "知播-帮助文档" }
   },
   {
-    path: '/mobile/helpdetail/:id',
+    path: '/mobile/helpdetail',
     name: 'MobileHelpCenterDetail',
     component: MobileHelpCenterDetail,
     meta: { title: "知播-帮助详情" }

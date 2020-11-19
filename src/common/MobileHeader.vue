@@ -17,6 +17,7 @@
             <img src="https://j.weizan.cn/zhibo/microcourse/images/mobile/close-menu-icon.png" class="menu-btn" @click="menuVisible=false" />
         </div>
       <ul class="nav">
+        <li><router-link to="/mobile/">首页</router-link></li>
         <li><router-link to="/mobile/help/">帮助文档</router-link></li>
         <li><router-link to="/mobile/feedback/?type=1000">产品反馈</router-link></li>
         <li @click="goDownLoad"><span>下载APP</span></li>

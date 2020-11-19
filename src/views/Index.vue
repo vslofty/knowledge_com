@@ -1,7 +1,7 @@
 <template>
     <div class="page-index" @mouseup='mouseup($event)'>
         <div class="header-bg">
-            <img src="https://j.weizan.cn/zhibo/microcourse/images/banner-bg.png?v=20201028">
+            <img src="https://j.weizan.cn/zhibo/microcourse/images/banner-bg.png?v=20201119">
         </div>
         <div class="header-box" ref="time" :style="`height:${screenHeight}px`">
             <headers current="index"></headers>
@@ -26,7 +26,7 @@
         <div class="body-box">
             <h2 class="main-title" data-aos="fade-up">知播在线互动课堂</h2>
             <p class="main-desc" data-aos="fade-up" data-aos-delay="200">以高效，正确地帮助教育培训机构或老师，解决多种培训教育场景</p>
-            <div class="main-content-0 d-flex ali-cen">
+            <div class="main-content-0 d-flex ali-cen" data-aos="fade-up" data-aos-delay="400">
                 <img class="bg-1" src="https://j.weizan.cn/zhibo/microcourse/images/main-content-bg-1.png"/>
                 <div class="case-box case-bg-1"><span>家教辅导</span></div>
                 <div class="case-box case-bg-2"><span>绘画教育</span></div>
@@ -43,19 +43,19 @@
                     <img class="img-4" src="https://j.weizan.cn/zhibo/microcourse/images/main-content-img-4.png" data-aos="fade-up" data-aos-delay="800"/>
                 </div>
                 <div class="describe-box d-flex flex-dircol">
-                    <img class="desc-icon" src="https://j.weizan.cn/zhibo/microcourse/images/desc-icon-1.png"/>
-                    <h4 class="small-title" data-aos="fade-up" data-aos-delay="100">课堂多人视频互动<br/>画质流畅稳定</h4>
-                    <p class="sub-desc" data-aos="fade-up" data-aos-delay="300">老师电脑客户端授课，学生App上课，充分保障了课堂互动的真实，在弱网下也能流畅上课，保证教学效果</p>
+                    <img class="desc-icon" src="https://j.weizan.cn/zhibo/microcourse/images/desc-icon-1.png" data-aos="fade-up" data-aos-delay="100"/>
+                    <h4 class="small-title" data-aos="fade-up" data-aos-delay="300">课堂多人视频互动<br/>画质流畅稳定</h4>
+                    <p class="sub-desc" data-aos="fade-up" data-aos-delay="500">老师电脑客户端授课，学生App上课，充分保障了课堂互动的真实，在弱网下也能流畅上课，保证教学效果</p>
                 </div>
             </div>
             <div class="main-content-2 d-flex ali-end">
                 <div class="describe-box d-flex flex-dircol">
-                    <img class="desc-icon" src="https://j.weizan.cn/zhibo/microcourse/images/desc-icon-2.png"/>
-                    <h4 class="small-title" data-aos="fade-up" data-aos-delay="100">
+                    <img class="desc-icon" src="https://j.weizan.cn/zhibo/microcourse/images/desc-icon-2.png" data-aos="fade-up" data-aos-delay="100"/>
+                    <h4 class="small-title" data-aos="fade-up" data-aos-delay="300">
                         屏幕共享<br/>授课灵活自由
                         <img class="bg-3" src="https://j.weizan.cn/zhibo/microcourse/images/main-content-bg-3.png?v=1"/>
                     </h4>
-                    <p class="sub-desc" data-aos="fade-up" data-aos-delay="300">屏幕一键共享，老师示范更方便，授课更灵活</p>
+                    <p class="sub-desc" data-aos="fade-up" data-aos-delay="500">屏幕一键共享，老师示范更方便，授课更灵活</p>
                 </div>
                 <div class="main-img-box-2">
                     <img class="img-5" src="https://j.weizan.cn/zhibo/microcourse/images/main-content-img-5.png?v=1" data-aos="fade-up" data-aos-delay="200"/>
@@ -69,16 +69,16 @@
                     <img class="img-9" src="https://j.weizan.cn/zhibo/microcourse/images/main-content-img-9.png?v=1" data-aos="fade-up" data-aos-delay="400"/>
                 </div>
                 <div class="describe-box d-flex flex-dircol">
-                    <img class="desc-icon" src="https://j.weizan.cn/zhibo/microcourse/images/desc-icon-3.png"/>
-                    <h4 class="small-title" data-aos="fade-up" data-aos-delay="100">多格式课件演示<br/>课堂内容更生动</h4>
-                    <p class="sub-desc" data-aos="fade-up" data-aos-delay="300">支持视频，图片，PDF，Word，PPT等主流文档演示丰富画笔工具，讲到哪画到哪，重点知识统统圈起来</p>
+                    <img class="desc-icon" src="https://j.weizan.cn/zhibo/microcourse/images/desc-icon-3.png" data-aos="fade-up" data-aos-delay="100"/>
+                    <h4 class="small-title" data-aos="fade-up" data-aos-delay="300">多格式课件演示<br/>课堂内容更生动</h4>
+                    <p class="sub-desc" data-aos="fade-up" data-aos-delay="500">支持视频，图片，PDF，Word，PPT等主流文档演示丰富画笔工具，讲到哪画到哪，重点知识统统圈起来</p>
                 </div>
             </div>
             <div class="main-content-4 d-flex ali-center">
                 <div class="describe-box d-flex flex-dircol juc-cen">
-                    <img class="desc-icon" src="https://j.weizan.cn/zhibo/microcourse/images/desc-icon-4.png"/>
-                    <h4 class="small-title" data-aos="fade-up" data-aos-delay="100">直播美颜<br/>让老师授课更舒心</h4>
-                    <p class="sub-desc" data-aos="fade-up" data-aos-delay="300">人性化，灵活度高的课堂美颜，帮助老师轻松出镜，自信开课。</p>
+                    <img class="desc-icon" src="https://j.weizan.cn/zhibo/microcourse/images/desc-icon-4.png" data-aos="fade-up" data-aos-delay="100"/>
+                    <h4 class="small-title" data-aos="fade-up" data-aos-delay="300">直播美颜<br/>让老师授课更舒心</h4>
+                    <p class="sub-desc" data-aos="fade-up" data-aos-delay="500">人性化，灵活度高的课堂美颜，帮助老师轻松出镜，自信开课。</p>
                 </div>
                 <div class="main-img-box-4">
                     <!-- <img class="bg-4" src="https://j.weizan.cn/zhibo/microcourse/images/main-content-bg-3.png"/> -->
@@ -89,6 +89,7 @@
                         <div ref="sildeBox" class="silde-box">
                             <img class="silde-beauty-img" src="https://j.weizan.cn/zhibo/microcourse/images/main-content-img-12.png?v=1"/>
                         </div>
+                        <p :style="IsIE&&'background-image:none;color:#fff;'">滑动查看效果</p>
                     </div>
                 </div>
             </div>
@@ -187,6 +188,7 @@ export default {
         height: 100vh;
         display: flex;
         justify-content: center;
+        align-items: center;
         img{
             width: 100%;
         }
@@ -488,6 +490,19 @@ export default {
                     left: 164px;
                     top: 21px;
                     width: 540px;
+                    p{
+                        position: absolute;
+                        left: 50%;
+                        bottom: -25px;
+                        z-index: 9;
+                        font-size: 12px;
+                        transform: translateX(-50%);
+                        background-image: linear-gradient(to left, #202124 0%, rgba(0, 0, 0, 0.4) 50%,#202124 100%);
+                        color: transparent;
+                        -webkit-background-clip: text;
+                        background-size: 200% 100%;
+                        animation: masked-animation 2.2s infinite linear;
+                    }
                 }
                 .silde-btn{
                     position: absolute;

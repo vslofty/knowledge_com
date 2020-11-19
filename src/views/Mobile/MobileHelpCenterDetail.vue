@@ -23,7 +23,7 @@ export default {
     },
     mounted(){
         console.log(this.$route)
-        this.getArticleDetails(this.$route.params.id)
+        this.getArticleDetails(this.$route.query.id)
     },
     methods: {
         async getArticleDetails(id){
