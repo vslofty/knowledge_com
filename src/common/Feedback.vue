@@ -37,18 +37,6 @@
                     <a-icon type="plus" />
                 </div>
             </a-upload>
-            <!-- <div class="upload_img_box">
-                <div class="upload_img_item" v-for="(item,index) in uploadImgList" :key="index">
-                    <el-image class="upload_img" :src="item" fit="cover" @click="handlePreview"></el-image>
-                    <div class="upload_img_mask" @click="delImgUrl(item)"></div>
-                </div> -->
-                <!-- <el-upload name="file" action="/api/universal/v1/feedback/uploadimage" multiple list-type="picture-card" :headers="token?{'Authorization': 'Bearer '+token}:{}" :before-upload="beforeUpload" :limit="3" :on-exceed="handleExceed" :on-success="handleChange" :disabled="fileList.length >= 3">
-                    <div @click="checkImg">
-                        <a-icon type="plus" />
-                        <div style="font-size: 0.2rem;">添加图片</div>
-                    </div>
-                </el-upload> -->
-            <!-- </div> -->
         </div>
         <a-button class="income-send freeuse" @click="addFeedBack" v-html="sendtext"></a-button>
 
@@ -122,9 +110,6 @@ export default {
             this.previewVisible = true;
         },
         handleChange(info) {
-            // console.log(response, file, fileList)
-            // this.fileList=fileList;
-            // return;
             try{
                 info.fileList.length&&info.fileList.forEach(item=>{
                     item.uid=`vc-upload-${item.name.split('.')[0]}`;
@@ -144,20 +129,6 @@ export default {
             }catch(err){
                 console.log(err)
             }
-        },
-        checkImg(){
-            console.log(111)
-            if(this.fileList.length>=3){
-                this.$antdMessage.warning("最多可上传3张截图");
-            }
-        },
-        handleExceed(files, fileList) {
-            console.log(files, fileList)
-            this.$antdMessage.warning("最多可上传3张截图");
-        },
-        delImgUrl(url){
-            var index= this.uploadImgList.findIndex(item=>item==url);
-            this.uploadImgList.splice(index,1)
         },
         async addFeedBack(){
             for(var key in this.params){
@@ -267,32 +238,6 @@ export default {
     }
     /deep/ .ant-input:focus{
         box-shadow: none;
-    }
-    .upload_img_box{
-        display: inline-flex;
-        align-items: center;
-        .upload_img_item{
-            position: relative;
-            width: 80px;
-            height: 80px;
-            margin: 0 20px 20px 0;
-            border-radius: 14px;
-            overflow: hidden;
-        }
-        .upload_img{
-            width: 100%;
-            cursor: pointer;
-        }
-        .upload_img_mask{
-            position: absolute;
-            right: 0;
-            top: 0;
-            width: 30px;
-            height: 30px;
-            cursor: pointer;
-            background: url('https://j.weizan.cn/zhibo/microcourse/images/del-img-icon.png') no-repeat center center;
-            background-size: cover;
-        }
     }
     .income-send{
         display: flex;
