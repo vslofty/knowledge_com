@@ -25,7 +25,7 @@ const routes = [
     meta: { title: "知播-下载中心" }
   },
   {
-    path: '/help/:id',
+    path: '/help/',
     name: 'HelpCenter',
     component: HelpCenter,
     meta: { title: "知播-帮助文档" }

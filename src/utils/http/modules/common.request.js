@@ -45,11 +45,11 @@ export default {
   /**
   * @method 获取文章目录
   */
-  getCatalog: () => post(`/api/universal/v1/article/catalog`),
+  getCatalog: () => post(`/api/universal/v1/article/catalog`,{},false),
 
   /**
   * @method 获取文章详情
    * @param {*} articleid  文章id
   */
-  getArticleDetail: (params) => post(`/api/universal/v1/article/article`,qs.stringify(params)),
+  getArticleDetail: (params) => post(`/api/universal/v1/article/article`,qs.stringify(params),false),
 };

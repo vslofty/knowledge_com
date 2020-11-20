@@ -2,14 +2,26 @@
     <div class="mobile-help">
         <mobile-header :showwhitebg="true"></mobile-header>
         <div class="help-model" v-for="item of menuinfo" :key="item.Id">
-            <router-link tag="h4" :to="`/mobile/helpdetail/?id=${item.Id}&name=${item.Name}`" v-if="!item.Articles||!item.Articles.length"><span>{{item.Name}}</span><img src=""/></router-link>
-            <div v-if="item.Articles&&item.Articles.length">
+            <!-- <router-link :to="`/mobile/helpdetail/?id=${item.Id}&name=${item.Name}`">
+                <h4>
+                    <span>{{item.Name}}</span>
+                    <img src="../../assets/right_arrow_icon.png"/>
+                </h4>
+            </router-link> -->
+            <div>
                 <h4>{{item.Name}}</h4>
                 <ul>
-                    <router-link tag="li" :to="`/mobile/helpdetail/?id=${menuitem.Id}&name=${item.Name}`" v-for="menuitem of item.Articles" :key="menuitem.Id">
-                        <span>{{menuitem.Title}}</span>
-                        <img src=""/>
-                    </router-link>
+                    <template v-if="item.Articles&&item.Articles.length">
+                        <router-link tag="li" :to="`/mobile/helpdetail/?id=${menuitem.Id}&name=${item.Name}`" v-for="menuitem of item.Articles" :key="menuitem.Id">
+                            <span>{{menuitem.Title}}</span>
+                            <img src="../../assets/right_arrow_icon.png"/>
+                        </router-link>
+                    </template>
+                    <template v-if="!item.Articles||!item.Articles.length">
+                        <li>
+                            <span>暂无文章</span>
+                        </li>
+                    </template>
                 </ul>
             </div>
         </div>
@@ -49,6 +61,7 @@ export default {
 .mobile-help{
     min-height: 100vh;
     padding-top: 0.88rem;
+    padding-bottom: 0.2rem;
     background: #F5F6F7;
     .help-model{
         margin: 0.2rem;
@@ -56,14 +69,15 @@ export default {
         border-radius: 0.12rem;
         h4{
             height: 1.3rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            line-height: 1.3rem;
             margin: 0 0.4rem;
             color: #202124;
             font-size: 0.3rem;
             font-weight: bold;
             border-bottom: 1px solid #F5F6F7;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
         }
         ul{
             margin: 0 0.4rem;
@@ -81,6 +95,16 @@ export default {
                 margin-left: 0.3rem;
                 &:first-child{
                     border-top: none;
+                }
+                &>span{
+                    margin-right: 0.2rem;
+                    flex: 1;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                }
+                &>img{
+                    width: 0.14rem;
                 }
             }
         }

@@ -15,7 +15,6 @@ export default function(file) {
   read.readAsDataURL(file);
   return new Promise(function(resolve, reject) {
     read.onload = function(e) {
-        console.log(file)
       var img = new Image();
       img.src = e.target.result;
       img.onload = function() {

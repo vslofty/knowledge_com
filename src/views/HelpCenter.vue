@@ -6,14 +6,21 @@
                 <div class="box">
                     <a-menu mode="inline" :default-selected-keys="selectkey" :default-open-keys="openKeys" :style="`width:${menuWidth}px;`" @click="onOpenChange" v-if="menuinfo&&menuinfo.length">
                         <template v-for="item of menuinfo">
-                            <a-menu-item :key="item.Id" v-if="!(item.Articles&&item.Articles.length)">
+                            <!-- <a-menu-item :key="item.Id" v-if="!(item.Articles&&item.Articles.length)">
                                 <span style="font-weight:bold;color:#252525;">{{item.Name}}</span>
-                            </a-menu-item>
-                            <a-sub-menu :key="item.Id" v-if="item.Articles&&item.Articles.length">
+                            </a-menu-item> -->
+                            <a-sub-menu :key="item.Id">
                                 <span slot="title"><span>{{item.Name}}</span></span>
-                                <template v-for="submenu of item.Articles">
-                                    <a-menu-item :key="submenu.Id">
-                                        <span>{{submenu.Title}}</span>
+                                <template v-if="item.Articles&&item.Articles.length">
+                                    <template v-for="submenu of item.Articles">
+                                        <a-menu-item :key="submenu.Id">
+                                            <span>{{submenu.Title}}</span>
+                                        </a-menu-item>
+                                    </template>
+                                </template>
+                                <template v-if="!(item.Articles&&item.Articles.length)">
+                                    <a-menu-item :key="item.Id">
+                                        <span>暂无文章</span>
                                     </a-menu-item>
                                 </template>
                             </a-sub-menu>
@@ -54,7 +61,7 @@ export default {
     mounted(){
         console.log(this.$route)
         this.$nextTick(()=>{
-            this.getCatalogList(this.$route.params.id);
+            this.getCatalogList(this.$route.query.id);
             var width=256;var height=100;
             if((document.documentElement.offsetWidth || document.body.offsetWidth)<=1000){
                 width=210;
@@ -78,11 +85,11 @@ export default {
     },
     methods: {
         async getCatalogList(articleId){
-            articleId = Number(articleId)
+            articleId = articleId&&Number(articleId);
             try{
                 let res = await CommonAjax.getCatalog();
                 console.log(res)
-                var Ids = [];
+                var Ids = [],openIds = [];
                 res.dataObj.length&&res.dataObj.forEach(item=>{
                     console.log(articleId,item.Id==articleId,item.Articles.some(art=>art.Id==articleId))
                     if(articleId&&item.Id==articleId){
@@ -91,11 +98,14 @@ export default {
                         var index=item.Articles.findIndex(art=>art.Id==articleId);
                         this.selectkey.push(item.Articles[index].Id);
                     }
-                    Ids.push(item.Id);
+                    openIds.push(item.Id);
+                    item.Articles.length&&item.Articles.forEach(i=>{
+                        Ids.push(i.Id);
+                    })
                 });
                 (articleId||Ids.length)&&this.getArticleDetails(articleId||Ids[0]);
                 !this.selectkey.length&&(this.selectkey.push(articleId||Ids[0]))
-                this.openKeys = Ids;
+                this.openKeys = openIds;
                 this.menuinfo = res.dataObj;
             }catch(error){
                 error&&this.$antdMessage.error(error)
@@ -115,7 +125,7 @@ export default {
         onOpenChange(item, key, keyPath) {
             console.log(item, key, keyPath)
             this.getArticleDetails(item.key);
-            this.$router.push(`/help/${item.key}/`);
+            this.$router.push(`/help/?id=${item.key}`);
         },
     }
 }

@@ -2,13 +2,13 @@
     <div class="mobile-index">
         <div class="header-bg">
             <mobile-header></mobile-header>
-            <h1 class="header-title">让知识传播更有价值</h1>
+            <h1 class="header-title">让知识传播更简单</h1>
             <p class="header-subtitle">-  专属在线互动教学课堂，一键创建  -</p>
             <a-button class="build-btn" @click="goDownLoad">立即下载</a-button>
         </div>
         <div class="model-box">
             <h2>知播在线互动课堂</h2>
-            <p>以高效，正确地帮助教育培训机构或老师，解决多种培训教育场景</p>
+            <p>满足多种教学场景，帮助教培机构、老师高效率、低成本的开展在线教学；</p>
             <img class="mobile-img-1" src="https://j.weizan.cn/zhibo/microcourse/images/mobile/mobile-img-1.png"/>
         </div>
         <div class="model-box">

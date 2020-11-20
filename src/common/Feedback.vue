@@ -30,7 +30,7 @@
                 <span>上传相关页面截图（选填）</span>
                 <span>{{fileList.length}}/3</span>
             </p>
-            <a-upload name="file" action="/api/universal/v1/feedback/uploadimage" list-type="picture-card" multiple
+            <a-upload name="file" action="/api/universal/v1/feedback/uploadimage" list-type="picture-card"
                 :file-list="fileList" :before-upload="beforeUpload" :headers="token?{'Authorization': 'Bearer '+token}:{}"
                 @preview="handlePreview" @change="handleChange">
                 <div v-if="fileList.length < 3">
@@ -83,14 +83,10 @@ export default {
         ...mapMutations({
             updateToken: muTypes.token,
         }),
-        beforeUpload(file) {
+        beforeUpload(file,fileList) {
+            console.log(file,fileList)
             return new Promise((resolve, reject) => {
                 this.transformFile(file).then(res => {
-                    const isJpgOrPng = file.type === 'image/jpeg' || file.type === 'image/jpg' || file.type === 'image/png';
-                    if (!isJpgOrPng) {
-                        this.$message.error('仅支持JPEG、JPG、PNG格式');
-                        reject(false);
-                    }
                     resolve(res);
                 }).catch(err=>{
                     reject(false);
@@ -98,8 +94,14 @@ export default {
             })
         },
         transformFile(file){
-            return new Promise(async resolve => {
-                resolve(await CompressImg(file))
+            return new Promise(async (resolve, reject) => {
+                const isJpgOrPng = file.type === 'image/jpeg' || file.type === 'image/jpg' || file.type === 'image/png';
+                if (!isJpgOrPng) {
+                    this.$message.error('仅支持JPEG、JPG、PNG格式');
+                    reject(false);
+                }else{
+                    resolve(await CompressImg(file))
+                }
             });
         },
         handlePreview(file) {

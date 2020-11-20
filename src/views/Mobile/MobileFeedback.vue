@@ -1,5 +1,6 @@
 <template>
-    <div class="mobile-feedback">
+    <div class="mobile-feedback" :style="queryType==1000&&'margin-top: 0.88rem;border-top:2px solid #F5F6F7;'">
+        <mobile-header :showwhitebg="true" v-if="queryType==1000"></mobile-header>
         <div class="module-box">
             <p class="title"><span>请选择反馈类型</span> <i>*</i></p>
             <a-radio-group v-model="params.type">
@@ -9,12 +10,12 @@
             </a-radio-group>
         </div>
         <div class="module-box">
-            <p class="title"><span>请详细描述您的问题、建议等</span> <i>*</i></p>
+            <p class="title"><span>请详细描述您的问题、建议等{{fileList.length}}</span> <i>*</i></p>
             <div class="desc-box">
                 <a-textarea class="desc-content" v-model="params.content"
                 placeholder="请详细描述您的问题、建议等等" placeholder-style="color:#aaa;" :maxLength="500"
                 :auto-size="{ minRows: 4, maxRows: 4 }"/>
-                <a-upload name="file" action="/api/universal/v1/feedback/uploadimage" list-type="picture-card" multiple
+                <a-upload name="file" action="/api/universal/v1/feedback/uploadimage" list-type="picture-card"
                     :headers="token?{'Authorization': 'Bearer '+token}:{}" :file-list="fileList" :before-upload="beforeUpload" :showUploadList="{showPreviewIcon:false, showRemoveIcon:true}" @change="handleChange">
                     <div v-if="fileList.length < 3">
                         <a-icon type="plus" />
@@ -23,6 +24,7 @@
                 </a-upload>
             </div>
         </div>
+        <div style="width: 100%;">{{JSON.stringify(fileList)}}</div>
         <div class="module-box">
             <p class="title"><span>联系方式</span> <i>*</i></p>
             <a-input placeholder="请留下您的联系方式，我们将会尽快联系您！" v-model="params.contact" :maxLength="20" />
@@ -32,6 +34,7 @@
 </template>
 
 <script>
+import MobileHeader from '@/common/MobileHeader.vue';
 import CommonAjax from "@/utils/http/modules/common.request.js";
 import muTypes from "@/store/mutation-types.js";
 import { mapGetters,mapMutations } from 'vuex';
@@ -53,6 +56,9 @@ export default {
             fileList: [],
         }
     },
+    components: {
+        MobileHeader
+    },
     created(){
         console.log(this.$route)
         this.queryType = this.$route.query.type;
@@ -68,11 +74,6 @@ export default {
         beforeUpload(file) {
             return new Promise((resolve, reject) => {
                 this.transformFile(file).then(res => {
-                    const isJpgOrPng = file.type === 'image/jpeg' || file.type === 'image/jpg' || file.type === 'image/png';
-                    if (!isJpgOrPng) {
-                        this.$message.error('仅支持JPEG、JPG、PNG格式');
-                        reject(false);
-                    }
                     resolve(res);
                 }).catch(err=>{
                     reject(false);
@@ -80,8 +81,14 @@ export default {
             })
         },
         transformFile(file){
-            return new Promise(async resolve => {
-                resolve(await CompressImg(file))
+            return new Promise(async (resolve, reject) => {
+                const isJpgOrPng = file.type === 'image/jpeg' || file.type === 'image/jpg' || file.type === 'image/png';
+                if (!isJpgOrPng) {
+                    this.$message.error('仅支持JPEG、JPG、PNG格式');
+                    reject(false);
+                }else{
+                    resolve(await CompressImg(file))
+                }
             });
         },
         handleChange(info) {

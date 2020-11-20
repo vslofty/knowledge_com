@@ -1,11 +1,11 @@
 <template>
-    <div class="page-index" @mouseup='mouseup($event)'>
+    <div class="page-index" @mouseup='mouseup'>
         <div class="header-bg">
             <!-- <img src="https://j.weizan.cn/zhibo/microcourse/images/banner-bg.png?v=20201119"> -->
         </div>
         <div class="header-box" ref="time" :style="`height:${screenHeight}px`">
             <headers current="index"></headers>
-            <h1 class="header-title" data-aos="fade-up" data-aos-delay="300">让知识传播更有价值</h1>
+            <h1 class="header-title" data-aos="fade-up" data-aos-delay="300">让知识传播更简单</h1>
             <p class="header-subtitle" data-aos="fade-up" data-aos-delay="350">
                 <!-- <span>全新一代在线互动课堂教学工具，整合多人连麦，在线教学，教务管理，招生营销等功能于一体，致力于为您提供</span>
                 <span>一个低成本，高效率做在线教育的一站式解决工具。</span> -->
@@ -25,7 +25,7 @@
         </div>
         <div class="body-box">
             <h2 class="main-title" data-aos="fade-up">知播在线互动课堂</h2>
-            <p class="main-desc" data-aos="fade-up" data-aos-delay="200">以高效，正确地帮助教育培训机构或老师，解决多种培训教育场景</p>
+            <p class="main-desc" data-aos="fade-up" data-aos-delay="200">满足多种教学场景，帮助教培机构、老师高效率、低成本的开展在线教学；</p>
             <div class="main-content-0 d-flex ali-cen" data-aos="fade-up" data-aos-delay="400">
                 <img class="bg-1" src="https://j.weizan.cn/zhibo/microcourse/images/main-content-bg-1.png"/>
                 <div class="case-box case-bg-1"><span>家教辅导</span></div>
@@ -85,7 +85,7 @@
                     <img class="img-10" src="https://j.weizan.cn/zhibo/microcourse/images/main-content-img-10.png?v=1" data-aos="fade-up" data-aos-delay="600"/>
                     <div ref="beautyBox" class="beauty-img-box" data-aos="fade-up" data-aos-delay="800">
                         <img style="width:100%;height:100%;" src="https://j.weizan.cn/zhibo/microcourse/images/main-content-img-11.png?v=1"/>
-                        <img ref="sildeBtn" class="silde-btn" src="https://j.weizan.cn/zhibo/microcourse/images/silde-btn.png" @mousedown="mousedown($event)" />
+                        <img ref="sildeBtn" class="silde-btn" src="https://j.weizan.cn/zhibo/microcourse/images/silde-btn.png" @mousedown="mousedown" />
                         <div ref="sildeBox" class="silde-box">
                             <img class="silde-beauty-img" src="https://j.weizan.cn/zhibo/microcourse/images/main-content-img-12.png?v=1"/>
                         </div>
@@ -141,7 +141,7 @@ export default {
             }
         },
         mousedown: function (event) {
-            var event=event||window.event;
+            event = event||window.event;
             var _target = event.target
             var startx=event.clientX;
             var sb_bkx=startx-event.target.offsetLeft;
@@ -162,7 +162,7 @@ export default {
                 this.$refs.sildeBox.setAttribute('style', `width: ${ww-endx-16}px !important`);
             }
         },
-        mouseup: function (e) {
+        mouseup: function () {
             this.$refs.beautyBox.onmousemove=null;
         }
     },
