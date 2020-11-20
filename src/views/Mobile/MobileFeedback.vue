@@ -15,7 +15,7 @@
                 placeholder="请详细描述您的问题、建议等等" placeholder-style="color:#aaa;" :maxLength="500"
                 :auto-size="{ minRows: 4, maxRows: 4 }"/>
                 <a-upload name="file" action="/api/universal/v1/feedback/uploadimage" list-type="picture-card" multiple
-                    :headers="token?{'Authorization': 'Bearer '+token}:{}" :before-upload="beforeUpload" :showUploadList="{showPreviewIcon:false, showRemoveIcon:true}" @change="handleChange">
+                    :headers="token?{'Authorization': 'Bearer '+token}:{}" :file-list="fileList" :before-upload="beforeUpload" :showUploadList="{showPreviewIcon:false, showRemoveIcon:true}" @change="handleChange">
                     <div v-if="fileList.length < 3">
                         <a-icon type="plus" />
                         <div style="font-size: 0.2rem;">添加图片</div>

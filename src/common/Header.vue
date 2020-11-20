@@ -8,7 +8,7 @@
       <li :class="(current=='index')&&'active'"><router-link to="/" :style="headercolor">首页</router-link></li>
       <li :class="(current=='download')&&'active'"><router-link to="/download/" :style="headercolor">下载中心</router-link></li>
       <li :class="(current=='help')&&'active'"><router-link to="/help/0/" :style="headercolor">帮助文档</router-link></li>
-      <li :class="(current=='feedback')&&'active'"><router-link to="/feedback/" :style="headercolor">产品反馈</router-link></li>
+      <li :class="(current=='feedback')&&'active'"><router-link to="/feedback/?type=1000" :style="headercolor">产品反馈</router-link></li>
     </ul>
     <div class="header-btn-group">
       <!-- <a class="btn1 onlinecusmter" target="_blank" :href="generalInfo&&generalInfo.CustomServiceURI" v-html="onlinetext"></a> -->

@@ -31,7 +31,7 @@
                 <span>{{fileList.length}}/3</span>
             </p>
             <a-upload name="file" action="/api/universal/v1/feedback/uploadimage" list-type="picture-card" multiple
-                :file-list="fileList" :before-upload="beforeUpload"
+                :file-list="fileList" :before-upload="beforeUpload" :headers="token?{'Authorization': 'Bearer '+token}:{}"
                 @preview="handlePreview" @change="handleChange">
                 <div v-if="fileList.length < 3">
                     <a-icon type="plus" />
@@ -48,6 +48,8 @@
 
 <script>
 import CommonAjax from "@/utils/http/modules/common.request.js";
+import muTypes from "@/store/mutation-types.js";
+import { mapGetters,mapMutations } from 'vuex';
 import CompressImg from "@/utils/compressImg.js";
 var ErrorTip={
     type: "请选择反馈类型",
@@ -57,11 +59,11 @@ var ErrorTip={
 export default {
     data(){
         return{
+            queryType: 0,
             params: {
                 type: "",
                 content: "",
                 contact: "",
-                tail: 1000
             },
             fileList: [],
             previewVisible: false,
@@ -69,10 +71,18 @@ export default {
             sendtext: "立即提交"
         }
     },
+    computed: {
+        ...mapGetters(['token']),
+    },
     created(){
         this.sendtext = '<div><span>' + this.sendtext.split('').join('</span><span>') + '</span></div>';
+        this.queryType = this.$route.query.type;
+        this.updateToken(this.$route.query.token);
     },
     methods: {
+        ...mapMutations({
+            updateToken: muTypes.token,
+        }),
         beforeUpload(file) {
             return new Promise((resolve, reject) => {
                 this.transformFile(file).then(res => {
@@ -129,6 +139,7 @@ export default {
                 result.push(item.thumbUrl||item.url);
             });
             this.params.imgurls = result.join(',');
+            this.params.tail = this.queryType;
             try{
                 await CommonAjax.addFeedback(this.params);
                 this.$antdMessage.success("提交成功");
@@ -136,7 +147,6 @@ export default {
                     type: "",
                     content: "",
                     contact: "",
-                    tail: 1000
                 };
                 this.fileList=[];
             } catch(error){
