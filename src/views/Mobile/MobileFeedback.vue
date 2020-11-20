@@ -10,7 +10,7 @@
             </a-radio-group>
         </div>
         <div class="module-box">
-            <p class="title"><span>请详细描述您的问题、建议等{{fileList.length}}</span> <i>*</i></p>
+            <p class="title"><span>请详细描述您的问题、建议等</span> <i>*</i></p>
             <div class="desc-box">
                 <a-textarea class="desc-content" v-model="params.content"
                 placeholder="请详细描述您的问题、建议等等" placeholder-style="color:#aaa;" :maxLength="500"
@@ -24,7 +24,6 @@
                 </a-upload>
             </div>
         </div>
-        <div style="width: 100%;">{{JSON.stringify(fileList)}}</div>
         <div class="module-box">
             <p class="title"><span>联系方式</span> <i>*</i></p>
             <a-input placeholder="请留下您的联系方式，我们将会尽快联系您！" v-model="params.contact" :maxLength="20" />
@@ -94,7 +93,8 @@ export default {
         handleChange(info) {
             try{
                 info.fileList.length&&info.fileList.forEach(item=>{
-                    item.uid=`vc-upload-${item.name.split('.')[0]}`;
+                    var name=item.name.split('.')[0];
+                    item.uid=`vc-upload-${name!='image'?name:item.lastModified}`;
                     if(item.status=='done'){
                         if(item.response&&item.response.isok){
                             item.thumbUrl=item.response.dataObj;
