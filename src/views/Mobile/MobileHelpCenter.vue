@@ -45,7 +45,7 @@ export default {
             try{
                 let res = await CommonAjax.getCatalog();
                 console.log(res)
-                this.menuinfo = res.dataObj;
+                this.menuinfo = res.dataObj.filter(item=>item.Articles&&item.Articles.length);
             }catch(error){
                 error&&this.$antdMessage.error(error)
             }

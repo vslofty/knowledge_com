@@ -90,6 +90,7 @@ export default {
                 let res = await CommonAjax.getCatalog();
                 console.log(res)
                 var Ids = [],openIds = [];
+                res.dataObj = res.dataObj.filter(item=>item.Articles&&item.Articles.length)
                 res.dataObj.length&&res.dataObj.forEach(item=>{
                     console.log(articleId,item.Id==articleId,item.Articles.some(art=>art.Id==articleId))
                     if(articleId&&item.Id==articleId){
