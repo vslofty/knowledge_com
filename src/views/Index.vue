@@ -13,7 +13,7 @@
             </p>
             <a-button class="build-btn" data-aos="fade-up" data-aos-delay="400" @click="goPcBackstage">
                 <span>创建在线课堂</span>
-                <img src="https://j.weizan.cn/zhibo/microcourse/images/right_arrow.png"/>
+                <img :src="`https://j.weizan.cn/zhibo/microcourse/images/right_arrow.png?v=${generalInfo&&generalInfo.StaticResVersion}`"/>
             </a-button>
             <div class="slide-tips">
                 <div class="arrow-icon d-flex flex-dircol" :style="IsIE&&'background-image:none;color:#fff;'">
@@ -27,67 +27,67 @@
             <h2 class="main-title" data-aos="fade-up">知播在线互动课堂</h2>
             <p class="main-desc" data-aos="fade-up" data-aos-delay="200">满足多种教学场景，帮助教培机构、老师高效率、低成本的开展在线教学；</p>
             <div class="main-content-0 d-flex ali-cen" data-aos="fade-up" data-aos-delay="400">
-                <img class="bg-1" src="https://j.weizan.cn/zhibo/microcourse/images/main-content-bg-1.png"/>
+                <img class="bg-1" :src="`https://j.weizan.cn/zhibo/microcourse/images/201120/main-content-bg-1.png?v=${generalInfo&&generalInfo.StaticResVersion}`"/>
                 <div class="case-box case-bg-1"><span>家教辅导</span></div>
                 <div class="case-box case-bg-2"><span>绘画教育</span></div>
                 <div class="case-box case-bg-3"><span>钢琴陪练</span></div>
                 <div class="case-box case-bg-4"><span>语数英教学</span></div>
                 <div class="case-box case-bg-5"><span>企业内部培训</span></div>
             </div>
-            <img class="bg-2" src="https://j.weizan.cn/zhibo/microcourse/images/main-content-bg-2.png?v=1"/>
+            <img class="bg-2" :src="`https://j.weizan.cn/zhibo/microcourse/images/201120/main-content-bg-2.png?v=${generalInfo&&generalInfo.StaticResVersion}`"/>
             <div class="main-content-1 d-flex ali-cen">
                 <div class="main-img-box-1">
-                    <img class="img-1" src="https://j.weizan.cn/zhibo/microcourse/images/main-content-img-1.png"  data-aos="fade-up" data-aos-delay="200"/>
-                    <img class="img-2" src="https://j.weizan.cn/zhibo/microcourse/images/main-content-img-2.png" data-aos="fade-up" data-aos-delay="400"/>
-                    <img class="img-3" src="https://j.weizan.cn/zhibo/microcourse/images/main-content-img-3.png" data-aos="fade-up" data-aos-delay="600"/>
-                    <img class="img-4" src="https://j.weizan.cn/zhibo/microcourse/images/main-content-img-4.png" data-aos="fade-up" data-aos-delay="800"/>
+                    <img class="img-1" :src="`https://j.weizan.cn/zhibo/microcourse/images/201120/main-content-img-1.png?v=${generalInfo&&generalInfo.StaticResVersion}`"  data-aos="fade-up" data-aos-delay="200"/>
+                    <img class="img-2" :src="`https://j.weizan.cn/zhibo/microcourse/images/201120/main-content-img-2.png?v=${generalInfo&&generalInfo.StaticResVersion}`" data-aos="fade-up" data-aos-delay="400"/>
+                    <img class="img-3" :src="`https://j.weizan.cn/zhibo/microcourse/images/201120/main-content-img-3.png?v=${generalInfo&&generalInfo.StaticResVersion}`" data-aos="fade-up" data-aos-delay="600"/>
+                    <img class="img-4" :src="`https://j.weizan.cn/zhibo/microcourse/images/201120/main-content-img-4.png?v=${generalInfo&&generalInfo.StaticResVersion}`" data-aos="fade-up" data-aos-delay="800"/>
                 </div>
                 <div class="describe-box d-flex flex-dircol">
-                    <img class="desc-icon" src="https://j.weizan.cn/zhibo/microcourse/images/desc-icon-1.png" data-aos="fade-up" data-aos-delay="100"/>
+                    <img class="desc-icon" :src="`https://j.weizan.cn/zhibo/microcourse/images/201120/desc-icon-1.png?v=${generalInfo&&generalInfo.StaticResVersion}`" data-aos="fade-up" data-aos-delay="100"/>
                     <h4 class="small-title" data-aos="fade-up" data-aos-delay="300">课堂多人视频互动<br/>画质流畅稳定</h4>
                     <p class="sub-desc" data-aos="fade-up" data-aos-delay="500">老师电脑客户端授课，学生App上课，充分保障了课堂互动的真实，在弱网下也能流畅上课，保证教学效果</p>
                 </div>
             </div>
             <div class="main-content-2 d-flex ali-end">
                 <div class="describe-box d-flex flex-dircol">
-                    <img class="desc-icon" src="https://j.weizan.cn/zhibo/microcourse/images/desc-icon-2.png" data-aos="fade-up" data-aos-delay="100"/>
+                    <img class="desc-icon" :src="`https://j.weizan.cn/zhibo/microcourse/images/201120/desc-icon-2.png?v=${generalInfo&&generalInfo.StaticResVersion}`" data-aos="fade-up" data-aos-delay="100"/>
                     <h4 class="small-title" data-aos="fade-up" data-aos-delay="300">
                         屏幕共享<br/>授课灵活自由
-                        <img class="bg-3" src="https://j.weizan.cn/zhibo/microcourse/images/main-content-bg-3.png?v=1"/>
+                        <img class="bg-3" :src="`https://j.weizan.cn/zhibo/microcourse/images/201120/main-content-bg-3.png?v=${generalInfo&&generalInfo.StaticResVersion}`"/>
                     </h4>
                     <p class="sub-desc" data-aos="fade-up" data-aos-delay="500">屏幕一键共享，老师示范更方便，授课更灵活</p>
                 </div>
                 <div class="main-img-box-2">
-                    <img class="img-5" src="https://j.weizan.cn/zhibo/microcourse/images/main-content-img-5.png?v=1" data-aos="fade-up" data-aos-delay="200"/>
-                    <img class="img-6" src="https://j.weizan.cn/zhibo/microcourse/images/main-content-img-6.png?v=1" data-aos="fade-up" data-aos-delay="400"/>
-                    <img class="img-7" src="https://j.weizan.cn/zhibo/microcourse/images/main-content-img-7.png?v=1" data-aos="fade-up" data-aos-delay="600"/>
+                    <img class="img-5" :src="`https://j.weizan.cn/zhibo/microcourse/images/201120/main-content-img-5.png?v=${generalInfo&&generalInfo.StaticResVersion}`" data-aos="fade-up" data-aos-delay="200"/>
+                    <img class="img-6" :src="`https://j.weizan.cn/zhibo/microcourse/images/201120/main-content-img-6.png?v=${generalInfo&&generalInfo.StaticResVersion}`" data-aos="fade-up" data-aos-delay="400"/>
+                    <img class="img-7" :src="`https://j.weizan.cn/zhibo/microcourse/images/201120/main-content-img-7.png?v=${generalInfo&&generalInfo.StaticResVersion}`" data-aos="fade-up" data-aos-delay="600"/>
                 </div>
             </div>
             <div class="main-content-3 d-flex ali-end">
                 <div class="main-img-box-3">
-                    <img class="img-8" src="https://j.weizan.cn/zhibo/microcourse/images/main-content-img-8.png?v=1" data-aos="fade-up" data-aos-delay="200"/>
-                    <img class="img-9" src="https://j.weizan.cn/zhibo/microcourse/images/main-content-img-9.png?v=1" data-aos="fade-up" data-aos-delay="400"/>
+                    <img class="img-8" :src="`https://j.weizan.cn/zhibo/microcourse/images/201120/main-content-img-8.png?v=${generalInfo&&generalInfo.StaticResVersion}`" data-aos="fade-up" data-aos-delay="200"/>
+                    <img class="img-9" :src="`https://j.weizan.cn/zhibo/microcourse/images/201120/main-content-img-9.png?v=${generalInfo&&generalInfo.StaticResVersion}`" data-aos="fade-up" data-aos-delay="400"/>
                 </div>
                 <div class="describe-box d-flex flex-dircol">
-                    <img class="desc-icon" src="https://j.weizan.cn/zhibo/microcourse/images/desc-icon-3.png" data-aos="fade-up" data-aos-delay="100"/>
+                    <img class="desc-icon" :src="`https://j.weizan.cn/zhibo/microcourse/images/201120/desc-icon-3.png?v=${generalInfo&&generalInfo.StaticResVersion}`" data-aos="fade-up" data-aos-delay="100"/>
                     <h4 class="small-title" data-aos="fade-up" data-aos-delay="300">多格式课件演示<br/>课堂内容更生动</h4>
                     <p class="sub-desc" data-aos="fade-up" data-aos-delay="500">支持视频，图片，PDF，Word，PPT等主流文档演示丰富画笔工具，讲到哪画到哪，重点知识统统圈起来</p>
                 </div>
             </div>
             <div class="main-content-4 d-flex ali-center">
                 <div class="describe-box d-flex flex-dircol juc-cen">
-                    <img class="desc-icon" src="https://j.weizan.cn/zhibo/microcourse/images/desc-icon-4.png" data-aos="fade-up" data-aos-delay="100"/>
+                    <img class="desc-icon" :src="`https://j.weizan.cn/zhibo/microcourse/images/201120/desc-icon-4.png?v=${generalInfo&&generalInfo.StaticResVersion}`" data-aos="fade-up" data-aos-delay="100"/>
                     <h4 class="small-title" data-aos="fade-up" data-aos-delay="300">直播美颜<br/>让老师授课更舒心</h4>
                     <p class="sub-desc" data-aos="fade-up" data-aos-delay="500">人性化，灵活度高的课堂美颜，帮助老师轻松出镜，自信开课。</p>
                 </div>
                 <div class="main-img-box-4">
-                    <!-- <img class="bg-4" src="https://j.weizan.cn/zhibo/microcourse/images/main-content-bg-3.png"/> -->
-                    <img class="img-10" src="https://j.weizan.cn/zhibo/microcourse/images/main-content-img-10.png?v=1" data-aos="fade-up" data-aos-delay="600"/>
+                    <!-- <img class="bg-4" :src="`https://j.weizan.cn/zhibo/microcourse/images/main-content-bg-3.png?v=${generalInfo&&generalInfo.StaticResVersion}`"/> -->
+                    <img class="img-10" :src="`https://j.weizan.cn/zhibo/microcourse/images/201120/main-content-img-10.png?v=${generalInfo&&generalInfo.StaticResVersion}`" data-aos="fade-up" data-aos-delay="600"/>
                     <div ref="beautyBox" class="beauty-img-box" data-aos="fade-up" data-aos-delay="800">
-                        <img style="width:100%;height:100%;" src="https://j.weizan.cn/zhibo/microcourse/images/main-content-img-11.png?v=1"/>
-                        <img ref="sildeBtn" class="silde-btn" src="https://j.weizan.cn/zhibo/microcourse/images/silde-btn.png" @mousedown="mousedown" />
+                        <img style="width:100%;height:100%;" :src="`https://j.weizan.cn/zhibo/microcourse/images/201120/main-content-img-11.png?v=${generalInfo&&generalInfo.StaticResVersion}`"/>
+                        <img ref="sildeBtn" class="silde-btn" :src="`https://j.weizan.cn/zhibo/microcourse/images/201120/silde-btn.png?v=${generalInfo&&generalInfo.StaticResVersion}`" @mousedown="mousedown" />
                         <div ref="sildeBox" class="silde-box">
-                            <img class="silde-beauty-img" src="https://j.weizan.cn/zhibo/microcourse/images/main-content-img-12.png?v=1"/>
+                            <img class="silde-beauty-img" :src="`https://j.weizan.cn/zhibo/microcourse/images/201120/main-content-img-12.png?v=${generalInfo&&generalInfo.StaticResVersion}`"/>
                         </div>
                         <p :style="IsIE&&'background-image:none;color:#fff;'">滑动查看效果</p>
                     </div>
@@ -96,7 +96,7 @@
         </div>
         <div class="advert-box"> 
             <div class="advert-bg">
-                <img src="https://j.weizan.cn/zhibo/microcourse/images/advert-bg.png?v=20201027"/>
+                <img :src="`https://j.weizan.cn/zhibo/microcourse/images/advert-bg.png?v=${generalInfo&&generalInfo.StaticResVersion}`"/>
             </div>
             <div class="container">
                 <h1 data-aos="fade-up" data-aos-delay="300">一分钟创建专属<br/>在线互动课堂</h1>
@@ -111,6 +111,7 @@
 <script>
 import Headers from '@/common/Header.vue';
 import Footers from '@/common/Footer.vue';
+import { mapGetters } from 'vuex';
 export default {
     data(){
         return {
@@ -118,6 +119,9 @@ export default {
             buildtext: "创建在线课堂",
             IsIE: false
         }
+    },
+    computed: {
+        ...mapGetters(['generalInfo']),
     },
     components: {
         Headers,Footers

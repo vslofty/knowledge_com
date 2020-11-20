@@ -10,29 +10,20 @@
             </a-radio-group>
         </div>
         <div class="module-box">
-            <p class="title"><span>请详细描述您的问题、建议等{{fileList.length}}</span> <i>*</i></p>
+            <p class="title"><span>请详细描述您的问题、建议等</span> <i>*</i></p>
             <div class="desc-box">
                 <a-textarea class="desc-content" v-model="params.content"
                 placeholder="请详细描述您的问题、建议等等" placeholder-style="color:#aaa;" :maxLength="500"
                 :auto-size="{ minRows: 4, maxRows: 4 }"/>
                 <a-upload name="file" action="/api/universal/v1/feedback/uploadimage" list-type="picture-card"
-                    :headers="token?{'Authorization': 'Bearer '+token}:{}" :showUploadList="{showPreviewIcon:false, showRemoveIcon:true}" @change="handleChange">
+                    :headers="token?{'Authorization': 'Bearer '+token}:{}" :file-list="fileList" :before-upload="beforeUpload" :showUploadList="{showPreviewIcon:false, showRemoveIcon:true}" @change="handleChange">
                     <div v-if="fileList.length < 3">
                         <a-icon type="plus" />
                         <div style="font-size: 0.2rem;">添加图片</div>
                     </div>
                 </a-upload>
-                <!-- <el-upload name="file" action="/api/universal/v1/feedback/uploadimage" multiple
-                    list-type="picture-card" :headers="token?{'Authorization': 'Bearer '+token}:{}" :file-list="fileList" :before-upload="beforeUpload"
-                    :limit="3" :on-exceed="handleExceed" :on-success="handleChange">
-                    <div v-if="fileList.length < 3">
-                        <a-icon type="plus" />
-                        <div style="font-size: 0.2rem;">添加图片</div>
-                    </div>
-                </el-upload> -->
             </div>
         </div>
-        <div style="width: 100%;">{{JSON.stringify(fileList)}}</div>
         <div class="module-box">
             <p class="title"><span>联系方式</span> <i>*</i></p>
             <a-input placeholder="请留下您的联系方式，我们将会尽快联系您！" v-model="params.contact" :maxLength="20" />
@@ -81,11 +72,22 @@ export default {
         }),
         beforeUpload(file) {
             return new Promise((resolve, reject) => {
-                this.transformFile(file).then(res => {
-                    resolve(res);
-                }).catch(err=>{
+                const isJpgOrPng = file.type === 'image/jpeg' || file.type === 'image/jpg' || file.type === 'image/png';
+                if (!isJpgOrPng) {
+                    this.$message.error('仅支持JPEG、JPG、PNG格式');
                     reject(false);
-                })
+                }
+                const isLt15M = file.size / 1024 / 1024 < 15;
+                if (!isLt15M) {
+                    this.$message.error('截图不能超过15M');
+                    reject(false);
+                }
+                resolve(isJpgOrPng && isLt15M);
+                // this.transformFile(file).then(res => {
+                //     resolve(res);
+                // }).catch(err=>{
+                //     reject(false);
+                // })
             })
         },
         transformFile(file){
@@ -110,19 +112,15 @@ export default {
                         }else{
                             let response = JSON.parse(item.xhr.response);
                             if(response.isok){
-                                item.thumbUrl=response.dataObj;
+                                item.thumbUrl = response.dataObj;
                             }
                         }
                     }
                 });
-                console.log(JSON.stringify(info.fileList))
                 this.fileList = info.fileList.slice(0,3);
             }catch(err){
                 console.log(err)
             }
-        },
-        handleExceed(files, fileList) {
-            this.$antdMessage.warning("最多可上传3张截图");
         },
         async addFeedBack(){
             for(var key in this.params){

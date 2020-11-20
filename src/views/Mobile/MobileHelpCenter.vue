@@ -14,7 +14,7 @@
                     <template v-if="item.Articles&&item.Articles.length">
                         <router-link tag="li" :to="`/mobile/helpdetail/?id=${menuitem.Id}&name=${item.Name}`" v-for="menuitem of item.Articles" :key="menuitem.Id">
                             <span>{{menuitem.Title}}</span>
-                            <img src="../../assets/right_arrow_icon.png"/>
+                            <img src="https://j.weizan.cn/zhibo/microcourse/images/mobile/right_arrow_icon.png"/>
                         </router-link>
                     </template>
                     <template v-if="!item.Articles||!item.Articles.length">

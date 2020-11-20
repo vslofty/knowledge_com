@@ -66,7 +66,6 @@ export default {
                 contact: "",
             },
             fileList: [],
-            uploadImgList: [],
             previewVisible: false,
             previewImage: "",
             sendtext: "立即提交"
@@ -137,33 +136,26 @@ export default {
                     return;
                 }
             }
+            var result=[];
+            this.fileList.forEach(item=>{
+                result.push(item.thumbUrl||item.url);
+            });
+            this.params.imgurls = result.join(',');
             this.params.tail = this.queryType;
             try{
                 await CommonAjax.addFeedback(this.params);
                 this.$antdMessage.success("提交成功");
-                setTimeout(()=>{
-                    location.reload();
-                },1000)
+                this.params = {
+                    type: "",
+                    content: "",
+                    contact: "",
+                };
+                this.fileList = [];
             } catch(error){
                 error && this.$antdMessage.error(error);
             }
         }
     },
-    watch: {
-      fileList: {
-          deep:true,
-          handler(list){
-            var result=[];
-            list.length&&list.forEach(item=>{
-                if(item.response&&item.response.isok){
-                    result.push(item.response.dataObj);
-                }
-            });
-            this.uploadImgList = result;
-            this.params.imgurls = result.join(',');
-          }
-      }  
-    }
 }
 </script>
 
