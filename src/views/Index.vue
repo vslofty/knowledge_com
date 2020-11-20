@@ -1,7 +1,7 @@
 <template>
     <div class="page-index" @mouseup='mouseup($event)'>
         <div class="header-bg">
-            <img src="https://j.weizan.cn/zhibo/microcourse/images/banner-bg.png?v=20201119">
+            <!-- <img src="https://j.weizan.cn/zhibo/microcourse/images/banner-bg.png?v=20201119"> -->
         </div>
         <div class="header-box" ref="time" :style="`height:${screenHeight}px`">
             <headers current="index"></headers>
@@ -189,6 +189,8 @@ export default {
         display: flex;
         justify-content: center;
         align-items: center;
+        background: url(https://j.weizan.cn/zhibo/microcourse/images/banner-bg.png?v=20201119) no-repeat center center;
+        background-size: cover;
         img{
             width: 100%;
         }
