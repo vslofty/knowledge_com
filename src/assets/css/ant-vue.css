@@ -113,21 +113,35 @@
 .ant-tabs-bottom .ant-tabs-ink-bar-animated {
   transition: transform 1s cubic-bezier(0.645, 0.045, 0.355, 1), width 0.2s cubic-bezier(0.645, 0.045, 0.355, 1), left 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
 }
+.page-feedback .el-upload,
 .page-feedback .ant-upload.ant-upload-select-picture-card {
   width: 80px;
   height: 80px;
   margin: 0 20px 20px 0;
   background: #fff;
   border: 2px dashed #efefef;
+  color: #202124;
+  line-height: 1.5;
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
+.page-feedback .el-upload i,
 .page-feedback .ant-upload.ant-upload-select-picture-card i {
   font-size: 20px;
   color: #b8babf;
 }
+.page-feedback .el-upload-list__item .el-icon-close-tip,
+.page-feedback .el-upload-list__item.is-success .el-upload-list__item-status-label {
+  display: none!important;
+}
+.page-feedback .el-upload-list--picture-card .el-upload-list__item,
 .page-feedback .ant-upload-list-picture-card-container {
   width: 80px;
   height: 80px;
   margin: 0 20px 20px 0;
+  border: none;
 }
 .page-feedback .ant-upload-list-picture-card .ant-upload-list-item {
   width: 100%;
@@ -137,6 +151,7 @@
   border: none;
   overflow: hidden;
 }
+.mobile-feedback .el-upload--picture-card,
 .mobile-feedback .ant-upload.ant-upload-select-picture-card {
   width: 1.4rem;
   height: 1.4rem;
@@ -145,7 +160,14 @@
   border: 1px dashed #e4e4e4;
   border-radius: 0.2rem;
   color: #aaa;
+  line-height: 1.5;
+  vertical-align: middle;
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
+.mobile-feedback .el-upload--picture-card i,
 .mobile-feedback .ant-upload.ant-upload-select-picture-card i {
   font-size: 0.34rem;
   color: #aaa;
@@ -154,10 +176,13 @@
   padding: 0;
   color: #aaa;
 }
+.mobile-feedback .el-upload-list--picture-card .el-upload-list__item,
 .mobile-feedback .ant-upload-list-picture-card-container {
   width: 1.4rem;
   height: 1.4rem;
   margin: 0 0.16rem 0.16rem 0;
+  border-radius: 0.2rem;
+  border: none;
 }
 .mobile-feedback .ant-upload-list-picture-card .ant-upload-list-item {
   width: 100%;
@@ -168,6 +193,12 @@
   border-radius: 0.2rem;
   overflow: hidden;
 }
+.mobile-feedback .el-upload-list__item.is-success .el-upload-list__item-status-label,
+.mobile-feedback .el-upload-list--picture-card .el-upload-list__item-actions,
+.mobile-feedback .el-upload-list__item .el-icon-close-tip {
+  display: none !important;
+}
+.mobile-feedback .el-upload-list--picture-card .el-upload-list__item-actions:hover,
 .mobile-feedback .ant-upload-list-picture-card .ant-upload-list-item:hover .ant-upload-list-item-info::before {
   opacity: 0 !important;
 }
@@ -177,18 +208,26 @@
   height: 100%;
   opacity: 1 !important;
 }
+.mobile-feedback .el-upload-list--picture-card .el-upload-list__item .el-icon-close,
 .mobile-feedback .ant-upload-list-picture-card .ant-upload-list-item-actions .anticon-delete {
+  display: block;
   position: absolute;
   right: 0;
   top: 0;
   width: 0.44rem;
   height: 0.44rem;
   margin: 0;
+  opacity: 1;
   background: url('https://j.weizan.cn/zhibo/microcourse/images/del-img-icon.png') no-repeat center center;
   background-size: cover;
 }
+.mobile-feedback .el-upload-list--picture-card .el-upload-list__item .el-icon-close svg,
 .mobile-feedback .ant-upload-list-picture-card .ant-upload-list-item-actions .anticon-delete svg {
   display: none;
+}
+.mobile-feedback .el-upload-list--picture-card .el-upload-list__item .el-icon-close:before,
+.mobile-feedback .ant-upload-list-picture-card .ant-upload-list-item-actions .anticon-delete:before {
+  content: "";
 }
 .menu-box .ant-drawer-content {
   background: rgba(0, 0, 0, 0.9);

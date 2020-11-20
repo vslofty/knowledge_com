@@ -35,6 +35,9 @@ AOS.init({
   once: true
 });
 
+import { Upload,Image } from 'element-ui';
+Vue.use(Upload).use(Image);
+
 var _hmt = _hmt || [];
 window._hmt = _hmt; // 必须把_hmt挂载到window下，否则找不到
 (function () {

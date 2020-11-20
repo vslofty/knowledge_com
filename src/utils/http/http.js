@@ -79,6 +79,7 @@ class HttpRequest {
           this.showLoading();
         }
         config.headers["Content-Type"] = "application/x-www-form-urlencoded";
+        config.headers["deviceType"] = "104";
         if(config.token){
           console.log('getToken',config.url)
           config.headers["Authorization"] = `Bearer ${config.token}`;

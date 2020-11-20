@@ -22,6 +22,14 @@
                         <div style="font-size: 0.2rem;">添加图片</div>
                     </div>
                 </a-upload>
+                <!-- <el-upload name="file" action="/api/universal/v1/feedback/uploadimage" multiple
+                    list-type="picture-card" :headers="token?{'Authorization': 'Bearer '+token}:{}" :file-list="fileList" :before-upload="beforeUpload"
+                    :limit="3" :on-exceed="handleExceed" :on-success="handleChange">
+                    <div v-if="fileList.length < 3">
+                        <a-icon type="plus" />
+                        <div style="font-size: 0.2rem;">添加图片</div>
+                    </div>
+                </el-upload> -->
             </div>
         </div>
         <div style="width: 100%;">{{JSON.stringify(fileList)}}</div>
@@ -107,11 +115,14 @@ export default {
                         }
                     }
                 });
-                console.log(info.fileList)
+                alert(JSON.stringify(info.fileList))
                 this.fileList = info.fileList.slice(0,3);
             }catch(err){
                 console.log(err)
             }
+        },
+        handleExceed(files, fileList) {
+            this.$antdMessage.warning("最多可上传3张截图");
         },
         async addFeedBack(){
             for(var key in this.params){
