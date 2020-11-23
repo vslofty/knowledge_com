@@ -95,6 +95,10 @@ export default {
         },
         transformFile(file){
             return new Promise(async (resolve, reject) => {
+                if(this.fileList.some(item=>item.name==file.name)){
+                    this.$message.warning('已经上传过相同截图');
+                    reject(false);
+                }
                 const isJpgOrPng = file.type === 'image/jpeg' || file.type === 'image/jpg' || file.type === 'image/png';
                 if (!isJpgOrPng) {
                     this.$message.error('仅支持JPEG、JPG、PNG格式');
