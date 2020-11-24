@@ -26,7 +26,7 @@
         </div>
         <div class="module-box">
             <p class="title"><span>联系方式</span> <i>*</i></p>
-            <a-input placeholder="请留下您的联系方式，我们将会尽快联系您！" v-model="params.contact" :maxLength="20" />
+            <a-input placeholder="请留下您的联系方式，我们将会尽快联系您！" v-model="params.contact" :maxLength="20" @blur="checkedInput" />
         </div>
         <a-button class="income-send" @click="addFeedBack">立即提交</a-button>
     </div>
@@ -123,6 +123,7 @@ export default {
             }
         },
         async addFeedBack(){
+            if(!this.checkedInput()) return;
             for(var key in this.params){
                 if(!this.params[key].trim().length){
                     this.$antdMessage.warning(ErrorTip[key])
@@ -146,6 +147,19 @@ export default {
                 this.fileList = [];
             } catch(error){
                 error && this.$antdMessage.error(error);
+            }
+        },
+        checkedInput(){
+            var val = this.params.contact.trim();
+        　　if(val === "" || val ==null){
+                this.$antdMessage.warning("请填写正确联系方式")
+                return false;
+            }
+            if(!isNaN(val)){
+                return true; 
+            }else{ 
+                this.$antdMessage.warning("请填写正确联系方式")
+                return false; 
             }
         }
     }

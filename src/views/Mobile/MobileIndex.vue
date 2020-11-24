@@ -12,8 +12,8 @@
             <img class="mobile-img-1" src="https://j.weizan.cn/zhibo/microcourse/images/mobile/mobile-img-1.png"/>
         </div>
         <div class="model-box">
-            <h3>1v1~16人在线视频互动，画质流畅稳定</h3>
-            <p>老师电脑客户端授课，学生App上课，充分保障了课堂互动的真实，在弱网下也能流畅上课，保证教学效果</p>
+            <h3>课堂多人视频互动画质流畅稳定</h3>
+            <p>老师电脑客户端授课，学生App上课，充分保障课堂互动的真实，在弱网下也能流畅上课，保证教学效果</p>
             <img class="mobile-img-2" src="https://j.weizan.cn/zhibo/microcourse/images/mobile/mobile-img-2.png"/>
         </div>
         <div class="model-box">
@@ -23,7 +23,7 @@
         </div>
         <div class="model-box">
             <h3>多格式课件演示，课堂内容更生动</h3>
-            <p>支持视频，图片，PDF，Word，PPT等主流文档演示丰富画笔工具，讲到哪画到哪，重点知识统统圈起来</p>
+            <p>支持视频、图片、PDF、Word、PPT等主流文档演示丰富画笔工具，讲到哪画到哪，重点知识统统圈起来</p>
             <img class="mobile-img-4" src="https://j.weizan.cn/zhibo/microcourse/images/mobile/mobile-img-4.png"/>
         </div>
         <div class="model-box">

@@ -45,7 +45,7 @@
                 <div class="describe-box d-flex flex-dircol">
                     <img class="desc-icon" :src="`https://j.weizan.cn/zhibo/microcourse/images/201120/desc-icon-1.png?v=${generalInfo&&generalInfo.StaticResVersion}`" data-aos="fade-up" data-aos-delay="100"/>
                     <h4 class="small-title" data-aos="fade-up" data-aos-delay="300">课堂多人视频互动<br/>画质流畅稳定</h4>
-                    <p class="sub-desc" data-aos="fade-up" data-aos-delay="500">老师电脑客户端授课，学生App上课，充分保障了课堂互动的真实，在弱网下也能流畅上课，保证教学效果</p>
+                    <p class="sub-desc" data-aos="fade-up" data-aos-delay="500">老师电脑客户端授课，学生App上课，充分保障课堂互动的真实，在弱网下也能流畅上课，保证教学效果</p>
                 </div>
             </div>
             <div class="main-content-2 d-flex ali-end">
@@ -71,7 +71,7 @@
                 <div class="describe-box d-flex flex-dircol">
                     <img class="desc-icon" :src="`https://j.weizan.cn/zhibo/microcourse/images/201120/desc-icon-3.png?v=${generalInfo&&generalInfo.StaticResVersion}`" data-aos="fade-up" data-aos-delay="100"/>
                     <h4 class="small-title" data-aos="fade-up" data-aos-delay="300">多格式课件演示<br/>课堂内容更生动</h4>
-                    <p class="sub-desc" data-aos="fade-up" data-aos-delay="500">支持视频，图片，PDF，Word，PPT等主流文档演示丰富画笔工具，讲到哪画到哪，重点知识统统圈起来</p>
+                    <p class="sub-desc" data-aos="fade-up" data-aos-delay="500">支持视频、图片、PDF、Word、PPT等主流文档演示丰富画笔工具，讲到哪画到哪，重点知识统统圈起来</p>
                 </div>
             </div>
             <div class="main-content-4 d-flex ali-center">
