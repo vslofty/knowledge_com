@@ -23,7 +23,7 @@
             <p class="title">
                 <span>联系方式 <i>*</i></span>
             </p>
-            <a-input placeholder="请输入您的联系方式（手机号码/微信号/QQ）" v-model="params.contact" :maxLength="20" />
+            <a-input placeholder="请输入您的联系方式（手机号码/微信号/QQ）" v-model="params.contact" :maxLength="20" @blur="checkedInput" />
         </div>
         <div class="module-box">
             <p class="title">
@@ -31,8 +31,7 @@
                 <span>{{fileList.length}}/3</span>
             </p>
             <a-upload name="file" action="/api/universal/v1/feedback/uploadimage" list-type="picture-card"
-                :file-list="fileList" :before-upload="beforeUpload" :headers="token?{'Authorization': 'Bearer '+token}:{}"
-                @preview="handlePreview" @change="handleChange">
+                :file-list="fileList" :before-upload="beforeUpload" :headers="token?{'Authorization': 'Bearer '+token}:{}" @preview="handlePreview" @change="handleChange">
                 <div v-if="fileList.length < 3">
                     <a-icon type="plus" />
                 </div>
@@ -41,8 +40,8 @@
         <a-button class="income-send freeuse" @click="addFeedBack" v-html="sendtext"></a-button>
 
         <a-modal title="图片预览" :visible="previewVisible" :footer="null" @cancel="previewVisible=false">
-            <div style="height:600px;display:flex;justify-content:center;align-items:center;">
-                <img alt="example" style="height: 100%" :src="previewImage" />
+            <div style="max-height:600px;display:flex;justify-content:center;align-items:center;overflow:hidden;">
+                <img alt="example" style="width: 100%" :src="previewImage" />
             </div>
         </a-modal>
     </div>
@@ -136,6 +135,7 @@ export default {
             }
         },
         async addFeedBack(){
+            if(!this.checkedInput()) return;
             for(var key in this.params){
                 if(key!='tail'&&!this.params[key].trim().length){
                     this.$antdMessage.warning(ErrorTip[key])
@@ -159,6 +159,19 @@ export default {
                 this.fileList = [];
             } catch(error){
                 error && this.$antdMessage.error(error);
+            }
+        },
+        checkedInput(){
+            var val = this.params.contact.trim();
+        　　if(val === "" || val ==null){
+                this.$antdMessage.warning("请填写正确联系方式")
+                return false;
+            }
+            if(!isNaN(val)){
+                return true; 
+            }else{ 
+                this.$antdMessage.warning("请填写正确联系方式")
+                return false; 
             }
         }
     },
