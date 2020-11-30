@@ -48,37 +48,22 @@ module.exports = {
             }
         }
     },
-    css: {
-        loaderOptions: {
-            less: {
-                lessOptions: {
-                    modifyVars: {
-                        'border-color-base': '#FFB400',
-                        'primary-color': '#FFB400',
-                        'link-color': '#FFB400',
-                        'border-radius-base': '2px',
-                        'text-color': '#FFB400',
-                    },
-                    javascriptEnabled: true,
-                },
-            },
-        },
-    },
     chainWebpack: (config) => {
-        if (process.env.NODE_ENV === "test") {
+        if (process.env.NODE_ENV == "test") {
             config.output
                 .filename("static/js/[name].[hash:8].js")
                 .chunkFilename("static/js/[name].[hash:8].js");
         }
     },
     configureWebpack: (config) => {
-        if (ENV === "prod") {
+        if (ENV == "prod") {
             // 配置webpack 压缩
             config.plugins.push(
                 new CompressionWebpackPlugin({
                     test: /\.js$|\.html$|\.css$/,
                     // 超过4kb压缩
                     threshold: 4096,
+                    deleteOriginalAssets: false // 删除原文件
                 })
             );
         }

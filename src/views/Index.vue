@@ -11,7 +11,7 @@
                 <span>一个低成本，高效率做在线教育的一站式解决工具。</span> -->
                 <span>-  专属在线互动教学课堂，一键创建  -</span>
             </p>
-            <a-button class="build-btn" data-aos="fade-up" data-aos-delay="400" @click="goPcBackstage">
+            <a-button class="build-btn" data-aos="fade-up" data-aos-delay="400" @click="goPcBackstage('build')">
                 <span>创建在线课堂</span>
                 <img :src="`https://j.weizan.cn/zhibo/microcourse/images/right_arrow.png?v=${generalInfo&&generalInfo.StaticResVersion}`"/>
             </a-button>
@@ -101,7 +101,7 @@
             <div class="container">
                 <h1 data-aos="fade-up" data-aos-delay="300">一分钟创建专属<br/>在线互动课堂</h1>
                 <p data-aos="fade-up" data-aos-delay="350">让知识传播更简单</p>
-                <a-button class="buildclass" @click="goPcBackstage" data-aos="fade-up" data-aos-delay="400" v-html="buildtext"></a-button>
+                <a-button class="buildclass" @click="goPcBackstage('build')" data-aos="fade-up" data-aos-delay="400" v-html="buildtext"></a-button>
             </div>
         </div>
         <footers></footers>
@@ -127,15 +127,8 @@ export default {
         Headers,Footers
     },
     methods: {
-        goPcBackstage(){
-            try{
-                window.analysis.log(0, 0, 1434, 1014, "","",11,"");
-            }catch(err){ console.log(err) }
-            if(location.origin.includes('localhost')){
-                window.open('http://zhibo-dev.vzan.com/know/');
-            }else{
-              window.open(`${location.origin}/know/`);
-            }
+        goPcBackstage(type){
+            this.$bus.$emit("jump",type);
         },
         isIE(){
             if (!!window.ActiveXObject || "ActiveXObject" in window){

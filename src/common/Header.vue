@@ -12,7 +12,7 @@
     </ul>
     <div class="header-btn-group">
       <!-- <a class="btn1 onlinecusmter" target="_blank" :href="generalInfo&&generalInfo.CustomServiceURI" v-html="onlinetext"></a> -->
-      <a-button class="btn2 freeuse" @click="goPcBackstage" v-html="freeusetext"></a-button>
+      <a-button class="btn2 freeuse" @click="goPcBackstage('login')" v-html="freeusetext"></a-button>
     </div>
   </div>
 </template>
@@ -33,7 +33,7 @@ export default {
       headercolor: "",
       show: true,
       onlinetext: "在线客服",
-      freeusetext: "免费使用",
+      freeusetext: "登录注册",
     };
   },
   computed: {
@@ -44,15 +44,8 @@ export default {
     this.freeusetext = '<div><span>' + this.freeusetext.split('').join('</span><span>') + '</span></div>';
   },
   methods: {
-    goPcBackstage(){
-      try{
-        window.analysis.log(0, 0, 1434, 1014, "","",11,"");
-      }catch(err){ console.log(err) }
-      if(location.origin.includes('localhost')){
-        window.open('http://zhibo-dev.vzan.com/know/');
-      }else{
-        window.open(`${location.origin}/know/`);
-      }
+    goPcBackstage(type){
+      this.$bus.$emit("jump",type);
     },
     headerScroll(){
       if(this.showwhitebg) return;
