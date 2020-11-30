@@ -33,7 +33,7 @@ export default {
       headercolor: "",
       show: true,
       onlinetext: "在线客服",
-      freeusetext: "免费使用",
+      freeusetext: "登录注册",
     };
   },
   computed: {
