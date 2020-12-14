@@ -1,38 +1,22 @@
 {
   "name": "knowledge_com",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
-    "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build --mode production",
-    "wtest": "vue-cli-service build --mode wtest",
-    "tuser": "vue-cli-service build --mode tuser",
-    "lint": "vue-cli-service lint"
+    "dev": "nuxt",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "generate": "nuxt generate"
   },
   "dependencies": {
     "ant-design-vue": "^1.6.5",
-    "aos": "^2.3.4",
-    "axios": "^0.20.0",
+    "axios": "^0.21.0",
     "core-js": "^3.6.5",
-    "vue": "^2.6.11",
-    "vue-qr": "^2.3.0",
-    "vue-router": "^3.2.0",
-    "vuex": "^3.4.0"
+    "nuxt": "^2.14.6",
+    "vue-qr": "^2.3.0"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "~4.5.0",
-    "@vue/cli-plugin-eslint": "~4.5.0",
-    "@vue/cli-plugin-router": "~4.5.0",
-    "@vue/cli-plugin-vuex": "~4.5.0",
-    "@vue/cli-service": "~4.5.0",
-    "babel-eslint": "^10.1.0",
-    "babel-plugin-import": "^1.13.3",
-    "babel-polyfill": "^6.26.0",
-    "compression-webpack-plugin": "^6.1.1",
-    "eslint": "^6.7.2",
-    "eslint-plugin-vue": "^6.2.2",
     "less": "^3.0.4",
-    "less-loader": "^5.0.0",
-    "vue-template-compiler": "^2.6.11"
+    "less-loader": "^5.0.0"
   }
 }
