@@ -112,6 +112,7 @@
 import Headers from '@/components/Header.vue';
 import Footers from '@/components/Footer.vue';
 import { mapGetters } from 'vuex';
+import { getLocal } from '@/assets/utils/utils';
 export default {
     data(){
         return {
@@ -127,8 +128,35 @@ export default {
         Headers,Footers
     },
     methods: {
+        // 跳转pc后台
         goPcBackstage(type){
-            this.$bus.$emit("jump",type);
+            try{
+                window.analysis.log(0, 0, 1434, 1014, "","",11,"");
+            }catch(err){ console.log(err) }
+            
+            const tokenInfo = getLocal('TokenInfo');
+            console.log(tokenInfo)
+            if(tokenInfo&&tokenInfo.TokenExpires&&(new Date().getTime()<new Date(tokenInfo.TokenExpires).getTime())){
+                if(type=='login'){
+                    if(location.origin.includes('localhost')){
+                        window.open(`http://zhibo-test.vzan.com/know/index.html#/class/${tokenInfo.LiveId}`);
+                    }else{
+                        window.open(`${location.origin}/know/index.html#/class/${tokenInfo.LiveId}`);
+                    }
+                }else if(type=='build'){
+                    if(location.origin.includes('localhost')){
+                        window.open(`http://zhibo-test.vzan.com/know/index.html#/class/add/${tokenInfo.LiveId}`);
+                    }else{
+                        window.open(`${location.origin}/know/index.html#/class/add/${tokenInfo.LiveId}`);
+                    }
+                }
+            }else{
+                if(location.origin.includes('localhost')){
+                    window.open('http://zhibo-test.vzan.com/know/');
+                }else{
+                    window.open(`${location.origin}/know/`);
+                }
+            }
         },
         isIE(){
             if (!!window.ActiveXObject || "ActiveXObject" in window){
@@ -171,9 +199,11 @@ export default {
         this.$refs.sildeBtn.setAttribute('style', '');
         this.$refs.sildeBox.setAttribute('style', '');
       }
-      AOS.init({
-        duration: 1200,
-        once: true
+      this.$nextTick(()=>{
+        AOS.init({
+            duration: 1200,
+            once: true
+        });
       });
     }
 }

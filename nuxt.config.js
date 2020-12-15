@@ -1,4 +1,5 @@
 export default {
+  mode: 'universal',
   // Global page headers (https://go.nuxtjs.dev/config-head)
   head: {
     title: '知播-在线互动课堂教学工具，助力教育创业者实现互联网转型升级',
@@ -9,8 +10,8 @@ export default {
       { hid: 'description', name: 'description', content: '全新一代在线互动课堂教学工具，整合多人连麦、在线教学、教务管理、招生营销等功能于一体，致力于为您提供一个低成本，高效率做在线教育的一站式解决工具。' }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-      { rel: 'stylesheet', href: '~/css/index.css' },
+      { rel: 'icon', type: 'image/x-icon', href: './favicon.ico' },
+      { rel: 'stylesheet', href: './css/index.css' },
       { rel: 'stylesheet', href:'https://j.weizan.cn/zhibo/userlivecontent/vzan/plug/aos.css?v=637378363306613110'},
     ],
     script: [
@@ -31,7 +32,7 @@ export default {
 
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
   plugins: [
-    '@/plugins/antd-ui'
+    './plugins/antd-ui'
   ],
 
   // Auto import components (https://go.nuxtjs.dev/config-components)
@@ -53,6 +54,8 @@ export default {
   },
   router: {
     base: '/',
+    // base: '/live/knowledge_com/dist/',
+    // base: '/wwwroot/zhibo/',
     scrollBehavior (to, from, savedPosition) {
       return { x: 0, y: 0 }
     }
